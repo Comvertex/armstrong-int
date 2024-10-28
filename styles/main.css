@@ -12,6 +12,9 @@
 html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 body {
@@ -21,6 +24,8 @@ body {
     line-height: 1.6;
     color: var(--primary-color);
     overflow-x: hidden;
+    padding-right: 0 !important;
+    width: 100%;
 }
 
 .main-nav {
@@ -50,6 +55,7 @@ body {
     width: calc(100% - 4rem);
     box-sizing: border-box;
     height: 100%;
+    position: relative;
 }
 
 .logo {
