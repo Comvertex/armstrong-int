@@ -1,158 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Armstrong International</title>
-    <link rel="stylesheet" href="styles/main.css">
-</head>
-<body>
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="/" class="logo">
-                <img src="/armstrong-logo.png" alt="Armstrong International">
-            </a>
-            <button class="menu-toggle" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+<main>
+    <!-- Hero Section -->
+    <section class="hero fade-in">
+        <div class="hero-content">
+            <h1>Connecting<br>Excellence</h1>
+            <p class="subtitle slide-up">Financial Services Recruitment Specialists</p>
         </div>
-    </nav>
+    </section>
 
-    <div class="sidebar">
-        <div class="sidebar-content">
-            <nav class="sidebar-nav">
-                <div class="nav-item has-submenu">
-                    <a href="#" class="nav-link">Talent</a>
-                    <div class="submenu">
-                        <a href="#">Executive Search</a>
-                        <a href="#">Interim Management</a>
-                        <a href="#">Emerging Talent</a>
-                        <a href="#">Research & Market Intelligence</a>
-                        <a href="#">Diversity & Inclusion</a>
-                    </div>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link">Capital</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link">Advice</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#" class="nav-link nav-button">Contact</a>
-                </div>
-            </nav>
+    <!-- Services Grid -->
+    <section class="services-grid">
+        <div class="service-item talent">
+            <h2>Talent</h2>
+            <p>Executive Search & Selection</p>
+            <a href="/talent" class="service-link">Learn More</a>
         </div>
-    </div>
+        <div class="service-item capital">
+            <h2>Capital</h2>
+            <p>Investment & Advisory</p>
+            <a href="/capital" class="service-link">Learn More</a>
+        </div>
+        <div class="service-item advice">
+            <h2>Advice</h2>
+            <p>Strategic Consulting</p>
+            <a href="/advice" class="service-link">Learn More</a>
+        </div>
+    </section>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="fade-in">Your Partner in Executive Search</h1>
-                <p class="subtitle slide-up">Connecting exceptional talent with outstanding opportunities</p>
-            </div>
-        </section>
-
-        <section class="services-grid">
-            <div class="service-item">
-                <h2>Talent</h2>
-                <p>Executive search and talent solutions</p>
-                <a href="#" class="service-link">Learn More</a>
-            </div>
-            <div class="service-item">
-                <h2>Capital</h2>
-                <p>Investment and funding opportunities</p>
-                <a href="#" class="service-link">Learn More</a>
-            </div>
-            <div class="service-item">
-                <h2>Advice</h2>
-                <p>Strategic consulting services</p>
-                <a href="#" class="service-link">Learn More</a>
-            </div>
-        </section>
-
-        <section class="about-section">
-            <div class="container">
-                <h2 class="section-title">About Us</h2>
-                <p class="section-text">Armstrong International is a leading executive search firm...</p>
-            </div>
-        </section>
-
-        <section class="quote-section">
-            <div class="container">
-                <blockquote>"Excellence in executive search and talent acquisition"</blockquote>
-            </div>
-        </section>
-
-        <section class="stats-section">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <h3>25+</h3>
-                        <p>Years Experience</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>1000+</h3>
-                        <p>Successful Placements</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>90%</h3>
-                        <p>Client Retention</p>
-                    </div>
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <p class="section-text">Leading financial services recruitment and advisory firm.</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>20+</h3>
+                    <p>Years of Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Global</h3>
+                    <p>Network</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Expertise</h3>
+                    <p>Financial Services</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="contact-section">
-            <div class="container">
-                <h2 class="section-title">Get in Touch</h2>
-                <p class="section-text">Ready to transform your organization?</p>
-                <a href="#" class="cta-button">Contact Us</a>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const sidebar = document.querySelector('.sidebar');
-            const menuItems = document.querySelectorAll('.nav-item.has-submenu');
-            let lastScrollTop = 0;
-            const navbar = document.querySelector('.main-nav');
-
-            // Menu toggle functionality
-            menuToggle.addEventListener('click', () => {
-                menuToggle.classList.toggle('active');
-                sidebar.classList.toggle('active');
-                document.body.classList.toggle('menu-open');
-            });
-
-            // Submenu toggle for mobile
-            menuItems.forEach(item => {
-                const link = item.querySelector('.nav-link');
-                
-                link.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        item.classList.toggle('active');
-                    }
-                });
-            });
-
-            // Hide header on scroll down, show on scroll up
-            window.addEventListener('scroll', () => {
-                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (scrollTop > lastScrollTop && scrollTop > 100) {
-                    navbar.classList.add('nav-hidden');
-                } else {
-                    navbar.classList.remove('nav-hidden');
-                }
-                
-                lastScrollTop = scrollTop;
-            });
-        });
-    </script>
-</body>
-</html>
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-text">Discover how Armstrong International can help you achieve your goals.</p>
+            <a href="/contact" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+</main>
