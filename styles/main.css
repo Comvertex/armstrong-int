@@ -125,3 +125,16 @@ body {
         /* Mobile menu styling here */
     }
 }
+.logo {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background: rgba(0,0,0,0.1); /* Temporary background to see the area */
+}
+
+.logo img {
+    height: 100%;
+    width: auto;
+    display: block; /* Make sure it's displaying */
+    object-fit: contain;
+}
