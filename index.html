@@ -24,16 +24,6 @@
     <!-- Sidebar Navigation -->
     <div class="sidebar">
         <div class="sidebar-content">
-            <div class="sidebar-header">
-                <a href="/" class="logo">
-                    <img src="assets/images/logo.png" alt="Armstrong International">
-                </a>
-                <button class="close-menu" aria-label="Close">
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-            
             <div class="sidebar-nav">
                 <div class="nav-item has-submenu">
                     <a href="/talent" class="nav-link">Talent</a>
@@ -159,26 +149,24 @@
 
         // Sidebar Navigation
         const menuToggle = document.querySelector('.menu-toggle');
-        const closeMenu = document.querySelector('.close-menu');
         const sidebar = document.querySelector('.sidebar');
         const hasSubmenu = document.querySelector('.has-submenu');
-        
+
         menuToggle.addEventListener('click', () => {
-            sidebar.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            menuToggle.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
         });
-        
-        closeMenu.addEventListener('click', () => {
-            sidebar.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        hasSubmenu.addEventListener('click', (e) => {
-            if (e.target.classList.contains('nav-link')) {
-                e.preventDefault();
-                hasSubmenu.classList.toggle('active');
-            }
-        });
+
+        // Handle submenu on mobile
+        if (window.innerWidth <= 768) {
+            hasSubmenu.addEventListener('click', (e) => {
+                if (e.target.classList.contains('nav-link')) {
+                    e.preventDefault();
+                    hasSubmenu.classList.toggle('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>
