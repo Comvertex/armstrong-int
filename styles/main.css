@@ -65,6 +65,7 @@ body.menu-open {
     align-items: center;
     height: 35px;
     position: relative;
+    z-index: 2003;  /* Added to ensure logo stays above other elements */
 }
 
 .logo img {
@@ -78,19 +79,24 @@ body.menu-open {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 15px;
+    padding: 0;
     position: relative;
     z-index: 2003;
     transition: all var(--transition-speed) ease;
-    margin-right: -15px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
 .menu-toggle span {
     display: block;
-    width: 25px;
+    width: 30px;
     height: 2px;
     background-color: var(--white);
-    margin: 5px 0;
     transition: all var(--transition-speed) ease;
     position: relative;
 }
@@ -105,7 +111,7 @@ body.menu-open {
 }
 
 .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(8px, 8px);
 }
 
 .menu-toggle.active span:nth-child(2) {
@@ -113,7 +119,7 @@ body.menu-open {
 }
 
 .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+    transform: rotate(-45deg) translate(8px, -8px);
 }
 
 main {
@@ -269,6 +275,7 @@ main {
     font-size: 1.5rem;
     color: var(--background-color);
 }
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
