@@ -63,7 +63,7 @@ body.menu-open {
 .logo {
     display: flex;
     align-items: center;
-    height: 35px;
+    height: 45px;
     position: relative;
     z-index: 2003;  /* Added to ensure logo stays above other elements */
 }
