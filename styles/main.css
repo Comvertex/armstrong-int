@@ -12,32 +12,6 @@ html {
     scroll-behavior: smooth;
 }
 
-<script>
-let lastScroll = 0;
-const header = document.querySelector('.main-nav');
-const headerHeight = header.offsetHeight;
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll <= headerHeight) {
-        // At the top
-        header.classList.remove('nav-hidden');
-        return;
-    }
-    
-    if (currentScroll > lastScroll && !header.classList.contains('nav-hidden')) {
-        // Scrolling down
-        header.classList.add('nav-hidden');
-    } else if (currentScroll < lastScroll && header.classList.contains('nav-hidden')) {
-        // Scrolling up
-        header.classList.remove('nav-hidden');
-    }
-    
-    lastScroll = currentScroll;
-});
-</script>
-
 body {
     margin: 0;
     padding: 0;
@@ -47,6 +21,7 @@ body {
 }
 
 /* Navigation Styles */
+
 .main-nav {
     position: fixed;
     width: 100%;
@@ -54,6 +29,12 @@ body {
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0,0,0,0.05);
     z-index: 1000;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-hidden {
+    transform: translateY(-100%);
 }
 
 .nav-container {
