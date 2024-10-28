@@ -140,7 +140,7 @@
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             sidebar.classList.toggle('active');
-            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+            document.body.classList.toggle('menu-open');
         });
 
         // Handle submenu on mobile
