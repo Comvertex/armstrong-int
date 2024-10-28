@@ -12,6 +12,7 @@
 /* Modern smooth scrolling */
 html {
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
 }
 
 body {
@@ -47,7 +48,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: calc(100% - 4rem);
+    box-sizing: border-box;
     height: 100%;
 }
 
@@ -143,6 +145,8 @@ main {
     max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
+    width: calc(100% - 4rem);
+    box-sizing: border-box;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -180,15 +184,14 @@ main {
     opacity: 0;
     visibility: hidden;
     height: 0;
-    transition: all var(--transition-speed) ease;
+    transition: none;
 }
 
 .submenu a {
     color: var(--white);
     text-decoration: none;
-    opacity: 0.8;
-    transform: translateX(-20px);
     opacity: 0;
+    transform: translateX(-20px);
     transition: all var(--transition-speed) ease;
     font-size: 1.2rem;
 }
@@ -203,6 +206,7 @@ main {
         opacity: 1;
         visibility: visible;
         height: auto;
+        transition: none;
     }
 
     .nav-item.has-submenu:hover .submenu a {
@@ -247,7 +251,6 @@ main {
     margin-top: 0;
 }
 
-/* Hero Section (continued) */
 .hero-content {
     max-width: 800px;
 }
