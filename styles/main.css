@@ -20,6 +20,7 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: var(--primary-color);
+    overflow-x: hidden;
 }
 
 .main-nav {
@@ -113,6 +114,8 @@ main {
     z-index: 1;
     min-height: 100vh;
     padding-top: var(--header-height);
+    overflow-x: hidden;
+    background-color: var(--white);
 }
 
 .sidebar {
@@ -132,8 +135,7 @@ main {
 
 .sidebar.active {
     transform: translateX(0);
-    pointer-events: all;
-    visibility: visible;
+    opacity: 1;
 }
 
 .sidebar-content {
