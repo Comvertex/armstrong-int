@@ -104,28 +104,26 @@
     </main>
 
     <script>
-        let lastScroll = 0;
-        const header = document.querySelector('.main-nav');
-        const headerHeight = header.offsetHeight;
-
+        let lastScrollTop = 0;
+        const nav = document.querySelector('.main-nav');
+        
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            if (currentScroll <= headerHeight) {
-                // At the top
-                header.classList.remove('nav-hidden');
-                return;
+            if (scrollTop > lastScrollTop) {
+                // Scrolling DOWN
+                nav.classList.add('nav-hidden');
+            } else {
+                // Scrolling UP
+                nav.classList.remove('nav-hidden');
             }
             
-            if (currentScroll > lastScroll && !header.classList.contains('nav-hidden')) {
-                // Scrolling down
-                header.classList.add('nav-hidden');
-            } else if (currentScroll < lastScroll && header.classList.contains('nav-hidden')) {
-                // Scrolling up
-                header.classList.remove('nav-hidden');
+            // If we're at the top of the page, always show the nav
+            if (scrollTop === 0) {
+                nav.classList.remove('nav-hidden');
             }
             
-            lastScroll = currentScroll;
+            lastScrollTop = scrollTop;
         });
     </script>
 </body>
