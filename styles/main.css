@@ -57,7 +57,7 @@ body.menu-open {
     align-items: center;
     width: calc(100% - 4rem);
     box-sizing: border-box;
-    height: 100%;
+    height: var(--header-height);
 }
 
 .logo {
@@ -90,6 +90,7 @@ body.menu-open {
     justify-content: center;
     align-items: center;
     gap: 8px;
+    margin: 0;
 }
 
 .menu-toggle span {
@@ -99,6 +100,7 @@ body.menu-open {
     background-color: var(--white);
     transition: all var(--transition-speed) ease;
     position: relative;
+    margin: 0;
 }
 
 .menu-toggle:hover span,
