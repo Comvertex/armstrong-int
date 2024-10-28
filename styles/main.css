@@ -183,14 +183,14 @@ main {
 
     .submenu {
         position: absolute;
-        left: 100%;
-        top: 0;
-        padding-left: 3rem;
+        left: 350px;
+        top: -10px;
+        padding-left: 2rem;
         margin-top: 0;
         opacity: 0;
         visibility: hidden;
         height: auto;
-        min-width: 300px;
+        transition: opacity 0.3s ease;
     }
 
     .nav-item.has-submenu:hover .submenu {
@@ -201,13 +201,8 @@ main {
     .nav-item.has-submenu:hover .submenu a {
         opacity: 1;
         transform: translateX(0);
+        transition: all var(--transition-speed) ease;
     }
-
-    .nav-item.has-submenu:hover .submenu a:nth-child(1) { transition-delay: 0.1s; }
-    .nav-item.has-submenu:hover .submenu a:nth-child(2) { transition-delay: 0.2s; }
-    .nav-item.has-submenu:hover .submenu a:nth-child(3) { transition-delay: 0.3s; }
-    .nav-item.has-submenu:hover .submenu a:nth-child(4) { transition-delay: 0.4s; }
-    .nav-item.has-submenu:hover .submenu a:nth-child(5) { transition-delay: 0.5s; }
 }
 
 @media (max-width: 768px) {
@@ -234,12 +229,11 @@ main {
     text-decoration: none;
     opacity: 0;
     transform: translateX(-20px);
-    transition: transform var(--transition-speed) ease,
-                opacity var(--transition-speed) ease,
-                color 0s;
+    transition: all var(--transition-speed) ease;
     font-size: 1.2rem;
     display: block;
     padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
 }
 
 .submenu a:hover {
