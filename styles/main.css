@@ -68,4 +68,214 @@ body {
     background: transparent;
     color: var(--white);
     border: 1px solid var(--white);
-    border-radius: 4
+    border-radius: 4px;
+text-decoration: none;
+transition: all var(--transition-speed) ease;
+}
+.nav-button:hover {
+background: var(--accent-color);
+border-color: var(--accent-color);
+color: var(--white);
+}
+/ Logo Styles /
+.logo {
+display: flex;
+align-items: center;
+height: 35px;
+}
+.logo img {
+height: 100%;
+width: auto;
+display: block;
+object-fit: contain;
+}
+/ Hero Section /
+.hero {
+height: 100vh;
+background-color: var(--primary-color);
+display: flex;
+align-items: center;
+padding: 0 10%;
+color: var(--white);
+}
+.hero-content {
+max-width: 800px;
+}
+.hero h1 {
+font-size: 4.5rem;
+line-height: 1.1;
+margin-bottom: 1.5rem;
+}
+.subtitle {
+font-size: 1.5rem;
+color: var(--background-color);
+}
+/ Services Grid /
+.services-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+height: 100vh;
+}
+.service-item {
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 2rem;
+color: var(--white);
+text-align: center;
+background-color: var(--primary-color);
+}
+.service-item h2 {
+font-size: 2.5rem;
+margin-bottom: 1rem;
+transition: color var(--transition-speed) ease;
+}
+.service-item p {
+margin-bottom: 2rem;
+opacity: 0.8;
+transition: color var(--transition-speed) ease;
+}
+.service-link {
+color: var(--white);
+text-decoration: none;
+padding: 0.5rem 0;
+transition: color var(--transition-speed) ease;
+}
+.service-item:hover h2,
+.service-item:hover p,
+.service-item:hover .service-link {
+color: var(--accent-color);
+}
+/ Common Section Styles /
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 2rem;
+}
+.section-title {
+font-size: 2.5rem;
+margin-bottom: 1.5rem;
+color: inherit;
+}
+.section-text {
+font-size: 1.2rem;
+line-height: 1.6;
+color: inherit;
+max-width: 800px;
+}
+/ About Section /
+.about-section {
+padding: 8rem 0;
+background-color: var(--white);
+}
+/ Quote Section /
+.quote-section {
+padding: 8rem 0;
+background-color: var(--primary-color);
+text-align: center;
+color: var(--white);
+}
+.quote-section blockquote {
+font-size: 2rem;
+line-height: 1.4;
+max-width: 900px;
+margin: 0 auto;
+font-style: italic;
+}
+/ Stats Section /
+.stats-section {
+padding: 8rem 0;
+background-color: var(--white);
+}
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 2rem;
+text-align: center;
+}
+.stat-item h3 {
+font-size: 3rem;
+color: var(--accent-color);
+margin-bottom: 1rem;
+}
+.stat-item p {
+color: var(--secondary-color);
+font-size: 1.2rem;
+}
+/ Contact Section /
+.contact-section {
+padding: 8rem 0;
+background-color: var(--primary-color);
+text-align: center;
+color: var(--white);
+}
+.contact-section .section-text {
+color: var(--background-color);
+}
+.cta-button {
+display: inline-block;
+padding: 1rem 2.5rem;
+margin-top: 2rem;
+background-color: var(--accent-color);
+color: var(--white);
+text-decoration: none;
+border-radius: 4px;
+transition: background-color var(--transition-speed) ease;
+}
+.cta-button:hover {
+background-color: #d32736; / Darker red /
+}
+/ Animation Classes /
+.fade-in {
+opacity: 0;
+animation: fadeIn 1s ease forwards;
+}
+.slide-up {
+opacity: 0;
+transform: translateY(20px);
+animation: slideUp 0.8s ease forwards 0.3s;
+}
+@keyframes fadeIn {
+to {
+opacity: 1;
+}
+}
+@keyframes slideUp {
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+/ Mobile Menu /
+.mobile-menu-toggle {
+display: none;
+}
+/ Responsive Design /
+@media (max-width: 768px) {
+.nav-links {
+display: none;
+}
+.mobile-menu-toggle {
+display: block;
+}
+.hero h1 {
+font-size: 3rem;
+}
+.services-grid {
+grid-template-columns: 1fr;
+height: auto;
+}
+.service-item {
+padding: 4rem 2rem;
+}
+.stats-grid {
+grid-template-columns: 1fr;
+gap: 4rem;
+}
+.quote-section blockquote {
+font-size: 1.5rem;
+}
+.section-title {
+font-size: 2rem;
+}
+}
