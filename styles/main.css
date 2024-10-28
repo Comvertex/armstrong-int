@@ -64,7 +64,8 @@ body {
     border: none;
     cursor: pointer;
     padding: 15px;
-    z-index: 1000;
+    z-index: 2001;
+    transition: transform 0.3s ease;
 }
 
 .menu-toggle span {
@@ -73,7 +74,24 @@ body {
     height: 2px;
     background-color: var(--white);
     margin: 5px 0;
-    transition: var(--transition-speed) ease;
+    transition: all var(--transition-speed) ease;
+}
+
+.menu-toggle:hover span {
+    background-color: var(--accent-color);
+}
+
+/* Animated X transformation */
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 /* Sidebar Navigation */
@@ -95,41 +113,10 @@ body {
 }
 
 .sidebar-content {
-    padding: 2rem;
+    padding: 6rem 2rem 2rem;
     height: 100%;
     display: flex;
     flex-direction: column;
-}
-
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
-}
-
-.close-menu {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 15px;
-}
-
-.close-menu span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background-color: var(--white);
-    margin: 5px 0;
-    position: relative;
-}
-
-.close-menu span:first-child {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.close-menu span:last-child {
-    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .sidebar-nav {
@@ -157,12 +144,26 @@ body {
     padding-left: 1rem;
     margin-top: 1rem;
     display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.has-submenu.active .submenu {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+@media (min-width: 769px) {
+    .nav-item.has-submenu:hover .submenu {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-item.has-submenu.active .submenu {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        opacity: 1;
+    }
 }
 
 .submenu a {
@@ -328,19 +329,23 @@ body {
     color: var(--background-color);
 }
 
+.nav-button,
 .cta-button {
     display: inline-block;
     padding: 1rem 2.5rem;
     margin-top: 2rem;
-    background-color: var(--accent-color);
+    background-color: transparent;
     color: var(--white);
     text-decoration: none;
+    border: 1px solid var(--white);
     border-radius: 4px;
-    transition: background-color var(--transition-speed) ease;
+    transition: all var(--transition-speed) ease;
 }
 
+.nav-button:hover,
 .cta-button:hover {
-    background-color: #d32736; /* Darker red */
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
 }
 
 /* Animation Classes */
