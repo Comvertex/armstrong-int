@@ -1,9 +1,8 @@
 :root {
-    /* Using their current color scheme but we can adjust */
-    --primary-color: #1a1a1a;
+    --primary-color: #000028;  /* Dark Blue */
     --secondary-color: #666666;
-    --accent-color: #e53745;
-    --background-color: #e5e7eb;
+    --accent-color: #e53745;   /* Red */
+    --background-color: #e5e7eb; /* Light Gray */
     --white: #ffffff;
     --transition-speed: 0.3s;
 }
