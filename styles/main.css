@@ -183,14 +183,14 @@ main {
 
     .submenu {
         position: absolute;
-        left: 120%;
-        top: 10px;
-        padding-left: 2rem;
+        left: 100%;
+        top: 0;
+        padding-left: 3rem;
         margin-top: 0;
         opacity: 0;
         visibility: hidden;
         height: auto;
-        transition: opacity var(--transition-speed) ease;
+        min-width: 300px;
     }
 
     .nav-item.has-submenu:hover .submenu {
@@ -238,6 +238,8 @@ main {
                 opacity var(--transition-speed) ease,
                 color 0s;
     font-size: 1.2rem;
+    display: block;
+    padding: 0.5rem 0;
 }
 
 .submenu a:hover {
