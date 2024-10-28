@@ -1,15 +1,14 @@
 :root {
-    --primary-color: #000028;  /* Dark Blue */
+    --primary-color: #000028;
     --secondary-color: #666666;
-    --accent-color: #e53745;   /* Red */
-    --background-color: #e5e7eb; /* Light Gray */
+    --accent-color: #e53745;
+    --background-color: #e5e7eb;
     --white: #ffffff;
     --transition-speed: 0.3s;
     --header-height: 85px;
     --header-padding: 1.5rem;
 }
 
-/* Modern smooth scrolling */
 html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
@@ -23,7 +22,6 @@ body {
     color: var(--primary-color);
 }
 
-/* Navigation Styles */
 .main-nav {
     position: fixed;
     width: 100%;
@@ -53,7 +51,6 @@ body {
     height: 100%;
 }
 
-/* Logo Styles */
 .logo {
     display: flex;
     align-items: center;
@@ -68,7 +65,6 @@ body {
     object-fit: contain;
 }
 
-/* Menu Toggle Button */
 .menu-toggle {
     background: none;
     border: none;
@@ -77,7 +73,7 @@ body {
     position: fixed;
     right: 2rem;
     top: calc((var(--header-height) - 44px) / 2);
-    z-index: 2001;
+    z-index: 2003;
     transition: all var(--transition-speed) ease;
     margin-right: -15px;
 }
@@ -96,7 +92,6 @@ body {
     background-color: var(--accent-color);
 }
 
-/* Animated X transformation */
 .menu-toggle.active span {
     background-color: var(--white);
 }
@@ -113,14 +108,13 @@ body {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Main Content */
 main {
-    padding-top: var(--header-height);
     position: relative;
     z-index: 1;
+    min-height: 100vh;
+    pointer-events: auto;
 }
 
-/* Sidebar Navigation */
 .sidebar {
     position: fixed;
     top: 0;
@@ -174,7 +168,6 @@ main {
     color: var(--accent-color);
 }
 
-/* Submenu Styles */
 .submenu {
     padding-left: 1rem;
     margin-top: 1rem;
@@ -240,7 +233,6 @@ main {
     .nav-item.has-submenu.active .submenu a:nth-child(5) { transition-delay: 0.5s; }
 }
 
-/* Hero Section */
 .hero {
     min-height: calc(100vh - var(--header-height));
     background-color: var(--primary-color);
@@ -249,6 +241,9 @@ main {
     padding: 0 10%;
     color: var(--white);
     margin-top: 0;
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
 }
 
 .hero-content {
@@ -266,13 +261,13 @@ main {
     color: var(--background-color);
 }
 
-/* Services Grid */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     min-height: 100vh;
     position: relative;
     z-index: 1;
+    pointer-events: auto;
 }
 
 .service-item {
@@ -315,7 +310,6 @@ main {
     color: var(--accent-color);
 }
 
-/* Common Section Styles */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -335,15 +329,14 @@ main {
     max-width: 800px;
 }
 
-/* About Section */
 .about-section {
     padding: 8rem 0;
     background-color: var(--white);
     position: relative;
     z-index: 1;
+    pointer-events: auto;
 }
 
-/* Quote Section */
 .quote-section {
     padding: 8rem 0;
     background-color: var(--primary-color);
@@ -351,6 +344,7 @@ main {
     color: var(--white);
     position: relative;
     z-index: 1;
+    pointer-events: auto;
 }
 
 .quote-section blockquote {
@@ -361,12 +355,12 @@ main {
     font-style: italic;
 }
 
-/* Stats Section */
 .stats-section {
     padding: 8rem 0;
     background-color: var(--white);
     position: relative;
     z-index: 1;
+    pointer-events: auto;
 }
 
 .stats-grid {
@@ -387,7 +381,6 @@ main {
     font-size: 1.2rem;
 }
 
-/* Contact Section */
 .contact-section {
     padding: 8rem 0;
     background-color: var(--primary-color);
@@ -395,6 +388,7 @@ main {
     color: var(--white);
     position: relative;
     z-index: 1;
+    pointer-events: auto;
 }
 
 .contact-section .section-text {
@@ -420,7 +414,6 @@ main {
     border-color: var(--accent-color);
 }
 
-/* Animation Classes */
 .fade-in {
     opacity: 0;
     animation: fadeIn 1s ease forwards;
@@ -445,7 +438,6 @@ main {
     }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .sidebar {
         width: 100%;
