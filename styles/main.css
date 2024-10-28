@@ -112,7 +112,7 @@ main {
     position: relative;
     z-index: 1;
     min-height: 100vh;
-    pointer-events: auto;
+    padding-top: var(--header-height);
 }
 
 .sidebar {
@@ -127,12 +127,13 @@ main {
     z-index: 2000;
     overflow-y: auto;
     padding-top: var(--header-height);
-    pointer-events: none;
+    visibility: hidden;
 }
 
 .sidebar.active {
     transform: translateX(0);
     pointer-events: all;
+    visibility: visible;
 }
 
 .sidebar-content {
@@ -241,9 +242,6 @@ main {
     padding: 0 10%;
     color: var(--white);
     margin-top: 0;
-    position: relative;
-    z-index: 1;
-    pointer-events: auto;
 }
 
 .hero-content {
@@ -265,9 +263,6 @@ main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     min-height: 100vh;
-    position: relative;
-    z-index: 1;
-    pointer-events: auto;
 }
 
 .service-item {
@@ -332,9 +327,6 @@ main {
 .about-section {
     padding: 8rem 0;
     background-color: var(--white);
-    position: relative;
-    z-index: 1;
-    pointer-events: auto;
 }
 
 .quote-section {
@@ -342,9 +334,6 @@ main {
     background-color: var(--primary-color);
     text-align: center;
     color: var(--white);
-    position: relative;
-    z-index: 1;
-    pointer-events: auto;
 }
 
 .quote-section blockquote {
@@ -358,9 +347,6 @@ main {
 .stats-section {
     padding: 8rem 0;
     background-color: var(--white);
-    position: relative;
-    z-index: 1;
-    pointer-events: auto;
 }
 
 .stats-grid {
@@ -386,9 +372,6 @@ main {
     background-color: var(--primary-color);
     text-align: center;
     color: var(--white);
-    position: relative;
-    z-index: 1;
-    pointer-events: auto;
 }
 
 .contact-section .section-text {
