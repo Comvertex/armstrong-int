@@ -183,8 +183,8 @@ main {
 
     .submenu {
         position: absolute;
-        left: 350px;
-        top: -10px;
+        left: 300px;
+        top: -30px;
         padding-left: 2rem;
         margin-top: 0;
         opacity: 0;
@@ -215,12 +215,17 @@ main {
         opacity: 0;
         visibility: hidden;
         height: 0;
+        transition: all var(--transition-speed) ease;
     }
 
     .nav-item.has-submenu.active .submenu {
         opacity: 1;
         visibility: visible;
         height: auto;
+    }
+
+    .nav-item.has-submenu > .nav-link {
+        cursor: pointer;
     }
 }
 
@@ -264,7 +269,6 @@ main {
     font-size: 1.5rem;
     color: var(--background-color);
 }
-
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
