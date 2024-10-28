@@ -100,6 +100,10 @@ body.menu-open {
     background-color: var(--accent-color);
 }
 
+.menu-toggle.active:hover span {
+    background-color: var(--accent-color);
+}
+
 .menu-toggle.active span {
     background-color: var(--white);
 }
@@ -186,7 +190,8 @@ transition: all var(--transition-speed) ease;
 font-size: 1.2rem;
 }
 .submenu a:hover {
-color: var(--accent-color);
+    color: var(--accent-color);
+    transition: color var(--transition-speed) ease;
 }
 @media (min-width: 769px) {
 .nav-item.has-submenu:hover .submenu {
@@ -197,6 +202,7 @@ height: auto;
 .nav-item.has-submenu:hover .submenu a {
 opacity: 1;
 transform: translateX(0);
+transition: all var(--transition-speed) ease;
 }
 .nav-item.has-submenu:hover .submenu a:nth-child(1) { transition-delay: 0.1s; }
 .nav-item.has-submenu:hover .submenu a:nth-child(2) { transition-delay: 0.2s; }
