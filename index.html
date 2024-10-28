@@ -6,6 +6,31 @@
     <title>Armstrong International</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
+<script>
+let lastScroll = 0;
+const header = document.querySelector('.main-nav');
+const headerHeight = header.offsetHeight;
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll <= headerHeight) {
+        // At the top
+        header.classList.remove('nav-hidden');
+        return;
+    }
+    
+    if (currentScroll > lastScroll && !header.classList.contains('nav-hidden')) {
+        // Scrolling down
+        header.classList.add('nav-hidden');
+    } else if (currentScroll < lastScroll && header.classList.contains('nav-hidden')) {
+        // Scrolling up
+        header.classList.remove('nav-hidden');
+    }
+    
+    lastScroll = currentScroll;
+});
+</script>
 <body>
     <nav class="main-nav">
         <div class="nav-container">
