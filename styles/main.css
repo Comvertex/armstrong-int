@@ -72,7 +72,9 @@ body {
     border: none;
     cursor: pointer;
     padding: 15px;
-    position: relative;
+    position: fixed;
+    right: 2rem;
+    top: calc((var(--header-height) - 44px) / 2);
     z-index: 2001;
     transition: all var(--transition-speed) ease;
     margin-right: -15px;
@@ -93,12 +95,6 @@ body {
 }
 
 /* Animated X transformation */
-.menu-toggle.active {
-    position: fixed;
-    right: 2rem;
-    top: calc((var(--header-height) - 44px) / 2);
-}
-
 .menu-toggle.active span {
     background-color: var(--white);
 }
@@ -115,6 +111,13 @@ body {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
+/* Main Content */
+main {
+    padding-top: var(--header-height);
+    position: relative;
+    z-index: 1;
+}
+
 /* Sidebar Navigation */
 .sidebar {
     position: fixed;
@@ -128,10 +131,12 @@ body {
     z-index: 2000;
     overflow-y: auto;
     padding-top: var(--header-height);
+    pointer-events: none;
 }
 
 .sidebar.active {
     transform: translateX(0);
+    pointer-events: all;
 }
 
 .sidebar-content {
@@ -233,8 +238,7 @@ body {
 
 /* Hero Section */
 .hero {
-    padding-top: var(--header-height);
-    height: 100vh;
+    min-height: calc(100vh - var(--header-height));
     background-color: var(--primary-color);
     display: flex;
     align-items: center;
@@ -263,7 +267,9 @@ body {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
 }
 
 .service-item {
@@ -330,6 +336,8 @@ body {
 .about-section {
     padding: 8rem 0;
     background-color: var(--white);
+    position: relative;
+    z-index: 1;
 }
 
 /* Quote Section */
@@ -338,6 +346,8 @@ body {
     background-color: var(--primary-color);
     text-align: center;
     color: var(--white);
+    position: relative;
+    z-index: 1;
 }
 
 .quote-section blockquote {
@@ -352,6 +362,8 @@ body {
 .stats-section {
     padding: 8rem 0;
     background-color: var(--white);
+    position: relative;
+    z-index: 1;
 }
 
 .stats-grid {
@@ -378,6 +390,8 @@ body {
     background-color: var(--primary-color);
     text-align: center;
     color: var(--white);
+    position: relative;
+    z-index: 1;
 }
 
 .contact-section .section-text {
@@ -468,8 +482,7 @@ body {
         margin-left: 2rem;
     }
 
-    .menu-toggle.active {
-        top: calc((var(--header-height) - 44px) / 2);
+    .menu-toggle {
         right: 1rem;
     }
 }
