@@ -12,7 +12,6 @@ html, body {
     overflow: hidden;
     height: 100%;
     background-color: var(--white);
-    font-family: Arial, sans-serif;
 }
 
 /* Header */
@@ -26,18 +25,60 @@ html, body {
     animation: headerSlideDown 1.2s var(--ease-out-cubic) forwards;
 }
 
+.main-nav.scrolled {
+    background-color: var(--primary-color);
+}
+
+.nav-hidden {
+    transform: translateY(-100%) !important;
+}
+
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 /* Logo */
 .logo {
     position: fixed;
-    top: 3vh;
+    top: 2vh;
     left: 2vh;
-    width: min(280px, 70vw);
+    width: min(300px, 70vw);
     z-index: 1000;
     display: flex;
     align-items: center;
 }
 
-/* ... other header styles remain the same ... */
+.logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 50px;
+}
+
+/* Menu Toggle */
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 20px 15px;
+    margin-right: clamp(1rem, 2vw, 1.5rem);
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 1px;
+    background-color: var(--white);
+    margin: 8px 0;
+    transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover span {
+    background-color: var(--accent-color);
+}
 
 /* Landing Page */
 .landing-page {
@@ -45,6 +86,21 @@ html, body {
     width: 100%;
     background-color: var(--primary-color);
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) transparent;
+}
+
+.landing-page::-webkit-scrollbar {
+    width: 6px;
+}
+
+.landing-page::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.landing-page::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 3px;
 }
 
 .landing-content {
@@ -54,7 +110,17 @@ html, body {
     transform: translateY(100px);
 }
 
+.landing-menu {
+    width: min(2000px, 90vw);
+    margin: 0 auto;
+    padding: 0 clamp(2rem, 4vw, 4rem);
+}
+
 /* Navigation */
+.nav-group {
+    margin-bottom: clamp(1rem, 2vh, 1.5rem);
+}
+
 .nav-trigger {
     background: none;
     border: none;
@@ -66,28 +132,74 @@ html, body {
     text-align: left;
     width: 100%;
     transition: color 0.3s ease;
+    font-family: Arial, sans-serif;
 }
 
 .nav-trigger:hover {
     color: var(--accent-color);
 }
 
-.nav-content a, .secondary-nav a {
+.nav-group.expanded .nav-trigger {
+    color: var(--accent-color);
+}
+
+.nav-group:not(.expanded) .nav-trigger {
+    color: var(--white) !important;
+}
+
+.nav-content {
+    max-height: 0;
+    overflow: hidden;
+    margin-left: clamp(1rem, 3vw, 2rem);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-group.expanded .nav-content {
+    max-height: 70vh;
+    opacity: 1;
+    margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.nav-group.expanded .nav-content::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-content a {
     display: block;
     color: var(--white);
     text-decoration: none;
     font-size: clamp(0.9rem, 2vmin, 1.2rem);
     padding: calc(0.2rem * 0.7) 0;
+    transition: color 0.3s ease;
     font-family: Arial, sans-serif;
 }
 
-.nav-content a:hover, .secondary-nav a:hover {
+.nav-content a:hover {
     color: var(--accent-color);
 }
 
-/* Remove transform transitions */
-.nav-content a, .secondary-nav a {
+/* Secondary Navigation */
+.secondary-nav {
+    margin-top: auto;
+    padding-top: clamp(2rem, 6vh, 4rem);
+}
+
+.secondary-nav a {
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    font-size: clamp(0.875rem, 1.5vmin, 1rem);
+    font-weight: 700;
+    padding: clamp(0.2rem, 1vh, 0.4rem) 0;
     transition: color 0.3s ease;
+    font-family: Arial, sans-serif;
+}
+
+.secondary-nav a:hover {
+    color: var(--accent-color);
 }
 
 /* Animations */
@@ -110,5 +222,26 @@ html, body {
     100% {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+/* Media Queries */
+@media (max-aspect-ratio: 1/1) {
+    .nav-trigger {
+        font-size: clamp(1.8rem, 8vmin, 3rem);
+    }
+    
+    .landing-content {
+        padding-top: clamp(8vh, 15vh, 20vh);
+    }
+}
+
+@media (max-height: 600px) {
+    .landing-content {
+        padding-top: clamp(5vh, 10vh, 15vh);
+    }
+    
+    .nav-group.expanded .nav-content {
+        max-height: 45vh;
     }
 }
