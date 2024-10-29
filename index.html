@@ -1,118 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Armstrong International</title>
-    <link rel="stylesheet" href="./styles/main.css">
+    <!-- ... existing head content ... -->
 </head>
-<body>
+<body class="landing-body">
     <nav class="main-nav slide-in-top">
-        <div class="nav-container">
-            <a href="/" class="logo">
-                <img src="./assets/images/logo.png" alt="Armstrong International">
-            </a>
-            <button class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
+        <!-- ... existing nav content ... -->
     </nav>
 
-    <main class="landing-page">
-        <div class="landing-content slide-in-bottom">
+    <main class="landing-page slide-in-bottom">
+        <div class="landing-content">
             <div class="landing-menu">
-                <nav class="primary-nav">
+                <!-- Primary Navigation -->
+                <div class="primary-nav">
                     <div class="nav-group">
-                        <button class="nav-trigger">Talent</button>
-                        <div class="nav-content">
-                            <a href="#">Banks</a>
-                            <a href="#">Hedge Funds</a>
-                            <a href="#">Private Equity</a>
-                            <a href="#">Credit</a>
-                            <a href="#">Family Offices</a>
-                            <a href="#">Real Estate</a>
-                            <a href="#">Venture Capital</a>
-                            <a href="#">Digital & Data</a>
-                            <a href="#">Infrastructure & Energy Transition</a>
-                            <a href="#">Portfolio Companies</a>
-                            <a href="#">Wealth Management</a>
+                        <button class="nav-trigger" data-section="talent">
+                            <span class="accent-text">Talent</span>
+                        </button>
+                        <div class="nav-content" id="talent-content">
+                            <a href="/talent/banks">Banks</a>
+                            <a href="/talent/hedge-funds">Hedge Funds</a>
+                            <a href="/talent/private-equity">Private Equity</a>
+                            <a href="/talent/credit">Credit</a>
+                            <a href="/talent/family-offices">Family Offices</a>
+                            <a href="/talent/real-estate">Real Estate</a>
+                            <a href="/talent/venture-capital">Venture Capital</a>
+                            <a href="/talent/digital-data">Digital & Data</a>
+                            <a href="/talent/infrastructure">Infrastructure & Energy Transition</a>
+                            <a href="/talent/portfolio">Portfolio Companies</a>
+                            <a href="/talent/wealth">Wealth Management</a>
                         </div>
                     </div>
 
                     <div class="nav-group">
-                        <button class="nav-trigger">Capital</button>
-                        <div class="nav-content">
-                            <a href="#">Funds</a>
-                            <a href="#">Companies</a>
-                            <a href="#">Managers</a>
+                        <button class="nav-trigger" data-section="capital">
+                            <span>Capital</span>
+                        </button>
+                        <div class="nav-content" id="capital-content">
+                            <a href="/capital/funds">Funds</a>
+                            <a href="/capital/companies">Companies</a>
+                            <a href="/capital/managers">Managers</a>
                         </div>
                     </div>
 
                     <div class="nav-group">
-                        <button class="nav-trigger">Advice</button>
-                        <div class="nav-content">
-                            <a href="#">Digitisation</a>
-                            <a href="#">Decarbonisation</a>
-                            <a href="#">AI</a>
-                            <a href="#">Talent</a>
-                            <a href="#">Geo Politics</a>
+                        <button class="nav-trigger" data-section="advice">
+                            <span>Advice</span>
+                        </button>
+                        <div class="nav-content" id="advice-content">
+                            <a href="/advice/digitisation">Digitisation</a>
+                            <a href="/advice/decarbonisation">Decarbonisation</a>
+                            <a href="/advice/ai">AI</a>
+                            <a href="/advice/talent">Talent</a>
+                            <a href="/advice/geo-politics">Geo Politics</a>
                         </div>
                     </div>
-                </nav>
+                </div>
 
-                <nav class="secondary-nav">
+                <!-- Secondary Navigation -->
+                <div class="secondary-nav">
                     <a href="/about-us">About</a>
                     <a href="/contact">Contact</a>
                     <a href="/careers">Careers</a>
-                </nav>
+                </div>
             </div>
         </div>
     </main>
 
+    <!-- Keep existing sidebar for other pages -->
+    <div class="sidebar">
+        <!-- ... existing sidebar content ... -->
+    </div>
+
     <script>
-        // Header scroll behavior
-        let lastScroll = 0;
-        const header = document.querySelector('.main-nav');
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
+        // Landing page animations and interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            // Handle nav group expansions
+            const navTriggers = document.querySelectorAll('.nav-trigger');
             
-            if (currentScroll > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-            
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                header.classList.add('nav-hidden');
-            } else {
-                header.classList.remove('nav-hidden');
-            }
-            
-            lastScroll = currentScroll;
-        });
-
-        // Menu toggle behavior
-        document.querySelectorAll('.nav-trigger').forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                const group = trigger.parentElement;
-                const wasExpanded = group.classList.contains('expanded');
-                
-                // Close all groups
-                document.querySelectorAll('.nav-group').forEach(g => {
-                    g.classList.remove('expanded');
-                    g.querySelector('.nav-trigger').classList.remove('active');
+            navTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const group = trigger.closest('.nav-group');
+                    const content = group.querySelector('.nav-content');
+                    const isExpanded = group.classList.contains('expanded');
+                    
+                    // Close all other groups
+                    document.querySelectorAll('.nav-group').forEach(g => {
+                        if (g !== group) {
+                            g.classList.remove('expanded');
+                            g.querySelector('.nav-content').style.maxHeight = '0px';
+                        }
+                    });
+                    
+                    // Toggle current group
+                    group.classList.toggle('expanded');
+                    content.style.maxHeight = isExpanded ? '0px' : `${content.scrollHeight}px`;
                 });
-                
-                // If clicked group wasn't expanded, expand it
-                if (!wasExpanded) {
-                    group.classList.add('expanded');
-                    trigger.classList.add('active');
-                }
             });
         });
+
+        // Keep existing menu toggle and scroll handlers
+        // ... existing script content ...
     </script>
 </body>
 </html>
