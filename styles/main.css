@@ -1,518 +1,155 @@
-/* ==========================================================================
-   Root Variables
-   ========================================================================== */
-:root {
-    --primary-color: #000028;
-    --secondary-color: #666666;
-    --accent-color: #e53745;
-    --background-color: #e5e7eb;
-    --white: #ffffff;
-    --transition-speed: 0.3s;
-    --header-height: 85px;
-    --header-padding: 1.5rem;
-}
-
-/* ==========================================================================
-   Reset & Base Styles
-   ========================================================================== */
-html {
-    scroll-behavior: smooth;
-    scrollbar-gutter: stable;
-    overflow-y: scroll;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: var(--primary-color);
-    overflow-x: hidden;
-    width: 100%;
-    background-color: var(--primary-color);
-}
-
-body.menu-open {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-}
-
-/* ==========================================================================
-   Header & Navigation
-   ========================================================================== */
-.main-nav {
-    position: fixed;
-    width: 100%;
-    background: var(--primary-color);
-    top: 0;
-    transform: translateY(0);
-    transition: transform 0.3s ease;
-    height: var(--header-height);
-    display: flex;
-    align-items: center;
-    z-index: 1000;
-}
-
-.nav-hidden {
-    transform: translateY(-100%);
-}
-
-.nav-container {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0 var(--header-padding);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    height: 100%;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    height: 35px;
-    position: relative;
-    margin-left: calc(var(--header-padding) * 0.5);
-}
-
-.logo img {
-    height: 100%;
-    width: auto;
-    display: block;
-    object-fit: contain;
-}
-
-/* Menu Toggle Button */
-.menu-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 20px 15px;
-    position: relative;
-    z-index: 1001;
-    margin-right: calc(var(--header-padding) * 0.5);
-}
-
-.menu-toggle span {
-    display: block;
-    width: 30px;
-    height: 1px;
-    background-color: var(--white);
-    margin: 8px 0;
-    transition: all var(--transition-speed) ease;
-    position: relative;
-}
-
-.menu-toggle:hover span {
-    background-color: var(--accent-color);
-}
-
-.menu-toggle.active span {
-    background-color: var(--white);
-}
-
-.menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
-
-.menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
-}
-
-/* ==========================================================================
-   Sidebar Navigation
-   ========================================================================== */
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--primary-color);
-    transform: translateX(100%);
-    transition: transform 0.5s ease;
-    z-index: 999;
-    overflow-y: auto;
-    padding-top: var(--header-height);
-}
-
-.sidebar.active {
-    transform: translateX(0);
-}
-
-.sidebar-content {
-    width: 90%;
-    max-width: 2000px;
-    margin: 0 auto;
-    padding: 2rem 4rem;
-    box-sizing: border-box;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-left: 10%;
-}
-
-.nav-item {
-    position: relative;
-}
-
-.nav-link {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 2rem;
-    transition: color var(--transition-speed) ease;
-}
-
-.nav-link:hover {
-    color: var(--accent-color);
-}
-
-.submenu {
-    padding-left: 1rem;
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    opacity: 0;
-    visibility: hidden;
-    height: 0;
-    transition: opacity var(--transition-speed) ease;
-}
-
-.submenu a {
-    color: var(--white);
-    text-decoration: none;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: all var(--transition-speed) ease;
-    font-size: 1.2rem;
-}
-
-.submenu a:hover {
-    color: var(--accent-color);
-}
-
-/* ==========================================================================
-   Landing Page Styles
-   ========================================================================== */
-/* Hide menu toggle on landing page */
-.landing-body .menu-toggle {
-    display: none;
-}
-
-/* Slide-in animations */
-.slide-in-top {
-    animation: slideInTop 0.6s ease-out;
-}
-
-.slide-in-bottom {
-    animation: slideInBottom 0.6s ease-out;
-}
-
-@keyframes slideInTop {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
-}
-
-@keyframes slideInBottom {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
-}
-
-.landing-page {
-    height: calc(100vh - var(--header-height));
-    width: 100%;
-    display: flex;
-    align-items: center;
-    background-color: var(--primary-color);
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-}
-
-.landing-menu {
-    width: 100%;
-    max-width: 2000px;
-    margin: 0 auto;
-    padding: 0 4rem;
-}
-
-.primary-nav {
-    margin-bottom: 4rem;
-}
-
-.nav-group {
-    margin-bottom: 1rem;
-}
-
-.nav-trigger {
-    background: none;
-    border: none;
-    padding: 0;
-    font-size: 5rem;
-    font-weight: 700;
-    color: var(--white);
-    cursor: pointer;
-    transition: color var(--transition-speed) ease;
-    text-align: left;
-    width: 100%;
-}
-
-.nav-trigger:hover,
-.nav-trigger.active {
-    color: var(--accent-color);
-}
-
-.nav-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    margin-left: 2rem;
-}
-
-.nav-content a {
-    display: block;
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1.2rem;
-    padding: 0.4rem 0;
-    transition: color var(--transition-speed) ease;
-}
-
-.nav-content a:hover {
-    color: var(--accent-color);
-}
-
-.secondary-nav {
-    margin-top: 4rem;
-}
-
-.secondary-nav a {
-    display: block;
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 0.4rem 0;
-    transition: color var(--transition-speed) ease;
-}
-
-.secondary-nav a:hover {
-    color: var(--accent-color);
-}
-
-/* ==========================================================================
-   About Page Styles
-   ========================================================================== */
-.about-hero {
-    min-height: calc(100vh - var(--header-height));
-    display: flex;
-    align-items: center;
-    color: var(--white);
-    margin-top: 0;
-}
-
-.about-hero h1 {
-    font-size: 7.5rem;
-    line-height: 1;
-    margin-bottom: 2rem;
-    font-weight: 700;
-    color: var(--accent-color);
-    display: block;
-}
-
-.hero-subtitle {
-    font-size: 4.5rem;
-    line-height: 1.2;
-    font-weight: 700;
-    color: var(--white);
-    margin-top: 1rem;
-}
-
-.about-history,
-.about-approach {
-    background-color: var(--white);
-    padding: 8rem 0;
-}
-
-.about-stats,
-.about-relationships {
-    background-color: var(--primary-color);
-    padding: 8rem 0;
-    color: var(--white);
-}
-
-.section-content {
-    width: 90%;
-    max-width: 2000px;
-    margin: 0 auto;
-    padding: 0 4rem;
-}
-
-.about-history h2,
-.about-approach h2,
-.about-stats h2,
-.about-relationships h2 {
-    font-size: 4rem;
-    color: var(--accent-color);
-    margin-bottom: 2rem;
-    font-weight: 700;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    text-align: center;
-    margin-top: 4rem;
-}
-
-.stat-item h3 {
-    font-size: 3.5rem;
-    color: var(--accent-color);
-    margin-bottom: 0.5rem;
-}
-
-.stat-item p {
-    font-size: 1.2rem;
-    color: var(--white);
-}
-
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
-/* Desktop Hover States */
-@media (min-width: 769px) {
-    .nav-item.has-submenu:hover .submenu {
-        opacity: 1;
-        visibility: visible;
-        height: auto;
-    }
-
-    .nav-item.has-submenu:hover .submenu a {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Large Screens */
-@media (max-width: 1600px) {
-    .section-content {
-        max-width: 1400px;
-    }
-}
-
-/* Tablet & Mobile */
-@media (max-width: 768px) {
-    /* Header Adjustments */
-    .logo {
-        height: 28px;
-    }
-
-    /* Landing Page Mobile Styles */
-    .landing-page {
-        height: auto;
-        min-height: calc(100vh - var(--header-height));
-        overflow-y: auto;
-        padding: 2rem 0;
-    }
-
-    .landing-menu {
-        padding: 1rem 2rem;
-    }
-
-    .nav-trigger {
-        font-size: 3rem;
-        padding: 0.5rem 0;
-    }
-
-    .nav-content {
-        margin-left: 1rem;
-    }
-
-    .nav-content a {
-        font-size: 1.1rem;
-        padding: 0.4rem 0;
-    }
-
-    .secondary-nav {
-        margin-top: 2rem;
-        padding-bottom: 2rem;
-    }
-
-    /* About Page Mobile Styles */
-    .about-hero h1 {
-        font-size: 5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 3.5rem;
-    }
-
-    .section-content {
-        width: 100%;
-        padding: 0 2rem;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 4rem;
-    }
-
-    .about-history h2,
-    .about-approach h2,
-    .about-stats h2,
-    .about-relationships h2 {
-        font-size: 3.2rem;
-    }
-
-    .sidebar-nav {
-        margin-left: 2rem;
-    }
-}
-
-/* Small Mobile Devices */
-@media (max-width: 480px) {
-    .landing-page {
-        padding: 1rem 0;
-    }
-
-    .nav-trigger {
-        font-size: 2.5rem;
-    }
-
-    .nav-content a {
-        font-size: 1rem;
-    }
-
-    .about-hero h1 {
-        font-size: 4rem;
-    }
-
-    .hero-subtitle {
-        font-size: 2.8rem;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-history h2,
-    .about-approach h2,
-    .about-stats h2,
-    .about-relationships h2 {
-        font-size: 2.5rem;
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armstrong International</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="landing-body">
+    <nav class="main-nav slide-in-top">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="assets/images/logo.png" alt="Armstrong International">
+            </a>
+            
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="landing-page slide-in-bottom">
+        <div class="landing-content">
+            <div class="landing-menu">
+                <!-- Primary Navigation -->
+                <div class="primary-nav">
+                    <div class="nav-group">
+                        <button class="nav-trigger" data-section="talent">
+                            <span>Talent</span>
+                        </button>
+                        <div class="nav-content" id="talent-content">
+                            <a href="/talent/banks">Banks</a>
+                            <a href="/talent/hedge-funds">Hedge Funds</a>
+                            <a href="/talent/private-equity">Private Equity</a>
+                            <a href="/talent/credit">Credit</a>
+                            <a href="/talent/family-offices">Family Offices</a>
+                            <a href="/talent/real-estate">Real Estate</a>
+                            <a href="/talent/venture-capital">Venture Capital</a>
+                            <a href="/talent/digital-data">Digital & Data</a>
+                            <a href="/talent/infrastructure">Infrastructure & Energy Transition</a>
+                            <a href="/talent/portfolio">Portfolio Companies</a>
+                            <a href="/talent/wealth">Wealth Management</a>
+                        </div>
+                    </div>
+
+                    <div class="nav-group">
+                        <button class="nav-trigger" data-section="capital">
+                            <span>Capital</span>
+                        </button>
+                        <div class="nav-content" id="capital-content">
+                            <a href="/capital/funds">Funds</a>
+                            <a href="/capital/companies">Companies</a>
+                            <a href="/capital/managers">Managers</a>
+                        </div>
+                    </div>
+
+                    <div class="nav-group">
+                        <button class="nav-trigger" data-section="advice">
+                            <span>Advice</span>
+                        </button>
+                        <div class="nav-content" id="advice-content">
+                            <a href="/advice/digitisation">Digitisation</a>
+                            <a href="/advice/decarbonisation">Decarbonisation</a>
+                            <a href="/advice/ai">AI</a>
+                            <a href="/advice/talent">Talent</a>
+                            <a href="/advice/geo-politics">Geo Politics</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Navigation -->
+                <div class="secondary-nav">
+                    <a href="/about-us">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/careers">Careers</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <div class="sidebar-nav">
+                <div class="nav-item has-submenu">
+                    <a href="/talent" class="nav-link">Talent</a>
+                    <div class="submenu">
+                        <a href="/talent/executive-search">Executive Search</a>
+                        <a href="/talent/interim-management">Interim Management</a>
+                        <a href="/talent/emerging-talent">Emerging Talent</a>
+                        <a href="/talent/research">Research & Market Intelligence</a>
+                        <a href="/talent/diversity">Diversity & Inclusion</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="/capital" class="nav-link">Capital</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/advice" class="nav-link">Advice</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/contact" class="nav-button">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Handle nav group expansions
+            const navTriggers = document.querySelectorAll('.nav-trigger');
+            
+            navTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const group = trigger.closest('.nav-group');
+                    const content = group.querySelector('.nav-content');
+                    const isExpanded = group.classList.contains('expanded');
+                    
+                    // Close all other groups
+                    document.querySelectorAll('.nav-group').forEach(g => {
+                        if (g !== group) {
+                            g.classList.remove('expanded');
+                            g.querySelector('.nav-content').style.maxHeight = '0';
+                            g.querySelector('.nav-trigger').classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current group
+                    group.classList.toggle('expanded');
+                    trigger.classList.toggle('active');
+                    
+                    // Set max-height for animation
+                    if (!isExpanded) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = '0';
+                    }
+                });
+            });
+
+            // Menu toggle functionality
+            const menuToggle = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const body = document.body;
+
+            menuToggle?.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                sidebar.classList.toggle('active');
+                body.classList.toggle('menu-open');
+            });
+        });
+    </script>
+</body>
+</html>
