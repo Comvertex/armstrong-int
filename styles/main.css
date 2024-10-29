@@ -93,32 +93,31 @@ body.menu-open {
 
 .nav-container {
     width: 100%;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 0 0 var(--header-padding);
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-end;
     box-sizing: border-box;
-    height: 100%;
+    height: var(--header-height);
+    position: relative;
 }
 
 .logo {
+    position: absolute;
+    top: 5vh;
+    left: 5vh;
+    width: min(300px, 70vw);
+    height: auto;
     display: flex;
     align-items: center;
-    height: clamp(28px, 4vh, 35px);
-    position: relative;
-    margin-left: var(--header-padding);
-    transition: height var(--transition-speed) var(--transition-function);
+    z-index: 1000;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    height: clamp(28px, 4vh, 35px);
-    position: relative;
-    margin-left: var(--header-padding);
-    transition: height var(--transition-speed) var(--transition-function);
+.logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
 }
 
 /* Menu Toggle Button */
