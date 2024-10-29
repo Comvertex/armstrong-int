@@ -122,36 +122,35 @@ body.menu-open {
     display: block;
     object-fit: contain;
 }
-
-/* Menu Toggle Button with dynamic sizing and positioning */
+/* Menu Toggle Button with 1.1 ratio */
 .menu-toggle {
     background: none;
     border: none;
     cursor: pointer;
     position: absolute;
-    top: 3vh; /* Match logo's top position */
-    right: 3vh; /* Mirror logo's spacing on right side */
+    top: 3vh;
+    right: 3vh;
     padding: 0;
     z-index: 1001;
-    aspect-ratio: 1.2; /* Maintain 1.2 ratio for proper X morphing */
-    height: clamp(28px, 4vh, 35px); /* Match logo height */
+    aspect-ratio: 1.1; /* Changed from 1.2 to 1.1 */
+    height: clamp(28px, 4vh, 35px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.menu-toggle:hover span {
+    background-color: var(--accent-color);
+}
+
 .menu-toggle span {
     display: block;
-    width: 83%; /* Approximately 1/1.2 of height for proper ratio */
+    width: 91%; /* Approximately 1/1.1 of height */
     height: 1px;
     background-color: var(--white);
     transition: all var(--transition-speed) var(--transition-function);
     position: relative;
-}
-
-.menu-toggle:hover span {
-    background-color: var(--accent-color);
 }
 
 .menu-toggle span:nth-child(1) {
@@ -169,7 +168,7 @@ body.menu-open {
 }
 
 .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: rotate(45deg) translate(5px, 5px); /* Adjusted translation */
 }
 
 .menu-toggle.active span:nth-child(2) {
@@ -177,7 +176,7 @@ body.menu-open {
 }
 
 .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: rotate(-45deg) translate(5px, -5px); /* Adjusted translation */
 }
 
 /* ==========================================================================
