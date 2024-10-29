@@ -67,14 +67,17 @@ body {
         background-color var(--transition-speed) var(--ease-out-cubic);
 }
 
+.main-nav.loaded {
+    background-color: var(--primary-color);
+    transition: background-color var(--transition-speed-slower) var(--ease-out-cubic);
+}
+
 .main-nav.scrolled {
     background-color: var(--primary-color);
-    transition: background-color var(--transition-speed) var(--ease-out-cubic);
 }
 
 .main-nav.nav-hidden {
     transform: translateY(-100%);
-    transition: transform var(--transition-speed-slow) var(--ease-out-cubic);
 }
 
 .nav-container {
