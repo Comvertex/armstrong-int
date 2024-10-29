@@ -1,4 +1,4 @@
-/* Test */
-html, body {
-    background-color: red !important;
+/* Different Test */
+* {
+    border: 5px solid purple !important;
 }
