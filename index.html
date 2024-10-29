@@ -28,7 +28,7 @@
                 <div class="primary-nav">
                     <div class="nav-group">
                         <button class="nav-trigger" data-section="talent">
-                            <span class="accent-text">Talent</span>
+                            <span>Talent</span>
                         </button>
                         <div class="nav-content" id="talent-content">
                             <a href="/talent/banks">Banks</a>
@@ -107,7 +107,6 @@
     </div>
 
     <script>
-        // Landing page animations and interactions
         document.addEventListener('DOMContentLoaded', () => {
             // Handle nav group expansions
             const navTriggers = document.querySelectorAll('.nav-trigger');
@@ -119,30 +118,29 @@
                     const isExpanded = group.classList.contains('expanded');
                     
                     // Close all other groups
-                    document.querySelectorAll('.nav-group').forEach(g => {
-                        if (g !== group) {
-                            g.classList.remove('expanded');
-                            g.querySelector('.nav-content').style.maxHeight = '0px';
-                        }
-                    });
-                    
-                    // Toggle current group
-                    group.classList.toggle('expanded');
-                    content.style.maxHeight = isExpanded ? '0px' : `${content.scrollHeight}px`;
-                });
-            });
-        });
-
-        // Menu toggle functionality
-        const menuToggle = document.querySelector('.menu-toggle');
-        const sidebar = document.querySelector('.sidebar');
-        const body = document.body;
-
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            sidebar.classList.toggle('active');
-            body.classList.toggle('menu-open');
-        });
-    </script>
+document.querySelectorAll('.nav-group').forEach(g => {
+if (g !== group) {
+g.classList.remove('expanded');
+g.querySelector('.nav-content').style.maxHeight = '0px';
+g.querySelector('.nav-trigger').classList.remove('active');
+}
+});
+// Toggle current group
+group.classList.toggle('expanded');
+trigger.classList.toggle('active');
+content.style.maxHeight = isExpanded ? '0px' : ${content.scrollHeight}px;
+});
+});
+// Menu toggle functionality
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const body = document.body;
+menuToggle.addEventListener('click', () => {
+menuToggle.classList.toggle('active');
+sidebar.classList.toggle('active');
+body.classList.toggle('menu-open');
+});
+});
+</script>
 </body>
 </html>
