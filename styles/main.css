@@ -8,6 +8,7 @@
     --accent-color: #e53745;
     --background-color: #e5e7eb;
     --white: #ffffff;
+    --header-bg-color: rgba(0, 0, 40, 0);
     
     /* Animation & Transitions */
     --transition-speed: 0.3s;
@@ -15,6 +16,7 @@
     --transition-speed-slower: 1.2s;
     --transition-function: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+    --ease-out-log: cubic-bezier(0.16, 1, 0.3, 1);
     
     /* Dynamic Spacing */
     --header-height: clamp(65px, 8vh, 85px);
@@ -84,18 +86,32 @@ body {
 .main-nav {
     position: fixed;
     width: 100%;
-    background: transparent;
+    background: var(--header-bg-color);
     top: 0;
-    transform: translateY(0);
-    transition: transform var(--transition-speed-slow) var(--ease-out-cubic);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: 
+        transform 0.8s var(--ease-out-log),
+        opacity 0.8s var(--ease-out-log),
+        background-color 0.4s var(--ease-out-log);
     height: var(--header-height);
     display: flex;
     align-items: center;
     z-index: 1000;
 }
 
+.main-nav.loaded {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.main-nav.scrolled {
+    background: var(--primary-color);
+}
+
 .nav-hidden {
     transform: translateY(-100%);
+    transition: transform 0.6s var(--ease-out-log);
 }
 
 .nav-container {
