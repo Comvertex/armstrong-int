@@ -118,29 +118,38 @@
                     const isExpanded = group.classList.contains('expanded');
                     
                     // Close all other groups
-document.querySelectorAll('.nav-group').forEach(g => {
-if (g !== group) {
-g.classList.remove('expanded');
-g.querySelector('.nav-content').style.maxHeight = '0px';
-g.querySelector('.nav-trigger').classList.remove('active');
-}
-});
-// Toggle current group
-group.classList.toggle('expanded');
-trigger.classList.toggle('active');
-content.style.maxHeight = isExpanded ? '0px' : ${content.scrollHeight}px;
-});
-});
-// Menu toggle functionality
-const menuToggle = document.querySelector('.menu-toggle');
-const sidebar = document.querySelector('.sidebar');
-const body = document.body;
-menuToggle.addEventListener('click', () => {
-menuToggle.classList.toggle('active');
-sidebar.classList.toggle('active');
-body.classList.toggle('menu-open');
-});
-});
-</script>
+                    document.querySelectorAll('.nav-group').forEach(g => {
+                        if (g !== group) {
+                            g.classList.remove('expanded');
+                            g.querySelector('.nav-content').style.maxHeight = '0';
+                            g.querySelector('.nav-trigger').classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current group
+                    group.classList.toggle('expanded');
+                    trigger.classList.toggle('active');
+                    
+                    // Set max-height for animation
+                    if (!isExpanded) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = '0';
+                    }
+                });
+            });
+
+            // Menu toggle functionality
+            const menuToggle = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const body = document.body;
+
+            menuToggle?.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                sidebar.classList.toggle('active');
+                body.classList.toggle('menu-open');
+            });
+        });
+    </script>
 </body>
 </html>
