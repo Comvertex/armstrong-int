@@ -12,6 +12,7 @@ html, body {
     overflow: hidden;
     height: 100%;
     background-color: var(--white);
+    width: 100vw;
 }
 
 /* Header */
@@ -37,14 +38,17 @@ html, body {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    padding-right: max(15px, 2vw);
 }
 
 /* Logo */
 .logo {
     position: fixed;
-    top: 2vh;
-    left: 2vh;
-    width: min(300px, 70vw);
+    top: 3vh;
+    left: 3vh;
+    width: min(250px, 60vw);
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -62,17 +66,19 @@ html, body {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 20px 15px;
-    margin-right: clamp(1rem, 2vw, 1.5rem);
-    z-index: 1001;
+    padding: 0;
+    height: min(30px, 20vw);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: center;
 }
 
 .menu-toggle span {
     display: block;
-    width: 30px;
+    width: min(30px, 20vw);
     height: 1px;
     background-color: var(--white);
-    margin: 8px 0;
     transition: background-color 0.3s ease;
 }
 
@@ -86,6 +92,7 @@ html, body {
     width: 100%;
     background-color: var(--primary-color);
     overflow-y: auto;
+    overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: var(--accent-color) transparent;
 }
@@ -108,12 +115,13 @@ html, body {
     animation: menuSlideUp 1.5s var(--ease-out-cubic) 0.7s forwards;
     opacity: 0;
     transform: translateY(100px);
+    width: 100%;
 }
 
 .landing-menu {
     width: min(2000px, 90vw);
     margin: 0 auto;
-    padding: 0 clamp(2rem, 4vw, 4rem);
+    padding: 0 max(15px, 4vw);
 }
 
 /* Navigation */
@@ -172,9 +180,10 @@ html, body {
     color: var(--white);
     text-decoration: none;
     font-size: clamp(0.9rem, 2vmin, 1.2rem);
-    padding: calc(0.2rem * 0.7) 0;
+    padding: calc(0.4rem * 0.7) 0;
     transition: color 0.3s ease;
     font-family: Arial, sans-serif;
+    font-weight: 700;
 }
 
 .nav-content a:hover {
@@ -243,5 +252,16 @@ html, body {
     
     .nav-group.expanded .nav-content {
         max-height: 45vh;
+    }
+}
+
+@media (max-width: 350px) {
+    .logo {
+        left: 2vh;
+    }
+    
+    .landing-menu {
+        width: 95vw;
+        padding: 0 10px;
     }
 }
