@@ -51,6 +51,14 @@ body {
     overflow: auto;
 }
 
+.main-nav.scrolled {
+    background-color: var(--primary-color);
+}
+
+.main-nav.nav-hidden {
+    transform: translateY(-100%);
+}
+
 .main-nav {
     position: fixed;
     width: 100%;
@@ -60,23 +68,11 @@ body {
     align-items: center;
     z-index: 1000;
     background-color: transparent;
-    transform: translateY(-100%);
+    transform: translateY(0);
     will-change: transform, background-color;
     transition: 
         transform var(--transition-speed-slow) var(--ease-out-cubic),
         background-color var(--transition-speed) var(--ease-out-cubic);
-}
-
-.main-nav.loaded {
-    transform: translateY(0);
-}
-
-.main-nav.scrolled {
-    background-color: var(--primary-color);
-}
-
-.main-nav.nav-hidden {
-    transform: translateY(-100%);
 }
 
 .nav-container {
@@ -99,7 +95,7 @@ body {
     display: flex;
     align-items: center;
     z-index: 1000;
-    animation: fadeIn var(--transition-speed-slower) var(--ease-out-cubic) 0.5s both; /* Add this line */
+    animation: fadeIn var(--transition-speed-slower) var(--ease-out-cubic) 0.2s both; /* Add this line */
 }
 
 @keyframes fadeIn {
