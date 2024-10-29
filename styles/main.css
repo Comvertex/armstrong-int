@@ -21,11 +21,11 @@
     --header-padding: clamp(1rem, 2vw, 1.5rem);
     
     /* Responsive Typography */
-    --font-size-xxl: clamp(2rem, 6vmin, 3.5rem);     /* Main menu items */
-    --font-size-xl: clamp(1.8rem, 5vmin, 3rem);      /* Section headers */
-    --font-size-lg: clamp(0.9rem, 2vmin, 1.2rem);    /* Sub menu items */
-    --font-size-md: clamp(1rem, 2vmin, 1.2rem);      /* Body text */
-    --font-size-sm: clamp(0.875rem, 1.5vmin, 1rem);  /* Secondary nav */
+    --font-size-xxl: clamp(2rem, 6vmin, 3.5rem);
+    --font-size-xl: clamp(1.8rem, 5vmin, 3rem);
+    --font-size-lg: clamp(0.9rem, 2vmin, 1.2rem);
+    --font-size-md: clamp(1rem, 2vmin, 1.2rem);
+    --font-size-sm: clamp(0.875rem, 1.5vmin, 1rem);
     
     /* Dynamic Spacing */
     --space-xxl: clamp(4rem, 10vh, 8rem);
@@ -64,13 +64,12 @@ body {
     height: 100vh;
 }
 
-/* Enable scrolling when any menu is expanded */
 .landing-body:has(.nav-group.expanded) {
     overflow: auto;
 }
 
 /* ==========================================================================
-   Header & Navigation - Core Styles
+   Header & Navigation
    ========================================================================== */
 .main-nav {
     position: fixed;
@@ -82,12 +81,12 @@ body {
     z-index: 1000;
     background-color: transparent;
     transform: translateY(0);
+    will-change: transform, background-color;
     transition: 
-        transform 0.8s var(--ease-out-cubic),
-        background-color 0.4s var(--ease-out-cubic);
+        transform var(--transition-speed-slow) var(--ease-out-cubic),
+        background-color var(--transition-speed) var(--ease-out-cubic);
 }
 
-/* Header Scroll States */
 .main-nav.scrolled {
     background-color: var(--primary-color);
 }
@@ -173,7 +172,6 @@ body {
     display: none;
 }
 
-/* Slide-in animations */
 .slide-in-bottom {
     animation: slideInBottom var(--transition-speed-slower) var(--ease-out-cubic) 0.5s both;
 }
@@ -183,7 +181,6 @@ body {
     100% { transform: translateY(0); opacity: 1; }
 }
 
-/* Landing page layout */
 .landing-page {
     height: 100vh;
     width: 100%;
@@ -358,7 +355,6 @@ body {
     }
 }
 
-/* Touch device optimizations */
 @media (hover: none) {
     .nav-content a:hover,
     .secondary-nav a:hover {
