@@ -3,31 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header Transition Example</title>
+    <title>Armstrong International</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
-<body>
-    <header class="main-nav">
+<body class="landing-body">
+    <nav class="main-nav">
         <div class="nav-container">
-            <div class="logo">Logo</div>
-            <button class="menu-toggle">Menu</button>
+            <a href="/" class="logo">
+                <img src="assets/images/logo.png" alt="Armstrong International">
+            </a>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </header>
-    <div class="landing-body">
-        <div class="landing-page">
-            <div class="landing-content">
-                <h1>Welcome to the Page</h1>
-                <p>Scroll down to see the header transition effect.</p>
-                <!-- Add more content here to enable scrolling -->
-                <div style="height: 2000px;"></div>
+    </nav>
+
+    <main class="landing-page slide-in-bottom">
+        <div class="landing-content">
+            <div class="landing-menu">
+                <div class="primary-nav">
+                    <div class="nav-group">
+                        <button class="nav-trigger">Talent</button>
+                        <div class="nav-content">
+                            <a href="#">Banks</a>
+                            <a href="#">Hedge Funds</a>
+                            <a href="#">Private Equity</a>
+                            <a href="#">Credit</a>
+                            <a href="#">Family Offices</a>
+                            <a href="#">Real Estate</a>
+                            <a href="#">Venture Capital</a>
+                            <a href="#">Digital & Data</a>
+                            <a href="#">Infrastructure & Energy Transition</a>
+                            <a href="#">Portfolio Companies</a>
+                            <a href="#">Wealth Management</a>
+                        </div>
+                    </div>
+                    <div class="nav-group">
+                        <button class="nav-trigger">Capital</button>
+                        <div class="nav-content">
+                            <a href="#">Investment Banking</a>
+                            <a href="#">Private Capital</a>
+                            <a href="#">Real Estate</a>
+                            <a href="#">Infrastructure</a>
+                        </div>
+                    </div>
+                    <div class="nav-group">
+                        <button class="nav-trigger">Advice</button>
+                        <div class="nav-content">
+                            <a href="#">Digitisation</a>
+                            <a href="#">Decarbonisation</a>
+                            <a href="#">AI</a>
+                            <a href="#">Talent</a>
+                            <a href="#">Geo Politics</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="secondary-nav">
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/careers">Careers</a>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const navTriggers = document.querySelectorAll('.nav-trigger');
             const mainNav = document.querySelector('.main-nav');
             let lastScrollTop = 0;
             let isScrolling;
+
+            // Initial load transition
+            mainNav.classList.add('loaded');
 
             window.addEventListener('scroll', function() {
                 window.clearTimeout(isScrolling);
@@ -48,6 +98,23 @@
                     }
                     lastScrollTop = scrollTop;
                 }, 66);
+            });
+
+            navTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const navGroup = this.parentElement;
+                    const wasExpanded = navGroup.classList.contains('expanded');
+                    
+                    document.querySelectorAll('.nav-group').forEach(group => {
+                        group.classList.remove('expanded');
+                        group.querySelector('.nav-trigger').classList.remove('active');
+                    });
+
+                    if (!wasExpanded) {
+                        navGroup.classList.add('expanded');
+                        this.classList.add('active');
+                    }
+                });
             });
         });
     </script>
