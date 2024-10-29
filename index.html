@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body class="landing-body">
+    <!-- Fixed Header Navigation -->
     <nav class="main-nav">
         <div class="nav-container">
             <a href="/" class="logo">
-                <img src="assets/images/logo.png" alt="Armstrong International">
+                <img src="images/logo.svg" alt="Armstrong International">
             </a>
             <button class="menu-toggle">
                 <span></span>
@@ -20,10 +21,13 @@
         </div>
     </nav>
 
+    <!-- Main Content Area -->
     <main class="landing-page slide-in-bottom">
         <div class="landing-content">
             <div class="landing-menu">
+                <!-- Primary Navigation -->
                 <div class="primary-nav">
+                    <!-- Talent Section -->
                     <div class="nav-group">
                         <button class="nav-trigger">Talent</button>
                         <div class="nav-content">
@@ -40,6 +44,7 @@
                             <a href="#">Wealth Management</a>
                         </div>
                     </div>
+                    <!-- Capital Section -->
                     <div class="nav-group">
                         <button class="nav-trigger">Capital</button>
                         <div class="nav-content">
@@ -49,6 +54,7 @@
                             <a href="#">Infrastructure</a>
                         </div>
                     </div>
+                    <!-- Advice Section -->
                     <div class="nav-group">
                         <button class="nav-trigger">Advice</button>
                         <div class="nav-content">
@@ -60,6 +66,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Secondary Navigation -->
                 <div class="secondary-nav">
                     <a href="/about">About</a>
                     <a href="/contact">Contact</a>
@@ -69,12 +76,14 @@
         </div>
     </main>
 
+    <!-- JavaScript for Interactions -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navTriggers = document.querySelectorAll('.nav-trigger');
             const mainNav = document.querySelector('.main-nav');
             let lastScrollTop = 0;
 
+            // Menu trigger handling
             navTriggers.forEach(trigger => {
                 trigger.addEventListener('click', function() {
                     const navGroup = this.parentElement;
@@ -94,10 +103,18 @@
                 });
             });
 
-            // Hide header on scroll down, show on scroll up
+            // Scroll handling for header
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 
+                // Handle background color first
+                if (scrollTop > 10) {
+                    mainNav.classList.add('scrolled');
+                } else {
+                    mainNav.classList.remove('scrolled');
+                }
+                
+                // Then handle hide/show with a higher threshold
                 if (scrollTop > lastScrollTop && scrollTop > 100) {
                     mainNav.classList.add('nav-hidden');
                 } else {
