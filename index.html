@@ -28,7 +28,7 @@
                 <div class="primary-nav">
                     <div class="nav-group">
                         <button class="nav-trigger" data-section="talent">
-                            <span>Talent</span>
+                            <span class="accent-text">Talent</span>
                         </button>
                         <div class="nav-content" id="talent-content">
                             <a href="/talent/banks">Banks</a>
@@ -107,7 +107,9 @@
     </div>
 
     <script>
+        // Landing page animations and interactions
         document.addEventListener('DOMContentLoaded', () => {
+            // Handle nav group expansions
             const navTriggers = document.querySelectorAll('.nav-trigger');
             
             navTriggers.forEach(trigger => {
@@ -116,40 +118,30 @@
                     const content = group.querySelector('.nav-content');
                     const isExpanded = group.classList.contains('expanded');
                     
-                    // Close all other groups and reset their colors
+                    // Close all other groups
                     document.querySelectorAll('.nav-group').forEach(g => {
                         if (g !== group) {
                             g.classList.remove('expanded');
                             g.querySelector('.nav-content').style.maxHeight = '0px';
-                            g.querySelector('.nav-trigger').classList.remove('active');
-                            g.querySelector('.nav-trigger').style.color = 'var(--white)';
                         }
                     });
                     
                     // Toggle current group
                     group.classList.toggle('expanded');
-                    trigger.classList.toggle('active');
                     content.style.maxHeight = isExpanded ? '0px' : `${content.scrollHeight}px`;
-                    
-                    // Reset color when collapsing
-                    if (isExpanded) {
-                        trigger.style.color = 'var(--white)';
-                    } else {
-                        trigger.style.color = 'var(--accent-color)';
-                    }
                 });
             });
+        });
 
-            // Menu toggle functionality
-            const menuToggle = document.querySelector('.menu-toggle');
-            const sidebar = document.querySelector('.sidebar');
-            const body = document.body;
+        // Menu toggle functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const body = document.body;
 
-            menuToggle?.addEventListener('click', () => {
-                menuToggle.classList.toggle('active');
-                sidebar.classList.toggle('active');
-                body.classList.toggle('menu-open');
-            });
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            body.classList.toggle('menu-open');
         });
     </script>
 </body>
