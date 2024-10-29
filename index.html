@@ -20,7 +20,7 @@
         </div>
     </nav>
 
-    <main class="landing-page slide-in-bottom">
+    <main class="landing-page">
         <div class="landing-content">
             <div class="landing-menu">
                 <div class="primary-nav">
@@ -71,13 +71,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const navTriggers = document.querySelectorAll('.nav-trigger');
             const mainNav = document.querySelector('.main-nav');
+            const logo = document.querySelector('.logo img');
             let lastScrollTop = 0;
             let isScrolling;
 
-            // Initial load transition
-            mainNav.classList.add('loaded');
+            // Initial load transitions
+            mainNav.classList.add('slide-in');
+            logo.classList.add('fade-in');
 
             window.addEventListener('scroll', function() {
                 window.clearTimeout(isScrolling);
@@ -98,23 +99,6 @@
                     }
                     lastScrollTop = scrollTop;
                 }, 66);
-            });
-
-            navTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function() {
-                    const navGroup = this.parentElement;
-                    const wasExpanded = navGroup.classList.contains('expanded');
-                    
-                    document.querySelectorAll('.nav-group').forEach(group => {
-                        group.classList.remove('expanded');
-                        group.querySelector('.nav-trigger').classList.remove('active');
-                    });
-
-                    if (!wasExpanded) {
-                        navGroup.classList.add('expanded');
-                        this.classList.add('active');
-                    }
-                });
             });
         });
     </script>
