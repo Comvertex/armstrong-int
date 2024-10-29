@@ -12,6 +12,7 @@ html, body {
     overflow: hidden;
     height: 100%;
     background-color: var(--white);
+    font-family: Arial, sans-serif;
 }
 
 /* Header */
@@ -22,7 +23,7 @@ html, body {
     top: 0;
     height: clamp(65px, 8vh, 85px);
     z-index: 1000;
-    animation: headerSlideDown 0.8s var(--ease-out-cubic) forwards;
+    animation: headerSlideDown 1.2s var(--ease-out-cubic) forwards;
 }
 
 .main-nav.scrolled {
@@ -42,9 +43,9 @@ html, body {
 /* Logo */
 .logo {
     position: fixed;
-    top: 2vh;
+    top: 3vh;
     left: 2vh;
-    width: min(300px, 70vw);
+    width: min(280px, 70vw);
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -105,7 +106,7 @@ html, body {
 
 .landing-content {
     padding-top: clamp(10vh, 20vh, 25vh);
-    animation: menuSlideUp 1.2s var(--ease-out-cubic) 0.5s forwards;
+    animation: menuSlideUp 1.5s var(--ease-out-cubic) 0.7s forwards;
     opacity: 0;
     transform: translateY(100px);
 }
@@ -134,7 +135,10 @@ html, body {
     transition: color 0.3s ease;
 }
 
-.nav-trigger:hover,
+.nav-trigger:hover {
+    color: var(--accent-color);
+}
+
 .nav-group.expanded .nav-trigger {
     color: var(--accent-color);
 }
@@ -169,12 +173,12 @@ html, body {
     text-decoration: none;
     font-size: clamp(0.9rem, 2vmin, 1.2rem);
     padding: calc(0.2rem * 0.7) 0;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s ease;
+    font-family: Arial, sans-serif;
 }
 
 .nav-content a:hover {
     color: var(--accent-color);
-    transform: translateX(0.5vw);
 }
 
 /* Secondary Navigation */
@@ -190,12 +194,12 @@ html, body {
     font-size: clamp(0.875rem, 1.5vmin, 1rem);
     font-weight: 700;
     padding: clamp(0.2rem, 1vh, 0.4rem) 0;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s ease;
+    font-family: Arial, sans-serif;
 }
 
 .secondary-nav a:hover {
     color: var(--accent-color);
-    transform: translateX(0.5vw);
 }
 
 /* Animations */
