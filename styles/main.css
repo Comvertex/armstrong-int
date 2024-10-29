@@ -11,7 +11,7 @@ html, body {
     padding: 0;
     overflow: hidden;
     height: 100%;
-    background-color: var(--white);
+    background-color: var(--white) !important;
     width: 100vw;
 }
 
@@ -24,10 +24,11 @@ html, body {
     height: clamp(65px, 8vh, 85px);
     z-index: 1000;
     animation: headerSlideDown 1.2s var(--ease-out-cubic) forwards;
+    transition: background-color 0.3s ease;
 }
 
 .main-nav.scrolled {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color) !important;
 }
 
 .nav-hidden {
@@ -40,7 +41,7 @@ html, body {
     justify-content: flex-end;
     align-items: center;
     height: 100%;
-    padding-right: max(15px, 2vw);
+    padding-right: 3vh;
 }
 
 /* Logo */
@@ -144,7 +145,7 @@ html, body {
 }
 
 .nav-trigger:hover {
-    color: var(--accent-color);
+    color: var(--accent-color) !important;
 }
 
 .nav-group.expanded .nav-trigger {
@@ -187,7 +188,7 @@ html, body {
 }
 
 .nav-content a:hover {
-    color: var(--accent-color);
+    color: var(--accent-color) !important;
 }
 
 /* Secondary Navigation */
@@ -208,7 +209,7 @@ html, body {
 }
 
 .secondary-nav a:hover {
-    color: var(--accent-color);
+    color: var(--accent-color) !important;
 }
 
 /* Animations */
