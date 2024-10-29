@@ -18,11 +18,11 @@
     --header-padding: clamp(1rem, 2vw, 1.5rem);
     
     /* Responsive Typography */
-    --font-size-xxl: clamp(2rem, 6vmin, 3.5rem);    /* Main menu items */
-    --font-size-xl: clamp(1.8rem, 5vmin, 3rem);     /* Section headers */
-    --font-size-lg: clamp(0.9rem, 2vmin, 1.2rem);   /* Sub menu items */
-    --font-size-md: clamp(1rem, 2vmin, 1.2rem);     /* Body text */
-    --font-size-sm: clamp(0.875rem, 1.5vmin, 1rem); /* Secondary nav */
+    --font-size-xxl: clamp(2rem, 6vmin, 3.5rem);     /* Main menu items */
+    --font-size-xl: clamp(1.8rem, 5vmin, 3rem);      /* Section headers */
+    --font-size-lg: clamp(0.9rem, 2vmin, 1.2rem);    /* Sub menu items */
+    --font-size-md: clamp(1rem, 2vmin, 1.2rem);      /* Body text */
+    --font-size-sm: clamp(0.875rem, 1.5vmin, 1rem);  /* Secondary nav */
     
     /* Dynamic Spacing */
     --space-xxl: clamp(4rem, 10vh, 8rem);
@@ -30,6 +30,10 @@
     --space-lg: clamp(1.5rem, 4vh, 2.5rem);
     --space-md: clamp(1rem, 2vh, 1.5rem);
     --space-sm: clamp(0.2rem, 1vh, 0.4rem);
+    
+    /* Container Widths */
+    --max-width: min(2000px, 90vw);
+    --content-padding: clamp(2rem, 4vw, 4rem);
 }
 
 /* ==========================================================================
@@ -83,10 +87,14 @@ body.menu-open {
     z-index: 1000;
 }
 
+.nav-hidden {
+    transform: translateY(-100%);
+}
+
 .nav-container {
     width: 100%;
-    max-width: none;
-    margin: 0;
+    max-width: var(--max-width);
+    margin: 0 auto;
     padding: 0 var(--header-padding);
     display: flex;
     justify-content: space-between;
@@ -116,7 +124,7 @@ body.menu-open {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 20px 15px;
+    padding: clamp(15px, 2vh, 20px) clamp(10px, 1.5vw, 15px);
     position: relative;
     z-index: 1001;
     margin-right: calc(var(--header-padding) * 0.5);
@@ -124,10 +132,10 @@ body.menu-open {
 
 .menu-toggle span {
     display: block;
-    width: 30px;
+    width: clamp(25px, 3vw, 30px);
     height: 1px;
     background-color: var(--white);
-    margin: 8px 0;
+    margin: 6px 0;
     transition: all var(--transition-speed) var(--transition-function);
 }
 
@@ -154,6 +162,29 @@ body.menu-open {
 /* ==========================================================================
    Landing Page Styles with Dynamic Scaling
    ========================================================================== */
+.landing-body .menu-toggle {
+    display: none;
+}
+
+/* Slide-in animations */
+.slide-in-top {
+    animation: slideInTop 0.6s var(--transition-function);
+}
+
+.slide-in-bottom {
+    animation: slideInBottom 0.6s var(--transition-function);
+}
+
+@keyframes slideInTop {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes slideInBottom {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
 .landing-page {
     min-height: calc(100vh - var(--header-height));
     height: auto;
@@ -174,9 +205,9 @@ body.menu-open {
 
 .landing-menu {
     width: 100%;
-    max-width: min(2000px, 90vw);
+    max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 clamp(2rem, 4vw, 4rem);
+    padding: 0 var(--content-padding);
 }
 
 .primary-nav {
@@ -287,6 +318,171 @@ body.menu-open {
 }
 
 /* ==========================================================================
+   Sidebar Navigation
+   ========================================================================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--primary-color);
+    transform: translateX(100%);
+    transition: transform 0.5s var(--transition-function);
+    z-index: 999;
+    overflow-y: auto;
+    padding-top: var(--header-height);
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar-content {
+    width: 90%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--space-xl) var(--content-padding);
+    box-sizing: border-box;
+    height: calc(100% - var(--header-height));
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-left: 10%;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--white);
+    text-decoration: none;
+    font-size: var(--font-size-xl);
+    transition: color var(--transition-speed) var(--transition-function);
+    display: block;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+.submenu {
+    padding-left: clamp(1rem, 2vw, 1.5rem);
+    margin-top: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-speed) var(--transition-function);
+}
+
+.nav-item.has-submenu:hover .submenu {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+}
+
+.submenu a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: var(--font-size-lg);
+    transition: color var(--transition-speed) var(--transition-function);
+}
+
+.submenu a:hover {
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
+   About Page Styles
+   ========================================================================== */
+.about-page {
+    background-color: var(--primary-color);
+}
+
+.about-hero {
+    min-height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    margin-top: var(--header-height);
+    padding: var(--space-xxl) 0;
+}
+
+.about-hero h1 {
+    font-size: clamp(4rem, 10vmin, 7.5rem);
+    line-height: 1;
+    margin-bottom: var(--space-lg);
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.hero-subtitle {
+    font-size: clamp(2.5rem, 6vmin, 4.5rem);
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--white);
+    margin-top: var(--space-md);
+}
+
+.about-history,
+.about-approach {
+    background-color: var(--white);
+    padding: var(--space-xxl) 0;
+}
+
+.about-stats,
+.about-relationships {
+    background-color: var(--primary-color);
+    padding: var(--space-xxl) 0;
+    color: var(--white);
+}
+
+.section-content {
+    width: 90%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--content-padding);
+}
+
+.about-history h2,
+.about-approach h2,
+.about-stats h2,
+.about-relationships h2 {
+    font-size: clamp(2.5rem, 5vmin, 4rem);
+    color: var(--accent-color);
+    margin-bottom: var(--space-lg);
+    font-weight: 700;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
+.stat-item h3 {
+    font-size: clamp(2rem, 4vmin, 3.5rem);
+    color: var(--accent-color);
+    margin-bottom: var(--space-sm);
+}
+
+.stat-item p {
+    font-size: var(--font-size-md);
+    color: var(--white);
+}
+
+/* ==========================================================================
    Responsive Adjustments
    ========================================================================== */
 @media (max-aspect-ratio: 1/1) {
@@ -302,6 +498,11 @@ body.menu-open {
 
     .nav-group.expanded .nav-content {
         max-height: min(50vh, 600px);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
     }
 }
 
@@ -335,16 +536,23 @@ body.menu-open {
 /* Touch device optimizations */
 @media (hover: none) {
     .nav-content a:hover,
-    .secondary-nav a:hover {
+    .secondary-nav a:hover,
+    .nav-link:hover,
+    .submenu a:hover {
         transform: none;
     }
 }
 
-/* ==========================================================================
-   About Page Styles
-   ========================================================================== */
-.about-page {
-    background-color: var(--primary-color);
-}
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
 
-/* ... (rest of About page styles remain the same) ... */
+    .about-hero h1 {
+        font-size: clamp(3rem, 8vmin, 4rem);
+    }
+
+    .hero-subtitle {
+        font-size: clamp(2rem, 5vmin, 2.8rem);
+    }
+}
