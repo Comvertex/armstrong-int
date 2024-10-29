@@ -203,7 +203,7 @@ main {
     color: var(--accent-color);
 }
 
-/* Main Content Styles */
+/* Hero section typography */
 .hero {
     min-height: calc(100vh - var(--header-height));
     display: flex;
@@ -220,10 +220,17 @@ main {
 }
 
 .hero h1 {
-    font-size: 6rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    font-size: 7.5rem;
+    line-height: 1;
+    margin-bottom: 2rem;
     font-weight: 700;
+}
+
+.hero h2 {
+    font-size: 4.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--white);
 }
 
 .section-content {
@@ -234,6 +241,10 @@ main {
 }
 
 /* Section Styles */
+section {
+    padding: 8rem 0;
+}
+
 .dark {
     background-color: var(--primary-color);
     color: var(--white);
@@ -243,20 +254,25 @@ main {
     color: var(--white);
 }
 
-.dark h2,
-.relationships-section h2 {
-    color: var(--accent-color);
-}
-
-section {
-    padding: 8rem 0;
-}
-
 .about-section {
     background-color: var(--white);
 }
 
 .about-section h2 {
+    color: var(--accent-color);
+}
+
+/* Section titles general styling */
+.section-title,
+section h2 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.dark h2,
+.relationships-section h2 {
     color: var(--accent-color);
 }
 
@@ -292,21 +308,6 @@ section {
 
 .relationships-section {
     background-color: var(--primary-color);
-}
-
-.section-title,
-section h2 {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-    color: inherit;
-}
-
-.section-text {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: inherit;
-    max-width: 800px;
 }
 
 /* Buttons */
@@ -350,6 +351,14 @@ section h2 {
 }
 
 @media (max-width: 768px) {
+    .hero h1 {
+        font-size: 5rem;
+    }
+
+    .hero h2 {
+        font-size: 3.5rem;
+    }
+
     .section-content {
         width: 100%;
         padding: 0 2rem;
@@ -359,17 +368,14 @@ section h2 {
         width: 100%;
     }
 
-    .hero h1 {
-        font-size: 4rem;
-    }
-
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 4rem;
     }
 
-    .section-title {
-        font-size: 2rem;
+    .section-title,
+    section h2 {
+        font-size: 3.2rem;
     }
 
     .nav-button {
@@ -386,16 +392,20 @@ section h2 {
 }
 
 @media (max-width: 480px) {
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .hero h2 {
+        font-size: 2.8rem;
+    }
+
     .stats-grid {
         grid-template-columns: 1fr;
     }
 
-    .hero h1 {
-        font-size: 3rem;
-    }
-    
     .section-title,
     section h2 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
     }
 }
