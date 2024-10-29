@@ -95,7 +95,7 @@ body.menu-open {
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 var(--header-padding);
+    padding: 0 0 0 var(--header-padding);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -112,11 +112,13 @@ body.menu-open {
     transition: height var(--transition-speed) var(--transition-function);
 }
 
-.logo img {
-    height: 100%;
-    width: auto;
-    display: block;
-    object-fit: contain;
+.logo {
+    display: flex;
+    align-items: center;
+    height: clamp(28px, 4vh, 35px);
+    position: relative;
+    margin-left: var(--header-padding);
+    transition: height var(--transition-speed) var(--transition-function);
 }
 
 /* Menu Toggle Button */
@@ -194,10 +196,9 @@ body.menu-open {
     background-color: var(--primary-color);
     padding: clamp(10vh, 20vh, 25vh) 0 var(--space-xxl) 0;
     margin: 0;
-    overflow-y: auto;
+    overflow-y: hidden;
     transition: padding var(--transition-speed) var(--transition-function);
 }
-
 .landing-content {
     width: 100%;
     transition: transform var(--transition-speed) var(--transition-function);
@@ -254,13 +255,13 @@ body.menu-open {
     transform: translateY(0);
     margin-bottom: var(--space-lg);
     overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent-color) transparent;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 /* Webkit scrollbar styles */
 .nav-group.expanded .nav-content::-webkit-scrollbar {
-    width: 6px;
+    display: none;
 }
 
 .nav-group.expanded .nav-content::-webkit-scrollbar-track {
