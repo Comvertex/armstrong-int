@@ -50,7 +50,7 @@ body.menu-open {
 }
 
 .nav-container {
-    width: 90%;
+    width: 100%;
     max-width: none;
     margin: 0 auto;
     padding: 0 var(--header-padding);
