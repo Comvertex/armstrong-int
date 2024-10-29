@@ -82,6 +82,31 @@
             const navTriggers = document.querySelectorAll('.nav-trigger');
             const mainNav = document.querySelector('.main-nav');
             let lastScrollTop = 0;
+            let isScrolling;
+
+            // Handle scroll events with throttling
+            window.addEventListener('scroll', function() {
+                window.clearTimeout(isScrolling);
+                
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Immediate background change
+                if (scrollTop > 10) {
+                    mainNav.classList.add('scrolled');
+                } else {
+                    mainNav.classList.remove('scrolled');
+                }
+                
+                // Throttled hide/show
+                isScrolling = setTimeout(function() {
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        mainNav.classList.add('nav-hidden');
+                    } else {
+                        mainNav.classList.remove('nav-hidden');
+                    }
+                    lastScrollTop = scrollTop;
+                }, 66); // ~15fps throttle
+            });
 
             // Menu trigger handling
             navTriggers.forEach(trigger => {
@@ -101,27 +126,6 @@
                         this.classList.add('active');
                     }
                 });
-            });
-
-            // Scroll handling for header
-            window.addEventListener('scroll', function() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                // Handle background color first
-                if (scrollTop > 10) {
-                    mainNav.classList.add('scrolled');
-                } else {
-                    mainNav.classList.remove('scrolled');
-                }
-                
-                // Then handle hide/show with a higher threshold
-                if (scrollTop > lastScrollTop && scrollTop > 100) {
-                    mainNav.classList.add('nav-hidden');
-                } else {
-                    mainNav.classList.remove('nav-hidden');
-                }
-                
-                lastScrollTop = scrollTop;
             });
         });
     </script>
