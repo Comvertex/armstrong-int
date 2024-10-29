@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Root Variables - Shared across all pages
+   Root Variables
    ========================================================================== */
 :root {
     --primary-color: #000028;
@@ -13,7 +13,7 @@
 }
 
 /* ==========================================================================
-   Reset & Base Styles - Shared across all pages
+   Reset & Base Styles
    ========================================================================== */
 html {
     scroll-behavior: smooth;
@@ -39,7 +39,7 @@ body.menu-open {
 }
 
 /* ==========================================================================
-   Header & Navigation - Shared but with landing page overrides
+   Header & Navigation
    ========================================================================== */
 .main-nav {
     position: fixed;
@@ -85,7 +85,7 @@ body.menu-open {
     object-fit: contain;
 }
 
-/* Menu Toggle Button - Hidden on landing page */
+/* Menu Toggle Button */
 .menu-toggle {
     background: none;
     border: none;
@@ -126,13 +126,8 @@ body.menu-open {
     transform: rotate(-45deg) translate(8px, -8px);
 }
 
-/* Hide menu toggle on landing page */
-.landing-body .menu-toggle {
-    display: none;
-}
-
 /* ==========================================================================
-   Sidebar Navigation - Only for About page
+   Sidebar Navigation
    ========================================================================== */
 .sidebar {
     position: fixed;
@@ -211,93 +206,14 @@ body.menu-open {
 }
 
 /* ==========================================================================
-   Landing Page Specific Styles - Only affects landing page
+   Landing Page Styles
    ========================================================================== */
-.landing-page {
-    height: calc(100vh - var(--header-height));
-    width: 100%;
-    display: flex;
-    align-items: center;
-    background-color: var(--primary-color);
-    padding: 0;
-    margin: 0;
-    overflow-y: auto;
+/* Hide menu toggle on landing page */
+.landing-body .menu-toggle {
+    display: none;
 }
 
-.landing-menu {
-    width: 100%;
-    max-width: 2000px;
-    margin: 0 auto;
-    padding: 4rem;
-}
-
-.primary-nav {
-    margin-bottom: 2.5rem;
-}
-
-.nav-group {
-    margin-bottom: 0.75rem;
-}
-
-.nav-trigger {
-    background: none;
-    border: none;
-    padding: 0.2rem 0;
-    font-size: 5rem;
-    font-weight: 700;
-    color: var(--white);
-    cursor: pointer;
-    transition: color var(--transition-speed) ease;
-    text-align: left;
-    width: 100%;
-    line-height: 1.1;
-}
-
-.nav-trigger:hover,
-.nav-trigger.active {
-    color: var(--accent-color);
-}
-
-.nav-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: all var(--transition-speed) ease-out;
-    margin-left: 2rem;
-    line-height: 1.2;
-}
-
-.nav-content a {
-    display: block;
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1.2rem;
-    padding: 0.25rem 0;
-    transition: color var(--transition-speed) ease;
-}
-
-.nav-content a:hover {
-    color: var(--accent-color);
-}
-
-.secondary-nav {
-    margin-top: 1.5rem;
-}
-
-.secondary-nav a {
-    display: block;
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 0.25rem 0;
-    transition: color var(--transition-speed) ease;
-    line-height: 1.2;
-}
-
-.secondary-nav a:hover {
-    color: var(--accent-color);
-}
-
-/* Landing Page Animations */
+/* Slide-in animations */
 .slide-in-top {
     animation: slideInTop 0.6s ease-out;
 }
@@ -316,8 +232,92 @@ body.menu-open {
     to { transform: translateY(0); }
 }
 
+.landing-page {
+    height: calc(100vh - var(--header-height));
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.landing-menu {
+    width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 0 4rem;
+}
+
+.primary-nav {
+    margin-bottom: 4rem;
+}
+
+.nav-group {
+    margin-bottom: 1rem;
+}
+
+.nav-trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--white);
+    cursor: pointer;
+    transition: color var(--transition-speed) ease;
+    text-align: left;
+    width: 100%;
+}
+
+.nav-trigger:hover {
+    color: var(--accent-color);
+}
+
+.nav-trigger .accent-text {
+    color: var(--accent-color);
+}
+
+.nav-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    margin-left: 2rem;
+}
+
+.nav-content a {
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    transition: color var(--transition-speed) ease;
+}
+
+.nav-content a:hover {
+    color: var(--accent-color);
+}
+
+.secondary-nav {
+    margin-top: 4rem;
+}
+
+.secondary-nav a {
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    transition: color var(--transition-speed) ease;
+}
+
+.secondary-nav a:hover {
+    color: var(--accent-color);
+}
+
 /* ==========================================================================
-   About Page Specific Styles - Only affects about page
+   About Page Styles
    ========================================================================== */
 .about-hero {
     min-height: calc(100vh - var(--header-height));
@@ -394,9 +394,9 @@ body.menu-open {
 }
 
 /* ==========================================================================
-   Media Queries - Page specific breakpoints clearly marked
+   Media Queries
    ========================================================================== */
-/* Desktop Hover States - About Page Only */
+/* Desktop Hover States */
 @media (min-width: 769px) {
     .nav-item.has-submenu:hover .submenu {
         opacity: 1;
@@ -410,35 +410,35 @@ body.menu-open {
     }
 }
 
-/* Large Screens - Shared */
+/* Large Screens */
 @media (max-width: 1600px) {
     .section-content {
         max-width: 1400px;
     }
 }
 
-/* Tablet & Mobile - Page specific styles separated */
+/* Tablet & Mobile */
 @media (max-width: 768px) {
-    /* Header Adjustments - Shared */
+    /* Header Adjustments */
     .logo {
         height: 28px;
     }
 
     /* Landing Page Mobile Styles */
     .landing-page {
-        align-items: flex-start;
         height: auto;
         min-height: calc(100vh - var(--header-height));
-        padding: 1.5rem 0;
+        overflow-y: auto;
+        padding: 2rem 0;
     }
 
     .landing-menu {
-        padding: 0 2rem;
+        padding: 1rem 2rem;
     }
 
     .nav-trigger {
-        font-size: 2.75rem;
-        padding: 0.15rem 0;
+        font-size: 3rem;
+        padding: 0.5rem 0;
     }
 
     .nav-content {
@@ -446,21 +446,13 @@ body.menu-open {
     }
 
     .nav-content a {
-        font-size: 1rem;
-        padding: 0.15rem 0;
-    }
-
-    .nav-group {
-        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        padding: 0.4rem 0;
     }
 
     .secondary-nav {
-        margin-top: 1rem;
-    }
-
-    .secondary-nav a {
-        font-size: 0.9rem;
-        padding: 0.15rem 0;
+        margin-top: 2rem;
+        padding-bottom: 2rem;
     }
 
     /* About Page Mobile Styles */
@@ -494,29 +486,20 @@ body.menu-open {
     }
 }
 
-/* Small Mobile Devices - Page specific styles separated */
+/* Small Mobile Devices */
 @media (max-width: 480px) {
-    /* Landing Page Small Mobile Styles */
     .landing-page {
         padding: 1rem 0;
     }
 
     .nav-trigger {
         font-size: 2.5rem;
-        padding: 0.1rem 0;
     }
 
     .nav-content a {
-        font-size: 0.95rem;
-        padding: 0.1rem 0;
+        font-size: 1rem;
     }
 
-    .secondary-nav a {
-        font-size: 0.85rem;
-        padding: 0.1rem 0;
-    }
-
-    /* About Page Small Mobile Styles */
     .about-hero h1 {
         font-size: 4rem;
     }
