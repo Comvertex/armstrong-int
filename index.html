@@ -116,12 +116,13 @@
                     const content = group.querySelector('.nav-content');
                     const isExpanded = group.classList.contains('expanded');
                     
-                    // Close all other groups
+                    // Close all other groups and reset their colors
                     document.querySelectorAll('.nav-group').forEach(g => {
                         if (g !== group) {
                             g.classList.remove('expanded');
                             g.querySelector('.nav-content').style.maxHeight = '0px';
                             g.querySelector('.nav-trigger').classList.remove('active');
+                            g.querySelector('.nav-trigger').style.color = 'var(--white)';
                         }
                     });
                     
@@ -129,6 +130,13 @@
                     group.classList.toggle('expanded');
                     trigger.classList.toggle('active');
                     content.style.maxHeight = isExpanded ? '0px' : `${content.scrollHeight}px`;
+                    
+                    // Reset color when collapsing
+                    if (isExpanded) {
+                        trigger.style.color = 'var(--white)';
+                    } else {
+                        trigger.style.color = 'var(--accent-color)';
+                    }
                 });
             });
 
