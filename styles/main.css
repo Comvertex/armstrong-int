@@ -4,7 +4,25 @@
     --white: #ffffff;
     --ease-out-cubic: cubic-bezier(0.16, 1, 0.3, 1);
 }
+/* Add these at the top of your CSS file, after :root */
+html, body {
+    background-color: var(--white) !important;
+}
 
+.main-nav.scrolled {
+    background-color: var(--primary-color) !important;
+}
+
+.nav-container {
+    padding-right: 3vh !important;
+}
+
+/* Update these hover states */
+.nav-trigger:hover,
+.nav-content a:hover,
+.secondary-nav a:hover {
+    color: var(--accent-color) !important;
+}
 /* Base Styles */
 html, body {
     margin: 0;
