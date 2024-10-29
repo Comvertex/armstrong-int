@@ -11,8 +11,8 @@ html, body {
     padding: 0;
     overflow: hidden;
     height: 100%;
-    background-color: var(--white) !important;
     width: 100vw;
+    background-color: var(--white) !important;
 }
 
 /* Header */
@@ -67,13 +67,14 @@ html, body {
     background: none;
     border: none;
     cursor: pointer;
-    height: min(30px, 20vw);
+    height: clamp(25px, 50px, 50%);
     padding: 0;
     margin-right: 3vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-self: center;
+    z-index: 1001;
 }
 
 .menu-toggle span {
@@ -124,6 +125,7 @@ html, body {
     width: min(2000px, 90vw);
     margin: 0 auto;
     padding: 0 max(15px, 4vw);
+    padding-bottom: 5vh;
 }
 
 /* Navigation */
