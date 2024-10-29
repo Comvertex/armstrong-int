@@ -4,13 +4,18 @@
     --white: #ffffff;
     --ease-out-cubic: cubic-bezier(0.16, 1, 0.3, 1);
 }
-/* Add these at the top of your CSS file, after :root */
+/* First commit: Fix background colors and header */
 html, body {
     background-color: var(--white) !important;
 }
 
+.landing-page {
+    background-color: var(--primary-color);
+}
+
 .main-nav.scrolled {
     background-color: var(--primary-color) !important;
+    transition: background-color 0.3s ease;
 }
 
 .nav-container {
