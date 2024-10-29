@@ -18,9 +18,9 @@
     --header-padding: clamp(1rem, 2vw, 1.5rem);
     
     /* Responsive Typography */
-    --font-size-xxl: clamp(2.5rem, 8vmin, 5rem);    /* Main menu items */
-    --font-size-xl: clamp(2rem, 6vmin, 4rem);       /* Section headers */
-    --font-size-lg: clamp(1.2rem, 3vmin, 2rem);     /* Sub menu items */
+    --font-size-xxl: clamp(2rem, 6vmin, 3.5rem);    /* Main menu items */
+    --font-size-xl: clamp(1.8rem, 5vmin, 3rem);     /* Section headers */
+    --font-size-lg: clamp(0.9rem, 2vmin, 1.2rem);   /* Sub menu items */
     --font-size-md: clamp(1rem, 2vmin, 1.2rem);     /* Body text */
     --font-size-sm: clamp(0.875rem, 1.5vmin, 1rem); /* Secondary nav */
     
@@ -29,7 +29,7 @@
     --space-xl: clamp(2rem, 6vh, 4rem);
     --space-lg: clamp(1.5rem, 4vh, 2.5rem);
     --space-md: clamp(1rem, 2vh, 1.5rem);
-    --space-sm: clamp(0.5rem, 1vh, 0.8rem);
+    --space-sm: clamp(0.2rem, 1vh, 0.4rem);
 }
 
 /* ==========================================================================
@@ -50,12 +50,9 @@ body {
     overflow-x: hidden;
     width: 100%;
     background-color: var(--primary-color);
-    
-    /* Enable smooth transitions when resizing */
     transition: font-size var(--transition-speed) var(--transition-function);
 }
 
-/* Smooth resize transitions */
 *, *::before, *::after {
     transition: 
         font-size var(--transition-speed) var(--transition-function),
@@ -112,6 +109,46 @@ body.menu-open {
     width: auto;
     display: block;
     object-fit: contain;
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 20px 15px;
+    position: relative;
+    z-index: 1001;
+    margin-right: calc(var(--header-padding) * 0.5);
+}
+
+.menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 1px;
+    background-color: var(--white);
+    margin: 8px 0;
+    transition: all var(--transition-speed) var(--transition-function);
+}
+
+.menu-toggle:hover span {
+    background-color: var(--accent-color);
+}
+
+.menu-toggle.active span {
+    background-color: var(--white);
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
 }
 
 /* ==========================================================================
@@ -177,20 +214,31 @@ body.menu-open {
     margin-left: clamp(1rem, 3vw, 2rem);
     opacity: 0;
     transform: translateY(-1vh);
-    transition: 
-        all var(--transition-speed) var(--transition-function),
-        margin var(--transition-speed) var(--transition-function);
+    transition: all var(--transition-speed) var(--transition-function);
 }
 
 .nav-group.expanded .nav-content {
-    max-height: calc(100vh - var(--header-height));
+    max-height: min(60vh, 800px);
     opacity: 1;
     transform: translateY(0);
     margin-bottom: var(--space-lg);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) transparent;
 }
 
-.nav-group.expanded + .nav-group {
-    transition-delay: 0.1s;
+/* Webkit scrollbar styles */
+.nav-group.expanded .nav-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.nav-group.expanded .nav-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.nav-group.expanded .nav-content::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 3px;
 }
 
 .nav-content a {
@@ -201,7 +249,7 @@ body.menu-open {
     padding: var(--space-sm) 0;
     transition: 
         color var(--transition-speed) var(--transition-function),
-        padding var(--transition-speed) var(--transition-function);
+        transform var(--transition-speed) var(--transition-function);
 }
 
 .nav-content a:hover {
@@ -225,7 +273,7 @@ body.menu-open {
     padding: var(--space-sm) 0;
     transition: 
         color var(--transition-speed) var(--transition-function),
-        padding var(--transition-speed) var(--transition-function);
+        transform var(--transition-speed) var(--transition-function);
 }
 
 .secondary-nav a:hover {
@@ -243,28 +291,33 @@ body.menu-open {
    ========================================================================== */
 @media (max-aspect-ratio: 1/1) {
     :root {
-        /* Adjust typography for portrait orientation */
-        --font-size-xxl: clamp(2rem, 10vmin, 4rem);
-        --font-size-xl: clamp(1.8rem, 8vmin, 3.5rem);
-        --font-size-lg: clamp(1rem, 4vmin, 1.8rem);
+        --font-size-xxl: clamp(1.8rem, 8vmin, 3rem);
+        --font-size-xl: clamp(1.6rem, 6vmin, 2.5rem);
+        --font-size-lg: clamp(0.9rem, 3vmin, 1.1rem);
     }
 
     .landing-page {
         padding-top: clamp(8vh, 15vh, 20vh);
     }
+
+    .nav-group.expanded .nav-content {
+        max-height: min(50vh, 600px);
+    }
 }
 
 @media (min-aspect-ratio: 2/1) {
     :root {
-        /* Adjust typography for ultrawide screens */
-        --font-size-xxl: clamp(2.5rem, 6vmin, 4.5rem);
+        --font-size-xxl: clamp(2rem, 5vmin, 3rem);
         --space-xxl: clamp(3rem, 8vh, 6rem);
+    }
+
+    .nav-group.expanded .nav-content {
+        max-height: min(40vh, 500px);
     }
 }
 
 @media (max-height: 600px) {
     :root {
-        /* Compress spacing for short screens */
         --space-xxl: clamp(2rem, 6vh, 4rem);
         --space-xl: clamp(1.5rem, 4vh, 2.5rem);
         --space-lg: clamp(1rem, 3vh, 1.5rem);
@@ -272,6 +325,10 @@ body.menu-open {
 
     .landing-page {
         padding-top: clamp(5vh, 10vh, 15vh);
+    }
+
+    .nav-group.expanded .nav-content {
+        max-height: min(45vh, 400px);
     }
 }
 
@@ -282,3 +339,12 @@ body.menu-open {
         transform: none;
     }
 }
+
+/* ==========================================================================
+   About Page Styles
+   ========================================================================== */
+.about-page {
+    background-color: var(--primary-color);
+}
+
+/* ... (rest of About page styles remain the same) ... */
