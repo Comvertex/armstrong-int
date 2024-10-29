@@ -100,26 +100,27 @@
             });
 
             // Enhanced scroll handling
-            window.addEventListener('scroll', function() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                // Handle header background
-                if (scrollTop > 0) {
-                    mainNav.classList.add('scrolled');
-                } else {
-                    mainNav.classList.remove('scrolled');
-                }
-                
-                // Handle header hide/show
-                if (scrollTop > lastScrollTop && scrollTop > 100) {
-                    mainNav.classList.add('nav-hidden');
-                } else {
-                    mainNav.classList.remove('nav-hidden');
-                }
-                
-                lastScrollTop = scrollTop;
-            });
-        });
+window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Handle header background - more immediate
+    requestAnimationFrame(() => {
+        if (scrollTop > 10) {
+            mainNav.classList.add('scrolled');
+        } else {
+            mainNav.classList.remove('scrolled');
+        }
+        
+        // Handle header hide/show - with threshold
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+            mainNav.classList.add('nav-hidden');
+        } else {
+            mainNav.classList.remove('nav-hidden');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+});
     </script>
 </body>
 </html>
