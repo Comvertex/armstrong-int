@@ -1,379 +1,148 @@
-/* ==========================================================================
-   Root Variables & Modern Scaling
-   ========================================================================== */
-:root {
-    /* Colors */
-    --primary-color: #000028;
-    --secondary-color: #666666;
-    --accent-color: #e53745;
-    --background-color: #e5e7eb;
-    --white: #ffffff;
-    
-    /* Animation & Transitions */
-    --transition-speed: 0.3s;
-    --transition-speed-slow: 0.8s;
-    --transition-speed-slower: 1.2s;
-    --transition-function: cubic-bezier(0.4, 0, 0.2, 1);
-    --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
-    
-    /* Dynamic Spacing */
-    --header-height: clamp(65px, 8vh, 85px);
-    --header-padding: clamp(1rem, 2vw, 1.5rem);
-    
-    /* Responsive Typography */
-    --font-size-xxl: clamp(2rem, 6vmin, 3.5rem);     /* Main menu items */
-    --font-size-xl: clamp(1.8rem, 5vmin, 3rem);      /* Section headers */
-    --font-size-lg: clamp(0.9rem, 2vmin, 1.2rem);    /* Sub menu items */
-    --font-size-md: clamp(1rem, 2vmin, 1.2rem);      /* Body text */
-    --font-size-sm: clamp(0.875rem, 1.5vmin, 1rem);  /* Secondary nav */
-    
-    /* Dynamic Spacing */
-    --space-xxl: clamp(4rem, 10vh, 8rem);
-    --space-xl: clamp(2rem, 6vh, 4rem);
-    --space-lg: clamp(1.5rem, 4vh, 2.5rem);
-    --space-md: clamp(1rem, 2vh, 1.5rem);
-    --space-sm: clamp(0.2rem, 1vh, 0.4rem);
-    
-    /* Container Widths */
-    --max-width: min(2000px, 90vw);
-    --content-padding: clamp(2rem, 4vw, 4rem);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armstrong International</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="landing-body">
+    <nav class="main-nav slide-in-top">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="assets/images/logo.png" alt="Armstrong International">
+            </a>
+            
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-/* ==========================================================================
-   Modern Reset & Base Styles
-   ========================================================================== */
-html {
-    scroll-behavior: smooth;
-    scrollbar-gutter: stable;
-    overflow-y: scroll;
-}
+    <main class="landing-page slide-in-bottom">
+        <div class="landing-content">
+            <div class="landing-menu">
+                <!-- Primary Navigation -->
+                <div class="primary-nav">
+                    <div class="nav-group">
+                        <button class="nav-trigger" data-section="talent">
+                            <span class="accent-text">Talent</span>
+                        </button>
+                        <div class="nav-content" id="talent-content">
+                            <a href="/talent/banks">Banks</a>
+                            <a href="/talent/hedge-funds">Hedge Funds</a>
+                            <a href="/talent/private-equity">Private Equity</a>
+                            <a href="/talent/credit">Credit</a>
+                            <a href="/talent/family-offices">Family Offices</a>
+                            <a href="/talent/real-estate">Real Estate</a>
+                            <a href="/talent/venture-capital">Venture Capital</a>
+                            <a href="/talent/digital-data">Digital & Data</a>
+                            <a href="/talent/infrastructure">Infrastructure & Energy Transition</a>
+                            <a href="/talent/portfolio">Portfolio Companies</a>
+                            <a href="/talent/wealth">Wealth Management</a>
+                        </div>
+                    </div>
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: var(--primary-color);
-    overflow-x: hidden;
-    width: 100%;
-    background-color: var(--white);
-    transition: font-size var(--transition-speed) var(--transition-function);
-}
+                    <div class="nav-group">
+                        <button class="nav-trigger" data-section="capital">
+                            <span>Capital</span>
+                        </button>
+                        <div class="nav-content" id="capital-content">
+                            <a href="/capital/funds">Funds</a>
+                            <a href="/capital/companies">Companies</a>
+                            <a href="/capital/managers">Managers</a>
+                        </div>
+                    </div>
 
-.landing-body {
-    overflow: hidden;
-    height: 100vh;
-}
+                    <div class="nav-group">
+                        <button class="nav-trigger" data-section="advice">
+                            <span>Advice</span>
+                        </button>
+                        <div class="nav-content" id="advice-content">
+                            <a href="/advice/digitisation">Digitisation</a>
+                            <a href="/advice/decarbonisation">Decarbonisation</a>
+                            <a href="/advice/ai">AI</a>
+                            <a href="/advice/talent">Talent</a>
+                            <a href="/advice/geo-politics">Geo Politics</a>
+                        </div>
+                    </div>
+                </div>
 
-/* Enable scrolling when any menu is expanded */
-.landing-body:has(.nav-group.expanded) {
-    overflow: auto;
-}
+                <!-- Secondary Navigation -->
+                <div class="secondary-nav">
+                    <a href="/about-us">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/careers">Careers</a>
+                </div>
+            </div>
+        </div>
+    </main>
 
-*, *::before, *::after {
-    transition: 
-        font-size var(--transition-speed) var(--transition-function),
-        padding var(--transition-speed) var(--transition-function),
-        margin var(--transition-speed) var(--transition-function),
-        height var(--transition-speed) var(--transition-function);
-}
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <div class="sidebar-nav">
+                <div class="nav-item has-submenu">
+                    <a href="/talent" class="nav-link">Talent</a>
+                    <div class="submenu">
+                        <a href="/talent/executive-search">Executive Search</a>
+                        <a href="/talent/interim-management">Interim Management</a>
+                        <a href="/talent/emerging-talent">Emerging Talent</a>
+                        <a href="/talent/research">Research & Market Intelligence</a>
+                        <a href="/talent/diversity">Diversity & Inclusion</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="/capital" class="nav-link">Capital</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/advice" class="nav-link">Advice</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/contact" class="nav-button">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-/* ==========================================================================
-   Header & Navigation
-   ========================================================================== */
-.main-nav {
-    position: fixed;
-    width: 100%;
-    background: transparent;
-    top: 0;
-    transform: translateY(0);
-    transition: transform var(--transition-speed-slow) var(--ease-out-cubic);
-    height: var(--header-height);
-    display: flex;
-    align-items: center;
-    z-index: 1000;
-}
+    <script>
+        // Landing page animations and interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            // Handle nav group expansions
+            const navTriggers = document.querySelectorAll('.nav-trigger');
+            
+            navTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const group = trigger.closest('.nav-group');
+                    const content = group.querySelector('.nav-content');
+                    const isExpanded = group.classList.contains('expanded');
+                    
+                    // Close all other groups
+                    document.querySelectorAll('.nav-group').forEach(g => {
+                        if (g !== group) {
+                            g.classList.remove('expanded');
+                            g.querySelector('.nav-content').style.maxHeight = '0px';
+                        }
+                    });
+                    
+                    // Toggle current group
+                    group.classList.toggle('expanded');
+                    content.style.maxHeight = isExpanded ? '0px' : ${content.scrollHeight}px;
+                });
+            });
+        });
 
-.nav-hidden {
-    transform: translateY(-100%);
-}
+        // Menu toggle functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const body = document.body;
 
-.nav-container {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end;
-    box-sizing: border-box;
-    height: var(--header-height);
-    position: relative;
-}
-
-/* Logo positioning and scaling */
-.logo {
-    position: absolute;
-    top: 3vh;
-    left: 3vh;
-    width: min(300px, 70vw);
-    height: auto;
-    display: flex;
-    align-items: center;
-    z-index: 1000;
-}
-
-.logo img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
-
-/* Menu Toggle Button */
-.menu-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 20px 15px;
-    position: relative;
-    z-index: 1001;
-    margin-right: var(--header-padding);
-}
-
-.menu-toggle span {
-    display: block;
-    width: 30px;
-    height: 1px;
-    background-color: var(--white);
-    margin: 8px 0;
-    transition: all var(--transition-speed) var(--transition-function);
-}
-
-.menu-toggle:hover span {
-    background-color: var(--accent-color);
-}
-
-.menu-toggle.active span {
-    background-color: var(--white);
-}
-
-.menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
-
-.menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
-}
-
-/* ==========================================================================
-   Landing Page Styles
-   ========================================================================== */
-.landing-body .menu-toggle {
-    display: none;
-}
-
-/* Slide-in animations */
-.slide-in-top {
-    animation: slideInTop var(--transition-speed-slow) var(--ease-out-cubic);
-}
-
-.slide-in-bottom {
-    animation: slideInBottom var(--transition-speed-slower) var(--ease-out-cubic) 0.5s both;
-}
-
-@keyframes slideInTop {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
-}
-
-@keyframes slideInBottom {
-    0% { transform: translateY(100%); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-}
-
-/* Landing page layout */
-.landing-page {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    background-color: var(--primary-color);
-    padding: clamp(10vh, 20vh, 25vh) 0 var(--space-xxl) 0;
-    margin: 0;
-    overflow: auto;
-    position: fixed;
-    top: 0;
-    left: 0;
-}
-
-.landing-page:has(.nav-group.expanded) {
-    height: auto;
-    min-height: 100vh;
-    position: relative;
-}
-
-.landing-content {
-    width: 100%;
-    transition: transform var(--transition-speed) var(--transition-function);
-}
-
-.landing-menu {
-    width: 100%;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 var(--content-padding);
-}
-
-/* Navigation Groups */
-.primary-nav {
-    margin-bottom: var(--space-xl);
-}
-
-.nav-group {
-    margin-bottom: var(--space-md);
-    transition: all var(--transition-speed) var(--transition-function);
-}
-
-.nav-trigger {
-    background: none;
-    border: none;
-    padding: 0;
-    font-size: var(--font-size-xxl);
-    font-weight: 700;
-    color: var(--white);
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
-    transition: color var(--transition-speed) var(--transition-function);
-}
-
-.nav-trigger:hover,
-.nav-trigger.active {
-    color: var(--accent-color);
-}
-
-/* Submenu content */
-.nav-content {
-    max-height: 0;
-    overflow: hidden;
-    margin-left: clamp(1rem, 3vw, 2rem);
-    opacity: 0;
-    transform: translateY(-1vh);
-    transition: all var(--transition-speed) var(--transition-function);
-}
-
-.nav-group.expanded .nav-content {
-    max-height: min(60vh, 800px);
-    opacity: 1;
-    transform: translateY(0);
-    margin-bottom: var(--space-lg);
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.nav-group.expanded .nav-content::-webkit-scrollbar {
-    display: none;
-}
-
-.nav-content a {
-    display: block;
-    color: var(--white);
-    text-decoration: none;
-    font-size: var(--font-size-lg);
-    padding: var(--space-sm) 0;
-    transition: 
-        color var(--transition-speed) var(--transition-function),
-        transform var(--transition-speed) var(--transition-function);
-}
-
-.nav-content a:hover {
-    color: var(--accent-color);
-    transform: translateX(0.5vw);
-}
-
-/* Secondary Navigation */
-.secondary-nav {
-    margin-top: var(--space-xl);
-    transition: 
-        transform var(--transition-speed) var(--transition-function),
-        margin var(--transition-speed) var(--transition-function);
-}
-
-.secondary-nav a {
-    display: block;
-    color: var(--white);
-    text-decoration: none;
-    font-size: var(--font-size-sm);
-    font-weight: 700;
-    padding: var(--space-sm) 0;
-    transition: 
-        color var(--transition-speed) var(--transition-function),
-        transform var(--transition-speed) var(--transition-function);
-}
-
-.secondary-nav a:hover {
-    color: var(--accent-color);
-    transform: translateX(0.5vw);
-}
-
-.nav-group.expanded ~ .secondary-nav {
-    margin-top: var(--space-xxl);
-}
-
-/* ==========================================================================
-   Responsive Adjustments
-   ========================================================================== */
-@media (max-aspect-ratio: 1/1) {
-    :root {
-        --font-size-xxl: clamp(1.8rem, 8vmin, 3rem);
-        --font-size-xl: clamp(1.6rem, 6vmin, 2.5rem);
-        --font-size-lg: clamp(0.9rem, 3vmin, 1.1rem);
-    }
-
-    .landing-page {
-        padding-top: clamp(8vh, 15vh, 20vh);
-    }
-
-    .nav-group.expanded .nav-content {
-        max-height: min(50vh, 600px);
-    }
-}
-
-@media (min-aspect-ratio: 2/1) {
-    :root {
-        --font-size-xxl: clamp(2rem, 5vmin, 3rem);
-        --space-xxl: clamp(3rem, 8vh, 6rem);
-    }
-
-    .nav-group.expanded .nav-content {
-        max-height: min(40vh, 500px);
-    }
-}
-
-@media (max-height: 600px) {
-    :root {
-        --space-xxl: clamp(2rem, 6vh, 4rem);
-        --space-xl: clamp(1.5rem, 4vh, 2.5rem);
-        --space-lg: clamp(1rem, 3vh, 1.5rem);
-    }
-
-    .landing-page {
-        padding-top: clamp(5vh, 10vh, 15vh);
-    }
-
-    .nav-group.expanded .nav-content {
-        max-height: min(45vh, 400px);
-    }
-}
-
-/* Touch device optimizations */
-@media (hover: none) {
-    .nav-content a:hover,
-    .secondary-nav a:hover {
-        transform: none;
-    }
-}
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        });
+    </script>
+</body>
+</html>
