@@ -126,12 +126,11 @@ body.menu-open {
     background: none;
     border: none;
     cursor: pointer;
-    padding: clamp(15px, 2vh, 20px) clamp(10px, 1.5vw, 15px);
+    padding: 20px 15px;
     position: relative;
     z-index: 1001;
-    margin-right: calc(var(--header-padding) * 0.5);
+    margin-right: var(--header-padding);
 }
-
 .menu-toggle span {
     display: block;
     width: clamp(25px, 3vw, 30px);
