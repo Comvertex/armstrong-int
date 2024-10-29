@@ -60,7 +60,7 @@ body {
     align-items: center;
     z-index: 1000;
     background-color: transparent;
-    transform: translateY(0);
+    transform: translateY(-100%);
     will-change: transform, background-color;
     transition: 
         transform var(--transition-speed-slow) var(--ease-out-cubic),
@@ -68,8 +68,7 @@ body {
 }
 
 .main-nav.loaded {
-    background-color: var(--primary-color);
-    transition: background-color var(--transition-speed-slower) var(--ease-out-cubic);
+    transform: translateY(0);
 }
 
 .main-nav.scrolled {
@@ -100,6 +99,12 @@ body {
     display: flex;
     align-items: center;
     z-index: 1000;
+    opacity: 0;
+    transition: opacity var(--transition-speed-slower) var(--ease-out-cubic);
+}
+
+.logo.fade-in {
+    opacity: 1;
 }
 
 .logo img {
