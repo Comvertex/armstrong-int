@@ -42,8 +42,8 @@ html, body {
 /* Logo */
 .logo {
     position: fixed;
-    top: 3vh;
-    left: 3vh;
+    top: 2vh;
+    left: 2vh;
     width: min(300px, 70vw);
     z-index: 1000;
     display: flex;
