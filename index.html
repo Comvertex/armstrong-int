@@ -75,6 +75,11 @@
             const mainNav = document.querySelector('.main-nav');
             let lastScrollTop = 0;
 
+            // Add loaded class after a brief delay
+            setTimeout(() => {
+                mainNav.classList.add('loaded');
+            }, 100);
+
             navTriggers.forEach(trigger => {
                 trigger.addEventListener('click', function() {
                     const navGroup = this.parentElement;
@@ -94,10 +99,18 @@
                 });
             });
 
-            // Hide header on scroll down, show on scroll up
+            // Enhanced scroll handling
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 
+                // Handle header background
+                if (scrollTop > 0) {
+                    mainNav.classList.add('scrolled');
+                } else {
+                    mainNav.classList.remove('scrolled');
+                }
+                
+                // Handle header hide/show
                 if (scrollTop > lastScrollTop && scrollTop > 100) {
                     mainNav.classList.add('nav-hidden');
                 } else {
