@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Root Variables
+   Root Variables - Shared across all pages
    ========================================================================== */
 :root {
     --primary-color: #000028;
@@ -13,7 +13,7 @@
 }
 
 /* ==========================================================================
-   Reset & Base Styles
+   Reset & Base Styles - Shared across all pages
    ========================================================================== */
 html {
     scroll-behavior: smooth;
@@ -39,7 +39,7 @@ body.menu-open {
 }
 
 /* ==========================================================================
-   Header & Navigation
+   Header & Navigation - Shared but with landing page overrides
    ========================================================================== */
 .main-nav {
     position: fixed;
@@ -85,7 +85,7 @@ body.menu-open {
     object-fit: contain;
 }
 
-/* Menu Toggle Button */
+/* Menu Toggle Button - Hidden on landing page */
 .menu-toggle {
     background: none;
     border: none;
@@ -132,7 +132,7 @@ body.menu-open {
 }
 
 /* ==========================================================================
-   Sidebar Navigation
+   Sidebar Navigation - Only for About page
    ========================================================================== */
 .sidebar {
     position: fixed;
@@ -211,9 +211,93 @@ body.menu-open {
 }
 
 /* ==========================================================================
-   Landing Page Styles
+   Landing Page Specific Styles - Only affects landing page
    ========================================================================== */
-/* Slide-in animations */
+.landing-page {
+    height: calc(100vh - var(--header-height));
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.landing-menu {
+    width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 4rem;
+}
+
+.primary-nav {
+    margin-bottom: 2.5rem;
+}
+
+.nav-group {
+    margin-bottom: 0.75rem;
+}
+
+.nav-trigger {
+    background: none;
+    border: none;
+    padding: 0.2rem 0;
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--white);
+    cursor: pointer;
+    transition: color var(--transition-speed) ease;
+    text-align: left;
+    width: 100%;
+    line-height: 1.1;
+}
+
+.nav-trigger:hover,
+.nav-trigger.active {
+    color: var(--accent-color);
+}
+
+.nav-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all var(--transition-speed) ease-out;
+    margin-left: 2rem;
+    line-height: 1.2;
+}
+
+.nav-content a {
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.25rem 0;
+    transition: color var(--transition-speed) ease;
+}
+
+.nav-content a:hover {
+    color: var(--accent-color);
+}
+
+.secondary-nav {
+    margin-top: 1.5rem;
+}
+
+.secondary-nav a {
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.25rem 0;
+    transition: color var(--transition-speed) ease;
+    line-height: 1.2;
+}
+
+.secondary-nav a:hover {
+    color: var(--accent-color);
+}
+
+/* Landing Page Animations */
 .slide-in-top {
     animation: slideInTop 0.6s ease-out;
 }
@@ -232,96 +316,87 @@ body.menu-open {
     to { transform: translateY(0); }
 }
 
-.landing-page {
-    height: calc(100vh - var(--header-height));
-    width: 100%;
+/* ==========================================================================
+   About Page Specific Styles - Only affects about page
+   ========================================================================== */
+.about-hero {
+    min-height: calc(100vh - var(--header-height));
     display: flex;
-    align-items: flex-start;
-    background-color: var(--primary-color);
-    padding: 0;
-    margin: 0;
-    overflow-y: auto;
+    align-items: center;
+    color: var(--white);
+    margin-top: 0;
 }
 
-.landing-menu {
-    width: 100%;
+.about-hero h1 {
+    font-size: 7.5rem;
+    line-height: 1;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    display: block;
+}
+
+.hero-subtitle {
+    font-size: 4.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--white);
+    margin-top: 1rem;
+}
+
+.about-history,
+.about-approach {
+    background-color: var(--white);
+    padding: 8rem 0;
+}
+
+.about-stats,
+.about-relationships {
+    background-color: var(--primary-color);
+    padding: 8rem 0;
+    color: var(--white);
+}
+
+.section-content {
+    width: 90%;
     max-width: 2000px;
     margin: 0 auto;
-    padding: 2rem 4rem;
+    padding: 0 4rem;
 }
 
-.primary-nav {
+.about-history h2,
+.about-approach h2,
+.about-stats h2,
+.about-relationships h2 {
+    font-size: 4rem;
+    color: var(--accent-color);
     margin-bottom: 2rem;
+    font-weight: 700;
 }
 
-.nav-group {
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.stat-item h3 {
+    font-size: 3.5rem;
+    color: var(--accent-color);
     margin-bottom: 0.5rem;
 }
 
-.nav-trigger {
-    background: none;
-    border: none;
-    padding: 0;
-    font-size: 5rem;
-    font-weight: 700;
-    color: var(--white);
-    cursor: pointer;
-    transition: color var(--transition-speed) ease;
-    text-align: left;
-    width: 100%;
-}
-
-.nav-trigger:hover,
-.nav-trigger.active {
-    color: var(--accent-color);
-}
-
-.nav-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    margin-left: 2rem;
-}
-
-.nav-content a {
-    display: block;
-    color: var(--white);
-    text-decoration: none;
+.stat-item p {
     font-size: 1.2rem;
-    padding: 0.3rem 0;
-    transition: color var(--transition-speed) ease;
-}
-
-.nav-content a:hover {
-    color: var(--accent-color);
-}
-
-.secondary-nav {
-    margin-top: 2rem;
-}
-
-.secondary-nav a {
-    display: block;
     color: var(--white);
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 0.3rem 0;
-    transition: color var(--transition-speed) ease;
-}
-
-.secondary-nav a:hover {
-    color: var(--accent-color);
 }
 
 /* ==========================================================================
-   About Page Styles
+   Media Queries - Page specific breakpoints clearly marked
    ========================================================================== */
-/* ... (keeping all existing About page styles unchanged) ... */
-
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
-/* Desktop Hover States */
+/* Desktop Hover States - About Page Only */
 @media (min-width: 769px) {
     .nav-item.has-submenu:hover .submenu {
         opacity: 1;
@@ -335,34 +410,35 @@ body.menu-open {
     }
 }
 
-/* Large Screens */
+/* Large Screens - Shared */
 @media (max-width: 1600px) {
     .section-content {
         max-width: 1400px;
     }
 }
 
-/* Tablet & Mobile */
+/* Tablet & Mobile - Page specific styles separated */
 @media (max-width: 768px) {
-    /* Header Adjustments */
+    /* Header Adjustments - Shared */
     .logo {
         height: 28px;
     }
 
     /* Landing Page Mobile Styles */
     .landing-page {
+        align-items: flex-start;
         height: auto;
         min-height: calc(100vh - var(--header-height));
-        padding: 1rem 0;
+        padding: 1.5rem 0;
     }
 
     .landing-menu {
-        padding: 0.5rem 2rem;
+        padding: 0 2rem;
     }
 
     .nav-trigger {
-        font-size: 3rem;
-        padding: 0.3rem 0;
+        font-size: 2.75rem;
+        padding: 0.15rem 0;
     }
 
     .nav-content {
@@ -370,8 +446,8 @@ body.menu-open {
     }
 
     .nav-content a {
-        font-size: 1.1rem;
-        padding: 0.2rem 0;
+        font-size: 1rem;
+        padding: 0.15rem 0;
     }
 
     .nav-group {
@@ -380,30 +456,83 @@ body.menu-open {
 
     .secondary-nav {
         margin-top: 1rem;
-        padding-bottom: 1rem;
     }
 
     .secondary-nav a {
-        padding: 0.2rem 0;
+        font-size: 0.9rem;
+        padding: 0.15rem 0;
     }
 
     /* About Page Mobile Styles */
-    /* ... (keeping all existing About page mobile styles unchanged) ... */
+    .about-hero h1 {
+        font-size: 5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 3.5rem;
+    }
+
+    .section-content {
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem;
+    }
+
+    .about-history h2,
+    .about-approach h2,
+    .about-stats h2,
+    .about-relationships h2 {
+        font-size: 3.2rem;
+    }
+
+    .sidebar-nav {
+        margin-left: 2rem;
+    }
 }
 
-/* Small Mobile Devices */
+/* Small Mobile Devices - Page specific styles separated */
 @media (max-width: 480px) {
+    /* Landing Page Small Mobile Styles */
     .landing-page {
-        padding: 0.5rem 0;
+        padding: 1rem 0;
     }
 
     .nav-trigger {
         font-size: 2.5rem;
+        padding: 0.1rem 0;
     }
 
     .nav-content a {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        padding: 0.1rem 0;
     }
 
-    /* ... (keeping all existing small mobile styles unchanged) ... */
+    .secondary-nav a {
+        font-size: 0.85rem;
+        padding: 0.1rem 0;
+    }
+
+    /* About Page Small Mobile Styles */
+    .about-hero h1 {
+        font-size: 4rem;
+    }
+
+    .hero-subtitle {
+        font-size: 2.8rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-history h2,
+    .about-approach h2,
+    .about-stats h2,
+    .about-relationships h2 {
+        font-size: 2.5rem;
+    }
 }
