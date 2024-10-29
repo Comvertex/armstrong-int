@@ -52,7 +52,7 @@ body.menu-open {
 .nav-container {
     width: 100%;
     max-width: none;
-    margin: 0 auto;
+    margin: 0;
     padding: 0 var(--header-padding);
     display: flex;
     justify-content: space-between;
@@ -243,6 +243,12 @@ main {
     padding: 0 4rem;
 }
 
+/* Section Styles */
+.dark {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
 .services-grid {
     width: 100%;
     display: grid;
@@ -310,7 +316,6 @@ main {
 
 .stats-section {
     padding: 8rem 0;
-    background-color: var(--white);
 }
 
 .stats-grid {
@@ -318,7 +323,7 @@ main {
     max-width: 2000px;
     margin: 4rem auto 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     text-align: center;
 }
@@ -332,6 +337,27 @@ main {
 .stat-item p {
     color: var(--secondary-color);
     font-size: 1.2rem;
+}
+
+/* New Quote Section */
+.quote-section {
+    padding: 8rem 0;
+    background-color: var(--accent-color);
+    color: var(--white);
+    text-align: center;
+}
+
+.quote-section blockquote {
+    font-size: 2.5rem;
+    line-height: 1.4;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 2rem;
+}
+
+.approach-section {
+    padding: 8rem 0;
+    background-color: var(--white);
 }
 
 .contact-section {
@@ -363,6 +389,7 @@ main {
     border-color: var(--accent-color);
 }
 
+/* Media Queries */
 @media (min-width: 769px) {
     .nav-item.has-submenu:hover .submenu {
         opacity: 1;
@@ -418,6 +445,10 @@ main {
         gap: 4rem;
     }
 
+    .quote-section blockquote {
+        font-size: 1.8rem;
+    }
+
     .section-title {
         font-size: 2rem;
     }
@@ -432,5 +463,11 @@ main {
 
     .menu-toggle {
         right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
 }
