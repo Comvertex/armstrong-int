@@ -188,7 +188,7 @@ body.menu-open {
     background: none;
     border: none;
     padding: 0;
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 700;
     color: var(--white);
     cursor: pointer;
@@ -245,8 +245,96 @@ body.menu-open {
 }
 
 /* ==========================================================================
+   Sidebar Navigation
+   ========================================================================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--primary-color);
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+    z-index: 999;
+    overflow-y: auto;
+    padding-top: var(--header-height);
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar-content {
+    width: 90%;
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 2rem 4rem;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    margin-left: 10%;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 2rem;
+    transition: color var(--transition-speed) ease;
+    display: block;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+.submenu {
+    padding-left: 1rem;
+    margin-top: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-speed) ease;
+}
+
+.nav-item.has-submenu:hover .submenu {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+}
+
+.submenu a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color var(--transition-speed) ease;
+}
+
+.submenu a:hover {
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
    About Page Styles
    ========================================================================== */
+.about-page {
+    background-color: var(--primary-color);
+}
+
 .about-hero {
     min-height: calc(100vh - var(--header-height));
     display: flex;
