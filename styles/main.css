@@ -67,6 +67,7 @@ body.menu-open {
     align-items: center;
     height: 35px;
     position: relative;
+    margin-left: calc(var(--header-padding) * 0.5);
 }
 
 .logo img {
@@ -83,7 +84,7 @@ body.menu-open {
     padding: 15px;
     position: relative;
     z-index: 1001;
-    margin-right: -15px;
+    margin-right: calc(var(--header-padding) * 0.5);
 }
 
 .menu-toggle span {
