@@ -6,14 +6,13 @@
     <title>Armstrong International</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
-<body class="landing-body">
+<body>
     <nav class="main-nav">
         <div class="nav-container">
             <a href="/" class="logo">
                 <img src="assets/images/logo.png" alt="Armstrong International">
             </a>
             
-            <!-- Only show menu toggle on non-landing pages -->
             <button class="menu-toggle" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -22,35 +21,6 @@
         </div>
     </nav>
 
-    <main class="landing-page">
-        <div class="landing-content">
-            <div class="landing-title">
-                <h1>
-                    <span class="accent-text">Talent</span>
-                    <span>Capital</span>
-                    <span>Advice</span>
-                </h1>
-            </div>
-            
-            <div class="landing-links">
-                <div class="landing-item">
-                    <a href="/talent">Banks</a>
-                    <a href="/talent">Hedge Funds</a>
-                    <a href="/talent">Private Equity</a>
-                    <a href="/talent">Credit</a>
-                    <a href="/talent">Family Offices</a>
-                    <a href="/talent">Real Estate</a>
-                    <a href="/talent">Venture Capital</a>
-                    <a href="/talent">Digital & Data</a>
-                    <a href="/talent">Infrastructure & Energy Transition</a>
-                    <a href="/talent">Portfolio Companies</a>
-                    <a href="/talent">Wealth Management</a>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- We can conditionally hide this on the landing page -->
     <div class="sidebar">
         <div class="sidebar-content">
             <div class="sidebar-nav">
@@ -77,38 +47,66 @@
         </div>
     </div>
 
+    <main>
+        <section class="hero fade-in">
+            <div class="hero-content">
+                <h1>Connecting<br>Excellence</h1>
+                <div class="subtitle">Financial Services Recruitment Specialists</div>
+            </div>
+        </section>
+
+        <section class="services-section">
+            <div class="services-grid">
+                <div class="service-item">
+                    <h2>Talent</h2>
+                    <p>Executive Search & Selection</p>
+                    <a href="/talent" class="cta-button">Learn More</a>
+                </div>
+
+                <div class="service-item">
+                    <h2>Capital</h2>
+                    <p>Investment & Advisory</p>
+                    <a href="/capital" class="cta-button">Learn More</a>
+                </div>
+
+                <div class="service-item">
+                    <h2>Advice</h2>
+                    <p>Strategic Consulting</p>
+                    <a href="/advice" class="cta-button">Learn More</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <script>
-        // Only initialize these scripts on non-landing pages
-        if (!document.body.classList.contains('landing-body')) {
-            let lastScrollTop = 0;
-            const nav = document.querySelector('.main-nav');
+        let lastScrollTop = 0;
+        const nav = document.querySelector('.main-nav');
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            window.addEventListener('scroll', () => {
-                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (scrollTop > lastScrollTop) {
-                    nav.classList.add('nav-hidden');
-                } else {
-                    nav.classList.remove('nav-hidden');
-                }
-                
-                if (scrollTop === 0) {
-                    nav.classList.remove('nav-hidden');
-                }
-                
-                lastScrollTop = scrollTop;
-            });
+            if (scrollTop > lastScrollTop) {
+                nav.classList.add('nav-hidden');
+            } else {
+                nav.classList.remove('nav-hidden');
+            }
+            
+            if (scrollTop === 0) {
+                nav.classList.remove('nav-hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
 
-            const menuToggle = document.querySelector('.menu-toggle');
-            const sidebar = document.querySelector('.sidebar');
-            const body = document.body;
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const body = document.body;
 
-            menuToggle.addEventListener('click', () => {
-                menuToggle.classList.toggle('active');
-                sidebar.classList.toggle('active');
-                body.classList.toggle('menu-open');
-            });
-        }
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        });
     </script>
 </body>
 </html>
