@@ -154,19 +154,19 @@ body.menu-open {
 }
 
 .landing-page {
-    height: calc(100vh - var(--header-height));
+    min-height: calc(100vh - var(--header-height));
+    height: auto;
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     background-color: var(--primary-color);
-    padding: 0;
+    padding: 4rem 0;
     margin: 0;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .landing-content {
     width: 100%;
-    margin-top: 2rem;
 }
 
 .landing-menu {
@@ -182,6 +182,7 @@ body.menu-open {
 
 .nav-group {
     margin-bottom: 0.64rem;
+    transition: all var(--transition-speed) ease;
 }
 
 .nav-trigger {
@@ -209,8 +210,21 @@ body.menu-open {
 .nav-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: all var(--transition-speed) ease;
     margin-left: 2rem;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.nav-group.expanded .nav-content {
+    max-height: 1000px;
+    opacity: 1;
+    transform: translateY(0);
+    margin-bottom: 2rem;
+}
+
+.nav-group.expanded + .nav-group {
+    transition-delay: 0.1s;
 }
 
 .nav-content a {
@@ -228,6 +242,7 @@ body.menu-open {
 
 .secondary-nav {
     margin-top: 2.56rem;
+    transition: transform var(--transition-speed) ease;
 }
 
 .secondary-nav a {
@@ -412,32 +427,12 @@ body.menu-open {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
-/* Desktop Hover States */
-@media (min-width: 769px) {
-    .nav-item.has-submenu:hover .submenu {
-        opacity: 1;
-        visibility: visible;
-        height: auto;
-    }
-
-    .nav-item.has-submenu:hover .submenu a {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Tablet & Mobile */
 @media (max-width: 768px) {
-    /* Header Adjustments */
     .logo {
         height: 28px;
     }
 
-    /* Landing Page Mobile Styles */
     .landing-page {
-        height: auto;
-        min-height: calc(100vh - var(--header-height));
-        overflow-y: auto;
         padding: 2rem 0;
     }
 
@@ -463,7 +458,6 @@ body.menu-open {
         padding-bottom: 1.6rem;
     }
 
-    /* About Page Mobile Styles */
     .about-hero h1 {
         font-size: 5rem;
     }
@@ -494,7 +488,6 @@ body.menu-open {
     }
 }
 
-/* Small Mobile Devices */
 @media (max-width: 480px) {
     .landing-page {
         padding: 1rem 0;
