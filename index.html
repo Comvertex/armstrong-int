@@ -109,7 +109,49 @@
     </main>
 
     <script>
-        // Your existing JavaScript remains the same
+        // Scroll Hide/Show Navigation
+        let lastScrollTop = 0;
+        const nav = document.querySelector('.main-nav');
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop) {
+                // Scrolling DOWN
+                nav.classList.add('nav-hidden');
+            } else {
+                // Scrolling UP
+                nav.classList.remove('nav-hidden');
+            }
+            
+            // If we're at the top of the page, always show the nav
+            if (scrollTop === 0) {
+                nav.classList.remove('nav-hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Sidebar Navigation
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const hasSubmenu = document.querySelector('.has-submenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Handle submenu on mobile
+        if (window.innerWidth <= 768) {
+            hasSubmenu.addEventListener('click', (e) => {
+                if (e.target.classList.contains('nav-link')) {
+                    e.preventDefault();
+                    hasSubmenu.classList.toggle('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>
