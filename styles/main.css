@@ -271,11 +271,8 @@ body.menu-open {
     width: 100%;
 }
 
-.nav-trigger:hover {
-    color: var(--accent-color);
-}
-
-.nav-trigger .accent-text {
+.nav-trigger:hover,
+.nav-trigger.active {
     color: var(--accent-color);
 }
 
@@ -291,7 +288,7 @@ body.menu-open {
     color: var(--white);
     text-decoration: none;
     font-size: 1.2rem;
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
     transition: color var(--transition-speed) ease;
 }
 
@@ -308,7 +305,7 @@ body.menu-open {
     color: var(--white);
     text-decoration: none;
     font-size: 1rem;
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
     transition: color var(--transition-speed) ease;
 }
 
