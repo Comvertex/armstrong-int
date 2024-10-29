@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Armstrong International</title>
-    <link rel="stylesheet" href="/styles/main.css">
+    <title>Armstrong International</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
     <nav class="main-nav">
         <div class="nav-container">
             <a href="/" class="logo">
-                <img src="logo.png" alt="Armstrong International">
+                <img src="assets/images/logo.png" alt="Armstrong International">
             </a>
-            <button class="menu-toggle">
+            
+            <button class="menu-toggle" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -20,10 +21,11 @@
         </div>
     </nav>
 
+    <!-- Sidebar Navigation -->
     <div class="sidebar">
         <div class="sidebar-content">
-            <nav class="sidebar-nav">
-                 <div class="nav-item has-submenu">
+            <div class="sidebar-nav">
+                <div class="nav-item has-submenu">
                     <a href="/talent" class="nav-link">Talent</a>
                     <div class="submenu">
                         <a href="/talent/executive-search">Executive Search</a>
@@ -42,107 +44,72 @@
                 <div class="nav-item">
                     <a href="/contact" class="nav-button">Contact</a>
                 </div>
-            </nav>
+            </div>
         </div>
     </div>
 
     <main>
-        <section class="about-hero">
-            <div class="section-content">
-                <h1>Talent is the New Currency—Invest Wisely.</h1>
-                <p class="subtitle">Leading financial services recruitment and advisory firm.</p>
+        <!-- Hero Section -->
+        <section class="hero fade-in">
+            <div class="hero-content">
+                <h1>Connecting<br>Excellence</h1>
+                <p class="subtitle">Financial Services Recruitment Specialists</p>
             </div>
         </section>
 
-        <section class="history-section">
-            <div class="section-content">
-                <h2 class="section-title">Our History</h2>
-                <p class="section-text">Armstrong International was founded in 1989, initially serving as a key talent provider for Goldman Sachs during its European expansion. Today, we continue to work with the world's leading financial institutions, connecting exceptional talent with outstanding opportunities.</p>
-                
+        <!-- Services Grid -->
+        <section class="services-grid">
+            <div class="service-item">
+                <h2>Talent</h2>
+                <p>Executive Search & Selection</p>
+                <a href="/talent" class="service-link">Learn More</a>
+            </div>
+            <div class="service-item">
+                <h2>Capital</h2>
+                <p>Investment & Advisory</p>
+                <a href="/capital" class="service-link">Learn More</a>
+            </div>
+            <div class="service-item">
+                <h2>Advice</h2>
+                <p>Strategic Consulting</p>
+                <a href="/advice" class="service-link">Learn More</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="container">
+                <h2 class="section-title">About Us</h2>
+                <p class="section-text">Leading financial services recruitment and advisory firm.</p>
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <h3>1800+</h3>
-                        <p>Placements</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>35</h3>
+                        <h3>20+</h3>
                         <p>Years of Experience</p>
                     </div>
                     <div class="stat-item">
-                        <h3>60+</h3>
-                        <p>Global Clients</p>
+                        <h3>Global</h3>
+                        <p>Network</p>
                     </div>
                     <div class="stat-item">
-                        <h3>16</h3>
-                        <p>Countries</p>
+                        <h3>Expertise</h3>
+                        <p>Financial Services</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="client-section">
-            <div class="section-content">
-                <h2 class="section-title">Client-Centric Approach</h2>
-                <p class="section-text">At Armstrong International, we believe that talent isn't just a resource—it's the heartbeat of profitability and returns. Our deep understanding of the financial services sector, combined with our extensive network, enables us to connect the right talent with the right opportunities.</p>
-                <p class="section-text">We work closely with our clients to understand their unique needs and culture, ensuring that every placement we make contributes to their long-term success.</p>
-            </div>
-        </section>
-
-        <section class="quote-section">
-            <div class="section-content">
-                <blockquote>
-                    "We believe that by putting our clients first, we can build a strong foundation of trust and reliability, which is essential for long-term success in the financial services industry."
-                </blockquote>
-            </div>
-        </section>
-
-        <section class="team-section">
-            <div class="section-content">
-                <h2 class="section-title">Leadership Team</h2>
-                <p class="section-text">Our leadership team brings decades of experience in financial services recruitment and advisory services.</p>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <img src="path-to-image.jpg" alt="Team Member">
-                        <h3>Team Member Name</h3>
-                        <p>Managing Partner</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="path-to-image.jpg" alt="Team Member">
-                        <h3>Team Member Name</h3>
-                        <p>Managing Partner</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="path-to-image.jpg" alt="Team Member">
-                        <h3>Team Member Name</h3>
-                        <p>Managing Partner</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="path-to-image.jpg" alt="Team Member">
-                        <h3>Team Member Name</h3>
-                        <p>Managing Partner</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="path-to-image.jpg" alt="Team Member">
-                        <h3>Team Member Name</h3>
-                        <p>Managing Partner</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="path-to-image.jpg" alt="Team Member">
-                        <h3>Team Member Name</h3>
-                        <p>Managing Partner</p>
-                    </div>
-                    <!-- Add more team members as needed -->
-                </div>
-            </div>
-        </section>
-
+        <!-- Contact Section -->
         <section class="contact-section">
-            <div class="section-content">
+            <div class="container">
                 <h2 class="section-title">Get in Touch</h2>
                 <p class="section-text">Discover how Armstrong International can help you achieve your goals.</p>
                 <a href="/contact" class="cta-button">Contact Us</a>
             </div>
         </section>
     </main>
+
+    <script>
+        // Your existing JavaScript remains the same
+    </script>
 </body>
 </html>
