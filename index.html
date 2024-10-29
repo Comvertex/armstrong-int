@@ -7,72 +7,61 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body class="landing-body">
-    <nav class="main-nav slide-in-top">
+    <nav class="main-nav">
         <div class="nav-container">
             <a href="/" class="logo">
-                <img src="assets/images/logo.png" alt="Armstrong International">
+                <img src="images/logo" alt="Armstrong International">
             </a>
-            
-            <button class="menu-toggle" aria-label="Menu">
+            <button class="menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
     </nav>
-
-    <main class="landing-page slide-in-bottom">
+    
+    <main class="landing-page">
         <div class="landing-content">
             <div class="landing-menu">
-                <!-- Primary Navigation -->
                 <div class="primary-nav">
                     <div class="nav-group">
-                        <button class="nav-trigger" data-section="talent">
-                            <span class="accent-text">Talent</span>
-                        </button>
-                        <div class="nav-content" id="talent-content">
-                            <a href="/talent/banks">Banks</a>
-                            <a href="/talent/hedge-funds">Hedge Funds</a>
-                            <a href="/talent/private-equity">Private Equity</a>
-                            <a href="/talent/credit">Credit</a>
-                            <a href="/talent/family-offices">Family Offices</a>
-                            <a href="/talent/real-estate">Real Estate</a>
-                            <a href="/talent/venture-capital">Venture Capital</a>
-                            <a href="/talent/digital-data">Digital & Data</a>
-                            <a href="/talent/infrastructure">Infrastructure & Energy Transition</a>
-                            <a href="/talent/portfolio">Portfolio Companies</a>
-                            <a href="/talent/wealth">Wealth Management</a>
+                        <button class="nav-trigger">Talent</button>
+                        <div class="nav-content">
+                            <a href="#">Banks</a>
+                            <a href="#">Hedge Funds</a>
+                            <a href="#">Private Equity</a>
+                            <a href="#">Credit</a>
+                            <a href="#">Family Offices</a>
+                            <a href="#">Real Estate</a>
+                            <a href="#">Venture Capital</a>
+                            <a href="#">Digital & Data</a>
+                            <a href="#">Infrastructure & Energy Transition</a>
+                            <a href="#">Portfolio Companies</a>
+                            <a href="#">Wealth Management</a>
                         </div>
                     </div>
-
                     <div class="nav-group">
-                        <button class="nav-trigger" data-section="capital">
-                            <span>Capital</span>
-                        </button>
-                        <div class="nav-content" id="capital-content">
-                            <a href="/capital/funds">Funds</a>
-                            <a href="/capital/companies">Companies</a>
-                            <a href="/capital/managers">Managers</a>
+                        <button class="nav-trigger">Capital</button>
+                        <div class="nav-content">
+                            <a href="#">Investment Banking</a>
+                            <a href="#">Private Capital</a>
+                            <a href="#">Real Estate</a>
+                            <a href="#">Infrastructure</a>
                         </div>
                     </div>
-
                     <div class="nav-group">
-                        <button class="nav-trigger" data-section="advice">
-                            <span>Advice</span>
-                        </button>
-                        <div class="nav-content" id="advice-content">
-                            <a href="/advice/digitisation">Digitisation</a>
-                            <a href="/advice/decarbonisation">Decarbonisation</a>
-                            <a href="/advice/ai">AI</a>
-                            <a href="/advice/talent">Talent</a>
-                            <a href="/advice/geo-politics">Geo Politics</a>
+                        <button class="nav-trigger">Advice</button>
+                        <div class="nav-content">
+                            <a href="#">Digitisation</a>
+                            <a href="#">Decarbonisation</a>
+                            <a href="#">AI</a>
+                            <a href="#">Talent</a>
+                            <a href="#">Geo Politics</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Secondary Navigation -->
                 <div class="secondary-nav">
-                    <a href="/about-us">About</a>
+                    <a href="/about">About</a>
                     <a href="/contact">Contact</a>
                     <a href="/careers">Careers</a>
                 </div>
@@ -80,68 +69,52 @@
         </div>
     </main>
 
-    <div class="sidebar">
-        <div class="sidebar-content">
-            <div class="sidebar-nav">
-                <div class="nav-item has-submenu">
-                    <a href="/talent" class="nav-link">Talent</a>
-                    <div class="submenu">
-                        <a href="/talent/executive-search">Executive Search</a>
-                        <a href="/talent/interim-management">Interim Management</a>
-                        <a href="/talent/emerging-talent">Emerging Talent</a>
-                        <a href="/talent/research">Research & Market Intelligence</a>
-                        <a href="/talent/diversity">Diversity & Inclusion</a>
-                    </div>
-                </div>
-                <div class="nav-item">
-                    <a href="/capital" class="nav-link">Capital</a>
-                </div>
-                <div class="nav-item">
-                    <a href="/advice" class="nav-link">Advice</a>
-                </div>
-                <div class="nav-item">
-                    <a href="/contact" class="nav-button">Contact</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Landing page animations and interactions
-        document.addEventListener('DOMContentLoaded', () => {
-            // Handle nav group expansions
+        document.addEventListener('DOMContentLoaded', function() {
             const navTriggers = document.querySelectorAll('.nav-trigger');
-            
+            const mainNav = document.querySelector('.main-nav');
+            let lastScrollTop = 0;
+            const scrollThreshold = 100;
+
             navTriggers.forEach(trigger => {
-                trigger.addEventListener('click', () => {
-                    const group = trigger.closest('.nav-group');
-                    const content = group.querySelector('.nav-content');
-                    const isExpanded = group.classList.contains('expanded');
+                trigger.addEventListener('click', function() {
+                    const navGroup = this.parentElement;
+                    const wasExpanded = navGroup.classList.contains('expanded');
                     
-                    // Close all other groups
-                    document.querySelectorAll('.nav-group').forEach(g => {
-                        if (g !== group) {
-                            g.classList.remove('expanded');
-                            g.querySelector('.nav-content').style.maxHeight = '0px';
-                        }
+                    // Close all nav groups
+                    document.querySelectorAll('.nav-group').forEach(group => {
+                        group.classList.remove('expanded');
+                        group.querySelector('.nav-trigger').classList.remove('active');
                     });
-                    
-                    // Toggle current group
-                    group.classList.toggle('expanded');
-                    content.style.maxHeight = isExpanded ? '0px' : `${content.scrollHeight}px`;
+
+                    // If the clicked group wasn't expanded, expand it
+                    if (!wasExpanded) {
+                        navGroup.classList.add('expanded');
+                        this.classList.add('active');
+                    }
                 });
             });
-        });
 
-        // Menu toggle functionality
-        const menuToggle = document.querySelector('.menu-toggle');
-        const sidebar = document.querySelector('.sidebar');
-        const body = document.body;
-
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            sidebar.classList.toggle('active');
-            body.classList.toggle('menu-open');
+            // Handle scroll events for header
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Add/remove background color
+                if (scrollTop > scrollThreshold) {
+                    mainNav.classList.add('scrolled');
+                } else {
+                    mainNav.classList.remove('scrolled');
+                }
+                
+                // Hide/show header
+                if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                    mainNav.classList.add('nav-hidden');
+                } else {
+                    mainNav.classList.remove('nav-hidden');
+                }
+                
+                lastScrollTop = scrollTop;
+            });
         });
     </script>
 </body>
