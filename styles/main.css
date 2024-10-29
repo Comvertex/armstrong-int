@@ -1,47 +1,30 @@
-/* ==========================================================================
-   Root Variables & Modern Scaling
-   ========================================================================== */
 :root {
-    /* Colors */
     --primary-color: #000028;
     --secondary-color: #666666;
     --accent-color: #e53745;
     --background-color: #e5e7eb;
     --white: #ffffff;
-    
-    /* Animation & Transitions */
     --transition-speed: 0.3s;
     --transition-speed-slow: 0.8s;
     --transition-speed-slower: 1.2s;
     --transition-function: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
-    
-    /* Dynamic Spacing */
     --header-height: clamp(65px, 8vh, 85px);
     --header-padding: clamp(1rem, 2vw, 1.5rem);
-    
-    /* Responsive Typography */
     --font-size-xxl: clamp(2rem, 6vmin, 3.5rem);
     --font-size-xl: clamp(1.8rem, 5vmin, 3rem);
     --font-size-lg: clamp(0.9rem, 2vmin, 1.2rem);
     --font-size-md: clamp(1rem, 2vmin, 1.2rem);
     --font-size-sm: clamp(0.875rem, 1.5vmin, 1rem);
-    
-    /* Dynamic Spacing */
     --space-xxl: clamp(4rem, 10vh, 8rem);
     --space-xl: clamp(2rem, 6vh, 4rem);
     --space-lg: clamp(1.5rem, 4vh, 2.5rem);
     --space-md: clamp(1rem, 2vh, 1.5rem);
     --space-sm: clamp(0.2rem, 1vh, 0.4rem);
-    
-    /* Container Widths */
     --max-width: min(2000px, 90vw);
     --content-padding: clamp(2rem, 4vw, 4rem);
 }
 
-/* ==========================================================================
-   Modern Reset & Base Styles
-   ========================================================================== */
 html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
@@ -68,9 +51,14 @@ body {
     overflow: auto;
 }
 
-/* ==========================================================================
-   Header & Navigation
-   ========================================================================== */
+.main-nav.scrolled {
+    background-color: var(--primary-color);
+}
+
+.main-nav.nav-hidden {
+    transform: translateY(-100%);
+}
+
 .main-nav {
     position: fixed;
     width: 100%;
@@ -87,14 +75,6 @@ body {
         background-color var(--transition-speed) var(--ease-out-cubic);
 }
 
-.main-nav.scrolled {
-    background-color: var(--primary-color);
-}
-
-.main-nav.nav-hidden {
-    transform: translateY(-100%);
-}
-
 .nav-container {
     width: 100%;
     margin: 0;
@@ -106,7 +86,6 @@ body {
     position: relative;
 }
 
-/* Logo positioning and scaling */
 .logo {
     position: absolute;
     top: 3vh;
@@ -125,7 +104,6 @@ body {
     object-fit: contain;
 }
 
-/* Menu Toggle Button */
 .menu-toggle {
     background: none;
     border: none;
@@ -165,9 +143,6 @@ body {
     transform: rotate(-45deg) translate(8px, -8px);
 }
 
-/* ==========================================================================
-   Landing Page Styles
-   ========================================================================== */
 .landing-body .menu-toggle {
     display: none;
 }
@@ -212,7 +187,6 @@ body {
     padding: 0 var(--content-padding);
 }
 
-/* Navigation Groups */
 .primary-nav {
     margin-bottom: var(--space-xl);
 }
@@ -240,7 +214,6 @@ body {
     color: var(--accent-color);
 }
 
-/* Submenu content */
 .nav-content {
     max-height: 0;
     overflow: hidden;
@@ -280,7 +253,6 @@ body {
     transform: translateX(0.5vw);
 }
 
-/* Secondary Navigation */
 .secondary-nav {
     margin-top: var(--space-xl);
     transition: 
@@ -309,9 +281,6 @@ body {
     margin-top: var(--space-xxl);
 }
 
-/* ==========================================================================
-   Responsive Adjustments
-   ========================================================================== */
 @media (max-aspect-ratio: 1/1) {
     :root {
         --font-size-xxl: clamp(1.8rem, 8vmin, 3rem);
