@@ -15,35 +15,6 @@ html, body {
     width: 100vw;
 }
 
-.landing-page {
-    background-color: var(--primary-color);
-}
-
-.main-nav.scrolled {
-    background-color: var(--primary-color) !important;
-    transition: background-color 0.3s ease;
-}
-
-.nav-container {
-    padding-right: 3vh !important;
-}
-
-/* Update these hover states */
-.nav-trigger:hover,
-.nav-content a:hover,
-.secondary-nav a:hover {
-    color: var(--accent-color) !important;
-}
-/* Base Styles */
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    height: 100%;
-    background-color: var(--white) !important;
-    width: 100vw;
-}
-
 /* Header */
 .main-nav {
     position: fixed;
@@ -70,7 +41,7 @@ html, body {
     justify-content: flex-end;
     align-items: center;
     height: 100%;
-    padding-right: 3vh;
+    padding-right: 3vh !important;
 }
 
 /* Logo */
