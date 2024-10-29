@@ -20,7 +20,7 @@
         </div>
     </nav>
 
-    <main class="landing-page slide-in-bottom">
+    <main class="landing-page">
         <div class="landing-content">
             <div class="landing-menu">
                 <div class="primary-nav">
@@ -75,11 +75,6 @@
             const mainNav = document.querySelector('.main-nav');
             let lastScrollTop = 0;
 
-            // Add loaded class after a brief delay
-            setTimeout(() => {
-                mainNav.classList.add('loaded');
-            }, 100);
-
             navTriggers.forEach(trigger => {
                 trigger.addEventListener('click', function() {
                     const navGroup = this.parentElement;
@@ -99,28 +94,19 @@
                 });
             });
 
-            // Enhanced scroll handling
-window.addEventListener('scroll', function() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Handle header background - more immediate
-    requestAnimationFrame(() => {
-        if (scrollTop > 10) {
-            mainNav.classList.add('scrolled');
-        } else {
-            mainNav.classList.remove('scrolled');
-        }
-        
-        // Handle header hide/show - with threshold
-        if (scrollTop > lastScrollTop && scrollTop > 50) {
-            mainNav.classList.add('nav-hidden');
-        } else {
-            mainNav.classList.remove('nav-hidden');
-        }
-        
-        lastScrollTop = scrollTop;
-    });
-});
+            // Hide header on scroll down, show on scroll up
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    mainNav.classList.add('nav-hidden');
+                } else {
+                    mainNav.classList.remove('nav-hidden');
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+        });
     </script>
 </body>
 </html>
