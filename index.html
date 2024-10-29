@@ -77,8 +77,10 @@
             let isScrolling;
 
             // Initial load transitions
-            mainNav.classList.add('slide-in');
-            logo.classList.add('fade-in');
+            setTimeout(() => {
+                mainNav.classList.add('slide-in');
+                logo.classList.add('fade-in');
+            }, 100); // Delay to ensure CSS transitions are applied
 
             window.addEventListener('scroll', function() {
                 window.clearTimeout(isScrolling);
