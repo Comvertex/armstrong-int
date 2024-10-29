@@ -166,8 +166,9 @@ body.menu-open {
 /* ==========================================================================
    Landing Page Styles with Dynamic Scaling
    ========================================================================== */
-.landing-body .menu-toggle {
-    display: none;
+.landing-body {
+    overflow: hidden;
+    height: 100vh;
 }
 
 /* Slide-in animations */
@@ -190,16 +191,28 @@ body.menu-open {
 }
 
 .landing-page {
-    min-height: calc(100vh - var(--header-height));
-    height: auto;
+    height: 100vh;
     width: 100%;
     display: flex;
     align-items: flex-start;
     background-color: var(--primary-color);
     padding: clamp(10vh, 20vh, 25vh) 0 var(--space-xxl) 0;
     margin: 0;
-    overflow-y: hidden;
-    transition: transform var(--transition-speed-slower) var(--ease-out-cubic);
+    overflow: auto; /* Changed to auto to allow scrolling when needed */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* Enable scrolling when any menu is expanded */
+.landing-body:has(.nav-group.expanded) {
+    overflow: auto;
+}
+
+.landing-page:has(.nav-group.expanded) {
+    height: auto;
+    min-height: 100vh;
+    position: relative; /* Allow natural document flow when scrolling needed */
 }
 
 /* ==========================================================================
