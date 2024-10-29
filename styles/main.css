@@ -12,7 +12,8 @@
     --transition-speed-slow: 0.8s;
     --transition-speed-slower: 1.2s;
     --transition-function: cubic-bezier(0.4, 0, 0.2, 1);
-    --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+    --ease-out-cubic: cubic-bezier(0.16, 1, 0.3, 1);
+    --landing-delay: 0.5s;
     
     --header-height: clamp(65px, 8vh, 85px);
     --header-padding: clamp(1rem, 2vw, 1.5rem);
@@ -33,6 +34,9 @@
     --content-padding: clamp(2rem, 4vw, 4rem);
 }
 
+/* ==========================================================================
+   Base Styles & Reset
+   ========================================================================== */
 html, body {
     margin: 0;
     padding: 0;
@@ -53,7 +57,7 @@ html, body {
         height var(--transition-speed) var(--transition-function);
 }
 
-/* Global scrollbar styling - only for main page */
+/* Scrollbar Styling */
 .landing-page {
     scrollbar-width: thin;
     scrollbar-color: var(--accent-color) transparent;
@@ -72,20 +76,24 @@ html, body {
     border-radius: 3px;
 }
 
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
 .main-nav {
     position: fixed;
     width: 100%;
     background-color: transparent;
     top: 0;
-    transform: translateY(0);
-    transition: 
-        transform var(--transition-speed-slow) var(--ease-out-cubic),
-        background-color var(--transition-speed) var(--ease-out-cubic);
     height: var(--header-height);
     display: flex;
     align-items: center;
     z-index: 1000;
-    will-change: transform, background-color;
+    animation: headerSlideDown 0.8s var(--ease-out-cubic);
+    opacity: 0;
+    animation-fill-mode: forwards;
+    transition: 
+        transform var(--transition-speed-slow) var(--ease-out-cubic),
+        background-color var(--transition-speed) var(--ease-out-cubic);
 }
 
 .main-nav.scrolled {
@@ -107,13 +115,11 @@ html, body {
 }
 
 .logo {
-    position: absolute;
+    position: fixed;
     top: 3vh;
     left: 3vh;
     width: min(300px, 70vw);
     height: auto;
-    display: flex;
-    align-items: center;
     z-index: 1000;
 }
 
@@ -121,7 +127,6 @@ html, body {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: contain;
 }
 
 .menu-toggle {
@@ -147,6 +152,9 @@ html, body {
     background-color: var(--accent-color);
 }
 
+/* ==========================================================================
+   Landing Page & Menu Content
+   ========================================================================== */
 .landing-page {
     height: 100vh;
     width: 100%;
@@ -156,14 +164,15 @@ html, body {
     margin: 0;
     overflow-y: auto;
     position: relative;
-    animation: fadeIn var(--transition-speed-slower) var(--ease-out-cubic);
 }
 
 .landing-content {
     width: 100%;
     padding-top: clamp(10vh, 20vh, 25vh);
     padding-bottom: var(--space-xxl);
-    animation: slideInBottom var(--transition-speed-slower) var(--ease-out-cubic) 0.5s both;
+    animation: menuSlideUp 1.2s var(--ease-out-cubic) var(--landing-delay) forwards;
+    opacity: 0;
+    transform: translateY(100px);
 }
 
 .landing-menu {
@@ -197,10 +206,6 @@ html, body {
     color: var(--accent-color);
 }
 
-.nav-trigger.active {
-    color: var(--white);
-}
-
 .nav-group.expanded .nav-trigger {
     color: var(--accent-color);
 }
@@ -215,7 +220,7 @@ html, body {
 }
 
 .nav-group.expanded .nav-content {
-    max-height: calc(100vh - 60vh);
+    max-height: 70vh;
     opacity: 1;
     transform: translateY(0);
     margin-bottom: var(--space-lg);
@@ -233,7 +238,7 @@ html, body {
     color: var(--white);
     text-decoration: none;
     font-size: var(--font-size-lg);
-    padding: var(--space-sm) 0;
+    padding: calc(var(--space-sm) * 0.7) 0;
     transition: 
         color var(--transition-speed) var(--transition-function),
         transform var(--transition-speed) var(--transition-function);
@@ -266,21 +271,34 @@ html, body {
     transform: translateX(0.5vw);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes headerSlideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-@keyframes slideInTop {
-    from { transform: translateY(-100%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+@keyframes menuSlideUp {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-@keyframes slideInBottom {
-    0% { transform: translateY(100%); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-}
-
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
 @media (max-aspect-ratio: 1/1) {
     :root {
         --font-size-xxl: clamp(1.8rem, 8vmin, 3rem);
