@@ -51,14 +51,6 @@ body {
     overflow: auto;
 }
 
-.main-nav.scrolled {
-    background-color: var(--primary-color);
-}
-
-.main-nav.nav-hidden {
-    transform: translateY(-100%);
-}
-
 .main-nav {
     position: fixed;
     width: 100%;
@@ -73,6 +65,16 @@ body {
     transition: 
         transform var(--transition-speed-slow) var(--ease-out-cubic),
         background-color var(--transition-speed) var(--ease-out-cubic);
+}
+
+.main-nav.scrolled {
+    background-color: var(--primary-color);
+    transition: background-color var(--transition-speed) var(--ease-out-cubic);
+}
+
+.main-nav.nav-hidden {
+    transform: translateY(-100%);
+    transition: transform var(--transition-speed-slow) var(--ease-out-cubic);
 }
 
 .nav-container {
