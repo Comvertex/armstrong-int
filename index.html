@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body class="landing-body">
-    <!-- Fixed Header Navigation -->
     <nav class="main-nav">
         <div class="nav-container">
             <a href="/" class="logo">
@@ -21,13 +20,10 @@
         </div>
     </nav>
 
-    <!-- Main Content Area -->
     <main class="landing-page slide-in-bottom">
         <div class="landing-content">
             <div class="landing-menu">
-                <!-- Primary Navigation -->
                 <div class="primary-nav">
-                    <!-- Talent Section -->
                     <div class="nav-group">
                         <button class="nav-trigger">Talent</button>
                         <div class="nav-content">
@@ -44,7 +40,6 @@
                             <a href="#">Wealth Management</a>
                         </div>
                     </div>
-                    <!-- Capital Section -->
                     <div class="nav-group">
                         <button class="nav-trigger">Capital</button>
                         <div class="nav-content">
@@ -54,7 +49,6 @@
                             <a href="#">Infrastructure</a>
                         </div>
                     </div>
-                    <!-- Advice Section -->
                     <div class="nav-group">
                         <button class="nav-trigger">Advice</button>
                         <div class="nav-content">
@@ -66,7 +60,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Secondary Navigation -->
                 <div class="secondary-nav">
                     <a href="/about">About</a>
                     <a href="/contact">Contact</a>
@@ -76,7 +69,6 @@
         </div>
     </main>
 
-    <!-- JavaScript for Interactions -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navTriggers = document.querySelectorAll('.nav-trigger');
@@ -84,20 +76,17 @@
             let lastScrollTop = 0;
             let isScrolling;
 
-            // Handle scroll events with throttling
             window.addEventListener('scroll', function() {
                 window.clearTimeout(isScrolling);
                 
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 
-                // Immediate background change
                 if (scrollTop > 10) {
                     mainNav.classList.add('scrolled');
                 } else {
                     mainNav.classList.remove('scrolled');
                 }
                 
-                // Throttled hide/show
                 isScrolling = setTimeout(function() {
                     if (scrollTop > lastScrollTop && scrollTop > 100) {
                         mainNav.classList.add('nav-hidden');
@@ -105,22 +94,19 @@
                         mainNav.classList.remove('nav-hidden');
                     }
                     lastScrollTop = scrollTop;
-                }, 66); // ~15fps throttle
+                }, 66);
             });
 
-            // Menu trigger handling
             navTriggers.forEach(trigger => {
                 trigger.addEventListener('click', function() {
                     const navGroup = this.parentElement;
                     const wasExpanded = navGroup.classList.contains('expanded');
                     
-                    // Close all nav groups
                     document.querySelectorAll('.nav-group').forEach(group => {
                         group.classList.remove('expanded');
                         group.querySelector('.nav-trigger').classList.remove('active');
                     });
 
-                    // If the clicked group wasn't expanded, expand it
                     if (!wasExpanded) {
                         navGroup.classList.add('expanded');
                         this.classList.add('active');
