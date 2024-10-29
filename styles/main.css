@@ -52,7 +52,7 @@ body.menu-open {
 .nav-container {
     width: 100%;
     max-width: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0 var(--header-padding);
     display: flex;
     justify-content: space-between;
@@ -203,14 +203,12 @@ main {
     color: var(--accent-color);
 }
 
-/* Hero section */
 .hero {
     min-height: calc(100vh - var(--header-height));
     display: flex;
     align-items: center;
     color: var(--white);
     margin-top: 0;
-    background-color: var(--primary-color);
 }
 
 .hero-content {
@@ -220,28 +218,24 @@ main {
     padding: 0 4rem;
 }
 
-/* Page title for About page */
-.page-title {
-    font-size: 7.5rem;
-    line-height: 1;
-    margin-bottom: 2rem;
-    font-weight: 700;
-}
-
-/* Main heading style that works for both pages */
 .hero h1 {
-    font-size: 7.5rem;
-    line-height: 1;
-    margin-bottom: 2rem;
-    font-weight: 700;
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
 }
 
-.hero .subtitle {
-    font-size: 4.5rem;
-    line-height: 1.2;
-    font-weight: 700;
-    color: var(--white);
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--background-color);
 }
+
+.container {
+    width: 90%;
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 0 4rem;
+}
+
 .section-content {
     width: 90%;
     max-width: 2000px;
@@ -249,69 +243,107 @@ main {
     padding: 0 4rem;
 }
 
-/* Section Styles */
-section {
-    padding: 8rem 0;
+.services-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    min-height: 100vh;
 }
 
-.accent-color {
+.service-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    color: var(--white);
+    text-align: center;
+    cursor: pointer;
+}
+
+.service-item h2,
+.service-item p,
+.service-item .service-link {
+    transition: color var(--transition-speed) ease;
+}
+
+.service-item h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-item p {
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.service-link {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.5rem 0;
+}
+
+.service-item:hover h2,
+.service-item:hover p,
+.service-item:hover .service-link {
     color: var(--accent-color);
 }
 
-.dark {
-    background-color: var(--primary-color);
-    color: var(--white);
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: inherit;
+}
+
+.section-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: inherit;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .about-section {
+    padding: 8rem 0;
     background-color: var(--white);
 }
 
-/* Section titles */
-.section-title,
-section h2 {
-    font-size: 4rem;
-    margin-bottom: 2rem;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-/* Title colors */
-.about-section h2,
-.approach-section h2 {
-    color: var(--accent-color);
-}
-
-.dark h2,
-.relationships-section h2 {
-    color: var(--accent-color);
-}
-
-/* Stats section */
 .stats-section {
-    background-color: var(--primary-color);
+    padding: 8rem 0;
+    background-color: var(--white);
 }
 
 .stats-grid {
+    width: 100%;
+    max-width: 2000px;
+    margin: 4rem auto 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     text-align: center;
-    margin-top: 4rem;
 }
 
 .stat-item h3 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: var(--accent-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .stat-item p {
+    color: var(--secondary-color);
     font-size: 1.2rem;
+}
+
+.contact-section {
+    padding: 8rem 0;
+    text-align: center;
     color: var(--white);
 }
 
-/* Buttons */
+.contact-section .section-text {
+    color: var(--background-color);
+}
+
 .nav-button,
 .cta-button {
     display: inline-block;
@@ -331,7 +363,6 @@ section h2 {
     border-color: var(--accent-color);
 }
 
-/* Media Queries */
 @media (min-width: 769px) {
     .nav-item.has-submenu:hover .submenu {
         opacity: 1;
@@ -346,24 +377,20 @@ section h2 {
 }
 
 @media (max-width: 1600px) {
+    .container,
+    .nav-container,
+    .sidebar-content,
+    .hero-content,
     .section-content {
         max-width: 1400px;
     }
 }
 
 @media (max-width: 768px) {
-    .page-title {
-        font-size: 5rem;
-    }
-
-    .hero h1 {
-        font-size: 5rem;
-    }
-
-    .hero .subtitle {
-        font-size: 3.5rem;
-    }
-
+    .container,
+    .nav-container,
+    .sidebar-content,
+    .hero-content,
     .section-content {
         width: 100%;
         padding: 0 2rem;
@@ -373,14 +400,26 @@ section h2 {
         width: 100%;
     }
 
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .service-item {
+        padding: 4rem 2rem;
+    }
+
     .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 4rem;
     }
 
-    .section-title,
-    section h2 {
-        font-size: 3.2rem;
+    .section-title {
+        font-size: 2rem;
     }
 
     .nav-button {
@@ -393,29 +432,5 @@ section h2 {
 
     .menu-toggle {
         right: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .page-title {
-        font-size: 4rem;
-    }
-
-    .hero h1 {
-        font-size: 4rem;
-    }
-    
-    .hero .subtitle {
-        font-size: 2.8rem;
-    }
-}
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title,
-    section h2 {
-        font-size: 2.5rem;
     }
 }
