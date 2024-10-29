@@ -57,7 +57,6 @@ body {
     overflow-x: hidden;
     width: 100%;
     background-color: var(--white);
-    transition: font-size var(--transition-speed) var(--transition-function);
 }
 
 .landing-body {
@@ -70,37 +69,31 @@ body {
     overflow: auto;
 }
 
-*, *::before, *::after {
-    transition: 
-        font-size var(--transition-speed) var(--transition-function),
-        padding var(--transition-speed) var(--transition-function),
-        margin var(--transition-speed) var(--transition-function),
-        height var(--transition-speed) var(--transition-function);
-}
-
 /* ==========================================================================
-   Header & Navigation
+   Header & Navigation - Core Styles
    ========================================================================== */
 .main-nav {
     position: fixed;
     width: 100%;
-    background: transparent;
     top: 0;
     height: var(--header-height);
     display: flex;
     align-items: center;
     z-index: 1000;
+    background-color: transparent;
+    transform: translateY(0);
     transition: 
-        transform 0.6s var(--ease-out-cubic),
+        transform 0.8s var(--ease-out-cubic),
         background-color 0.4s var(--ease-out-cubic);
 }
 
-.nav-hidden {
-    transform: translateY(-100%);
-}
-
+/* Header Scroll States */
 .main-nav.scrolled {
     background-color: var(--primary-color);
+}
+
+.main-nav.nav-hidden {
+    transform: translateY(-100%);
 }
 
 .nav-container {
@@ -181,17 +174,8 @@ body {
 }
 
 /* Slide-in animations */
-.slide-in-top {
-    animation: slideInTop var(--transition-speed-slow) var(--ease-out-cubic);
-}
-
 .slide-in-bottom {
     animation: slideInBottom var(--transition-speed-slower) var(--ease-out-cubic) 0.5s both;
-}
-
-@keyframes slideInTop {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
 }
 
 @keyframes slideInBottom {
@@ -222,7 +206,6 @@ body {
 
 .landing-content {
     width: 100%;
-    transition: transform var(--transition-speed) var(--transition-function);
 }
 
 .landing-menu {
