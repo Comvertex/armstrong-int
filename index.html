@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ... existing head content ... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armstrong International</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body class="landing-body">
     <nav class="main-nav slide-in-top">
-        <!-- ... existing nav content ... -->
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="assets/images/logo.png" alt="Armstrong International">
+            </a>
+            
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </nav>
 
     <main class="landing-page slide-in-bottom">
@@ -67,9 +80,30 @@
         </div>
     </main>
 
-    <!-- Keep existing sidebar for other pages -->
     <div class="sidebar">
-        <!-- ... existing sidebar content ... -->
+        <div class="sidebar-content">
+            <div class="sidebar-nav">
+                <div class="nav-item has-submenu">
+                    <a href="/talent" class="nav-link">Talent</a>
+                    <div class="submenu">
+                        <a href="/talent/executive-search">Executive Search</a>
+                        <a href="/talent/interim-management">Interim Management</a>
+                        <a href="/talent/emerging-talent">Emerging Talent</a>
+                        <a href="/talent/research">Research & Market Intelligence</a>
+                        <a href="/talent/diversity">Diversity & Inclusion</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="/capital" class="nav-link">Capital</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/advice" class="nav-link">Advice</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/contact" class="nav-button">Contact</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -99,8 +133,16 @@
             });
         });
 
-        // Keep existing menu toggle and scroll handlers
-        // ... existing script content ...
+        // Menu toggle functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const body = document.body;
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        });
     </script>
 </body>
 </html>
