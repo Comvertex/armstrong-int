@@ -21,11 +21,11 @@
     --header-padding: clamp(1rem, 2vw, 1.5rem);
     
     /* Responsive Typography */
-    --font-size-xxl: clamp(2rem, 6vmin, 3.5rem);     /* Main menu items */
-    --font-size-xl: clamp(1.8rem, 5vmin, 3rem);      /* Section headers */
-    --font-size-lg: clamp(0.9rem, 2vmin, 1.2rem);    /* Sub menu items */
-    --font-size-md: clamp(1rem, 2vmin, 1.2rem);      /* Body text */
-    --font-size-sm: clamp(0.875rem, 1.5vmin, 1rem);  /* Secondary nav */
+    --font-size-xxl: clamp(2rem, 6vmin, 3.5rem);
+    --font-size-xl: clamp(1.8rem, 5vmin, 3rem);
+    --font-size-lg: clamp(0.9rem, 2vmin, 1.2rem);
+    --font-size-md: clamp(1rem, 2vmin, 1.2rem);
+    --font-size-sm: clamp(0.875rem, 1.5vmin, 1rem);
     
     /* Dynamic Spacing */
     --space-xxl: clamp(4rem, 10vh, 8rem);
@@ -33,10 +33,6 @@
     --space-lg: clamp(1.5rem, 4vh, 2.5rem);
     --space-md: clamp(1rem, 2vh, 1.5rem);
     --space-sm: clamp(0.2rem, 1vh, 0.4rem);
-    
-    /* Container Widths */
-    --max-width: min(2000px, 90vw);
-    --content-padding: clamp(2rem, 4vw, 4rem);
 }
 
 /* ==========================================================================
@@ -57,21 +53,11 @@ body {
     overflow-x: hidden;
     width: 100%;
     background-color: var(--white);
-    transition: font-size var(--transition-speed) var(--transition-function);
 }
 
-*, *::before, *::after {
-    transition: 
-        font-size var(--transition-speed) var(--transition-function),
-        padding var(--transition-speed) var(--transition-function),
-        margin var(--transition-speed) var(--transition-function),
-        height var(--transition-speed) var(--transition-function);
-}
-
-body.menu-open {
-    position: fixed;
-    width: 100%;
-    height: 100%;
+.landing-body {
+    overflow: hidden;
+    height: 100vh;
 }
 
 /* ==========================================================================
@@ -83,14 +69,20 @@ body.menu-open {
     background: transparent;
     top: 0;
     transform: translateY(0);
-    transition: transform var(--transition-speed-slow) var(--ease-out-cubic);
+    transition: 
+        transform var(--transition-speed-slow) var(--ease-out-cubic),
+        background-color var(--transition-speed) var(--transition-function);
     height: var(--header-height);
     display: flex;
     align-items: center;
     z-index: 1000;
 }
 
-.nav-hidden {
+.main-nav.scrolled {
+    background-color: var(--primary-color);
+}
+
+.main-nav.nav-hidden {
     transform: translateY(-100%);
 }
 
@@ -123,7 +115,7 @@ body.menu-open {
     object-fit: contain;
 }
 
-/* Menu Toggle Button with 1.5 ratio */
+/* Menu Toggle Button */
 .menu-toggle {
     background: none;
     border: none;
@@ -133,7 +125,7 @@ body.menu-open {
     right: 3vh;
     padding: 0;
     z-index: 1001;
-    aspect-ratio: 1.5; /* Changed to 1.5 */
+    aspect-ratio: 1.5;
     height: clamp(28px, 4vh, 35px);
     display: flex;
     flex-direction: column;
@@ -141,13 +133,9 @@ body.menu-open {
     align-items: center;
 }
 
-.menu-toggle:hover span {
-    background-color: var(--accent-color);
-}
-
 .menu-toggle span {
     display: block;
-    width: 67%; /* Approximately 1/1.5 of height */
+    width: 67%;
     height: 1px;
     background-color: var(--white);
     transition: all var(--transition-speed) var(--transition-function);
@@ -169,7 +157,7 @@ body.menu-open {
 }
 
 .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px); /* Adjusted for wider ratio */
+    transform: rotate(45deg) translate(7px, 7px);
 }
 
 .menu-toggle.active span:nth-child(2) {
@@ -177,36 +165,12 @@ body.menu-open {
 }
 
 .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px); /* Adjusted for wider ratio */
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 /* ==========================================================================
-   Landing Page Styles with Dynamic Scaling
+   Landing Page Styles
    ========================================================================== */
-.landing-body {
-    overflow: hidden;
-    height: 100vh;
-}
-
-/* Slide-in animations */
-.slide-in-top {
-    animation: slideInTop var(--transition-speed-slow) var(--ease-out-cubic);
-}
-
-.slide-in-bottom {
-    animation: slideInBottom var(--transition-speed-slower) var(--ease-out-cubic) 0.5s both;
-}
-
-@keyframes slideInTop {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
-}
-
-@keyframes slideInBottom {
-    0% { transform: translateY(100%); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-}
-
 .landing-page {
     height: 100vh;
     width: 100%;
@@ -215,7 +179,7 @@ body.menu-open {
     background-color: var(--primary-color);
     padding: clamp(10vh, 20vh, 25vh) 0 var(--space-xxl) 0;
     margin: 0;
-    overflow: auto; /* Changed to auto to allow scrolling when needed */
+    overflow: auto;
     position: fixed;
     top: 0;
     left: 0;
@@ -229,12 +193,9 @@ body.menu-open {
 .landing-page:has(.nav-group.expanded) {
     height: auto;
     min-height: 100vh;
-    position: relative; /* Allow natural document flow when scrolling needed */
+    position: relative;
 }
 
-/* ==========================================================================
-   Menu Content Styles
-   ========================================================================== */
 .landing-content {
     width: 100%;
     transition: transform var(--transition-speed) var(--transition-function);
@@ -313,6 +274,9 @@ body.menu-open {
     transform: translateX(0.5vw);
 }
 
+/* ==========================================================================
+   Secondary Navigation & Animations
+   ========================================================================== */
 .secondary-nav {
     margin-top: var(--space-xl);
     transition: 
@@ -341,28 +305,24 @@ body.menu-open {
     margin-top: var(--space-xxl);
 }
 
-/* ==========================================================================
-   Sidebar Navigation
-   ========================================================================== */
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--primary-color);
-    transform: translateX(100%);
-    transition: transform 0.5s var(--transition-function);
-    z-index: 999;
-    overflow-y: auto;
-    padding-top: var(--header-height);
+/* Slide-in animations */
+.slide-in-top {
+    animation: slideInTop var(--transition-speed-slow) var(--ease-out-cubic);
 }
 
-.sidebar.active {
-    transform: translateX(0);
+.slide-in-bottom {
+    animation: slideInBottom var(--transition-speed-slower) var(--ease-out-cubic) 0.5s both;
 }
 
-/* ... (rest of sidebar styles remain the same) ... */
+@keyframes slideInTop {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes slideInBottom {
+    0% { transform: translateY(100%); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
 
 /* ==========================================================================
    Responsive Adjustments
