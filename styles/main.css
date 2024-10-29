@@ -1,3 +1,6 @@
+/* ==========================================================================
+   Root Variables
+   ========================================================================== */
 :root {
     --primary-color: #000028;
     --secondary-color: #666666;
@@ -9,7 +12,9 @@
     --header-padding: 1.5rem;
 }
 
-/* Base Styles */
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
 html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
@@ -33,7 +38,9 @@ body.menu-open {
     height: 100%;
 }
 
-/* Navigation */
+/* ==========================================================================
+   Navigation & Header
+   ========================================================================== */
 .main-nav {
     position: fixed;
     width: 100%;
@@ -119,15 +126,9 @@ body.menu-open {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Main Content */
-main {
-    padding-top: var(--header-height);
-    position: relative;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* Sidebar */
+/* ==========================================================================
+   Sidebar & Menu
+   ========================================================================== */
 .sidebar {
     position: fixed;
     top: 0;
@@ -204,67 +205,74 @@ main {
     color: var(--accent-color);
 }
 
-/* Homepage Specific Styles */
-.hero {
-    min-height: calc(100vh - var(--header-height));
-    display: flex;
-    align-items: center;
-    color: var(--white);
-    margin-top: 0;
+/* ==========================================================================
+   Landing Page Specific Styles
+   ========================================================================== */
+.landing-body .menu-toggle,
+.landing-body .sidebar {
+    display: none;
 }
 
-.hero-content {
-    width: 90%;
+.landing-page {
+    height: calc(100vh - var(--header-height));
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.landing-content {
+    width: 100%;
     max-width: 2000px;
     margin: 0 auto;
     padding: 0 4rem;
+    display: flex;
+    justify-content: space-between;
 }
 
-.hero h1 {
-    font-size: 4.5rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-}
-
-.cta-button {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    margin-top: 2rem;
-    background-color: transparent;
-    color: var(--white);
-    text-decoration: none;
-    border: 1px solid var(--white);
-    border-radius: 4px;
-    transition: all var(--transition-speed) ease;
-}
-
-.cta-button:hover {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    min-height: 100vh;
-}
-
-.service-item {
+.landing-title h1 {
+    font-size: 5rem;
+    line-height: 1.2;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 4rem;
-    text-align: center;
+    gap: 0.5rem;
+}
+
+.landing-title h1 span {
     color: var(--white);
+    display: block;
 }
 
-.service-item h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+.landing-title h1 span.accent-text {
+    color: var(--accent-color);
 }
 
-/* About Page Specific Styles */
+.landing-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.landing-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color var(--transition-speed) ease;
+    display: block;
+    padding: 0.5rem 0;
+}
+
+.landing-links a:hover {
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
+   About Page Specific Styles
+   ========================================================================== */
 .about-hero {
     min-height: calc(100vh - var(--header-height));
     display: flex;
@@ -311,13 +319,7 @@ main {
 }
 
 .about-history h2,
-.about-approach h2 {
-    font-size: 4rem;
-    color: var(--accent-color);
-    margin-bottom: 2rem;
-    font-weight: 700;
-}
-
+.about-approach h2,
 .about-stats h2,
 .about-relationships h2 {
     font-size: 4rem;
@@ -345,7 +347,10 @@ main {
     color: var(--white);
 }
 
-/* Media Queries */
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+/* Desktop Hover States */
 @media (min-width: 769px) {
     .nav-item.has-submenu:hover .submenu {
         opacity: 1;
@@ -359,13 +364,31 @@ main {
     }
 }
 
+/* Large Screens */
 @media (max-width: 1600px) {
     .section-content {
         max-width: 1400px;
     }
 }
 
+/* Tablet & Mobile */
 @media (max-width: 768px) {
+    /* Landing Page Mobile Styles */
+    .landing-content {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 2rem;
+    }
+
+    .landing-title h1 {
+        font-size: 3.5rem;
+    }
+
+    .landing-links {
+        width: 100%;
+    }
+
+    /* About Page Mobile Styles */
     .about-hero h1 {
         font-size: 5rem;
     }
@@ -404,6 +427,7 @@ main {
     }
 }
 
+/* Small Mobile Devices */
 @media (max-width: 480px) {
     .about-hero h1 {
         font-size: 4rem;
