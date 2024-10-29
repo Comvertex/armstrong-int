@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <!-- Keep your existing nav structure -->
     <nav class="main-nav">
         <div class="nav-container">
             <a href="/" class="logo">
@@ -22,7 +21,6 @@
         </div>
     </nav>
 
-    <!-- Keep your existing sidebar -->
     <div class="sidebar">
         <div class="sidebar-content">
             <div class="sidebar-nav">
@@ -50,23 +48,21 @@
     </div>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero fade-in">
+        <section class="about-hero fade-in">
             <div class="hero-content">
-                <h1>Talent is the New Currency—<br>Invest Wisely.</h1>
+                <h1>About us</h1>
+                <div class="hero-subtitle">Talent is the New Currency—<br>Invest Wisely.</div>
             </div>
         </section>
 
-        <!-- History Section -->
-        <section class="about-section">
+        <section class="about-history">
             <div class="section-content">
-                <h2 class="section-title">Our History</h2>
-                <p class="section-text">Armstrong International was founded in 1989, initially serving as a key talent provider for Goldman Sachs during its European expansion. In its first decade, Armstrong International successfully placed over 150 individuals at Goldman Sachs, many of whom ascended to partner roles within the organisation.</p>
+                <h2>History</h2>
+                <p>Armstrong International was founded in 1989, initially serving as a key talent provider for Goldman Sachs during its European expansion. In its first decade, Armstrong International successfully placed over 150 individuals at Goldman Sachs, many of whom ascended to partner roles within the organisation. This early success laid a strong foundation for Armstrong International, enabling it to expand its client base to include prestigious institutions such as S.G. Warburg and Bank of America Merrill Lynch. Over the years, Armstrong International has broadened its reach across the financial services spectrum, consistently delivering exceptional talent to these universal banks.</p>
             </div>
         </section>
 
-        <!-- Stats Section -->
-        <section class="stats-section dark">
+        <section class="about-stats dark">
             <div class="section-content">
                 <div class="stats-grid">
                     <div class="stat-item">
@@ -89,36 +85,50 @@
             </div>
         </section>
 
-        <!-- Approach Section -->
-        <section class="approach-section">
+        <section class="about-approach">
             <div class="section-content">
-                <h2 class="section-title">Our Approach</h2>
-                <p class="section-text">Our Digital team connects the talent which propels profitability through data and digital technologies with private equity funds and the companies they own. From data foundations to optimising post-production AI tools our network comprises world-leading, highly commercial talent for the digital transformation of established businesses.</p>
+                <h2>Client-centric approach</h2>
+                <p>At Armstrong International, we believe that talent isn't just a resource—it's the heartbeat of profitability and returns. We work exclusively with companies that know talent is the key to success. This focus has earned us a stellar reputation for excellence in talent acquisition and management. Our strength lies in our laser-focused specialization, allowing us to forge close career management relationships with top professionals across different markets. This approach not only sharpens our ability to attract premier talent but also ensures our clients receive insights tailored to their unique needs and challenges. Over the past thirty years, Armstrong International has grown into a partnership built on the dedication of homegrown partners who have devoted much of their careers to the firm. These partners have been instrumental in building businesses for investment companies, utilising their deep industry knowledge and vast networks. This long-term dedication cultivates a culture of stability and continuity, ensuring that our clients enjoy consistently high-quality service.</p>
             </div>
         </section>
 
-        <!-- Quote Section -->
-        <section class="quote-section">
+        <section class="about-relationships dark">
             <div class="section-content">
-                <blockquote>
-                    "We have extensive experience using data, digital technologies, and AI to conceive, design, and drive business growth. Our team understands that success requires managing both cultural and technological change."
-                </blockquote>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact-section">
-            <div class="section-content">
-                <h2 class="section-title">Get in Touch</h2>
-                <p class="section-text">Discover how Armstrong International can help you achieve your goals.</p>
-                <a href="/contact" class="cta-button">Contact Us</a>
+                <h2>We build lasting and meaningful relationships</h2>
+                <p>At Armstrong International, we've cracked the code to attracting top talent for our clients. It's a combination of thorough selection, personalized career management, and truly understanding what makes each client stand out. Our strong ties with elite investors, capital providers, and financial advisors give the professionals we place a leg up with unmatched opportunities. This network isn't just luck; it's our commitment to excellence—proven time and again by the results we deliver. We cherish our long-standing relationships with the world's leading financial minds. Built on trust and mutual respect, these partnerships are all about achieving remarkable outcomes together. Our knack for consistently delivering top-notch talent has earned us a reputation as a go-to ally in the financial sector. Looking ahead, Armstrong International is staying true to our core values of specialization, putting clients first, and excelling in talent management. We're set to keep our legacy alive, guiding clients through the twists and turns of the financial world to hit their strategic targets.</p>
             </div>
         </section>
     </main>
 
-    <!-- Keep your existing script -->
     <script>
-        // Your existing JavaScript for navigation and scroll behavior
+        let lastScrollTop = 0;
+        const nav = document.querySelector('.main-nav');
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop) {
+                nav.classList.add('nav-hidden');
+            } else {
+                nav.classList.remove('nav-hidden');
+            }
+            
+            if (scrollTop === 0) {
+                nav.classList.remove('nav-hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const body = document.body;
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        });
     </script>
 </body>
-</html> 
+</html>
