@@ -60,18 +60,22 @@ body {
     transition: font-size var(--transition-speed) var(--transition-function);
 }
 
+.landing-body {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Enable scrolling when any menu is expanded */
+.landing-body:has(.nav-group.expanded) {
+    overflow: auto;
+}
+
 *, *::before, *::after {
     transition: 
         font-size var(--transition-speed) var(--transition-function),
         padding var(--transition-speed) var(--transition-function),
         margin var(--transition-speed) var(--transition-function),
         height var(--transition-speed) var(--transition-function);
-}
-
-body.menu-open {
-    position: fixed;
-    width: 100%;
-    height: 100%;
 }
 
 /* ==========================================================================
@@ -105,6 +109,7 @@ body.menu-open {
     position: relative;
 }
 
+/* Logo positioning and scaling */
 .logo {
     position: absolute;
     top: 3vh;
@@ -164,7 +169,7 @@ body.menu-open {
 }
 
 /* ==========================================================================
-   Landing Page Styles with Dynamic Scaling
+   Landing Page Styles
    ========================================================================== */
 .landing-body .menu-toggle {
     display: none;
@@ -189,22 +194,27 @@ body.menu-open {
     100% { transform: translateY(0); opacity: 1; }
 }
 
+/* Landing page layout */
 .landing-page {
-    min-height: calc(100vh - var(--header-height));
-    height: auto;
+    height: 100vh;
     width: 100%;
     display: flex;
     align-items: flex-start;
     background-color: var(--primary-color);
     padding: clamp(10vh, 20vh, 25vh) 0 var(--space-xxl) 0;
     margin: 0;
-    overflow-y: hidden;
-    transition: transform var(--transition-speed-slower) var(--ease-out-cubic);
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
-/* ==========================================================================
-   Menu Content Styles
-   ========================================================================== */
+.landing-page:has(.nav-group.expanded) {
+    height: auto;
+    min-height: 100vh;
+    position: relative;
+}
+
 .landing-content {
     width: 100%;
     transition: transform var(--transition-speed) var(--transition-function);
@@ -217,6 +227,7 @@ body.menu-open {
     padding: 0 var(--content-padding);
 }
 
+/* Navigation Groups */
 .primary-nav {
     margin-bottom: var(--space-xl);
 }
@@ -244,6 +255,7 @@ body.menu-open {
     color: var(--accent-color);
 }
 
+/* Submenu content */
 .nav-content {
     max-height: 0;
     overflow: hidden;
@@ -283,6 +295,7 @@ body.menu-open {
     transform: translateX(0.5vw);
 }
 
+/* Secondary Navigation */
 .secondary-nav {
     margin-top: var(--space-xl);
     transition: 
@@ -310,29 +323,6 @@ body.menu-open {
 .nav-group.expanded ~ .secondary-nav {
     margin-top: var(--space-xxl);
 }
-
-/* ==========================================================================
-   Sidebar Navigation
-   ========================================================================== */
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--primary-color);
-    transform: translateX(100%);
-    transition: transform 0.5s var(--transition-function);
-    z-index: 999;
-    overflow-y: auto;
-    padding-top: var(--header-height);
-}
-
-.sidebar.active {
-    transform: translateX(0);
-}
-
-/* ... (rest of sidebar styles remain the same) ... */
 
 /* ==========================================================================
    Responsive Adjustments
@@ -385,11 +375,5 @@ body.menu-open {
     .nav-content a:hover,
     .secondary-nav a:hover {
         transform: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .stats-grid {
-        grid-template-columns: 1fr;
     }
 }
