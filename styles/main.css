@@ -210,6 +210,7 @@ main {
     align-items: center;
     color: var(--white);
     margin-top: 0;
+    background-color: var(--primary-color);
 }
 
 .hero-content {
@@ -229,12 +230,18 @@ main {
 
 /* Main heading style that works for both pages */
 .hero h1 {
+    font-size: 7.5rem;
+    line-height: 1;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.hero .subtitle {
     font-size: 4.5rem;
     line-height: 1.2;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    color: var(--white);
 }
-
 .section-content {
     width: 90%;
     max-width: 2000px;
@@ -245,6 +252,10 @@ main {
 /* Section Styles */
 section {
     padding: 8rem 0;
+}
+
+.accent-color {
+    color: var(--accent-color);
 }
 
 .dark {
@@ -346,6 +357,10 @@ section h2 {
     }
 
     .hero h1 {
+        font-size: 5rem;
+    }
+
+    .hero .subtitle {
         font-size: 3.5rem;
     }
 
@@ -387,8 +402,13 @@ section h2 {
     }
 
     .hero h1 {
+        font-size: 4rem;
+    }
+    
+    .hero .subtitle {
         font-size: 2.8rem;
     }
+}
 
     .stats-grid {
         grid-template-columns: 1fr;
