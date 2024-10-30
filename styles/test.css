@@ -10,6 +10,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: var(--background-color);
     overflow: hidden; /* Prevent scrolling during transitions */
+    height: 100vh; /* Ensure body takes full viewport height */
+    width: 100vw; /* Ensure body takes full viewport width */
 }
 
 .main-nav {
@@ -41,12 +43,14 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    position: absolute; /* Position it absolutely to overlay the body */
+    top: 100vh; /* Start below the viewport */
 }
 
 .homepage-content {
     color: #fff;
     text-align: center;
-    transform: translateY(100vh); /* Start off-screen */
+    transform: translateY(0); /* No initial transform needed */
 }
 
 .menu-toggle {
