@@ -70,10 +70,10 @@ body {
     background-color: transparent;
     transform: translateY(-100%); /* Start off-screen */
     will-change: transform, background-color;
-    transition: 
+    transition:
         transform var(--transition-speed-slow) var(--ease-out-cubic),
         background-color var(--transition-speed) var(--ease-out-cubic);
-    animation: slideIn var(--transition-speed-slower) var(--ease-out-cubic) 0.5s forwards; /* Add this line */
+    animation: slideIn var(--transition-speed-slower) var(--ease-out-cubic) 0.5s forwards; /* Slide-in animation */
 }
 
 @keyframes slideIn {
@@ -101,7 +101,7 @@ body {
     display: flex;
     align-items: center;
     z-index: 1000;
-    animation: fadeIn var(--transition-speed-slower) var(--ease-out-cubic) 0.2s both; /* Add this line */
+    animation: fadeIn var(--transition-speed-slower) var(--ease-out-cubic) 0.5s forwards; /* Fade-in animation */
 }
 
 @keyframes fadeIn {
@@ -255,7 +255,7 @@ body {
     text-decoration: none;
     font-size: var(--font-size-lg);
     padding: var(--space-sm) 0;
-    transition: 
+    transition:
         color var(--transition-speed) var(--transition-function),
         transform var(--transition-speed) var(--transition-function);
 }
@@ -267,7 +267,7 @@ body {
 
 .secondary-nav {
     margin-top: var(--space-xl);
-    transition: 
+    transition:
         transform var(--transition-speed) var(--transition-function),
         margin var(--transition-speed) var(--transition-function);
 }
@@ -279,7 +279,7 @@ body {
     font-size: var(--font-size-sm);
     font-weight: 700;
     padding: var(--space-sm) 0;
-    transition: 
+    transition:
         color var(--transition-speed) var(--transition-function),
         transform var(--transition-speed) var(--transition-function);
 }
@@ -299,11 +299,9 @@ body {
         --font-size-xl: clamp(1.6rem, 6vmin, 2.5rem);
         --font-size-lg: clamp(0.9rem, 3vmin, 1.1rem);
     }
-
     .landing-page {
         padding-top: clamp(8vh, 15vh, 20vh);
     }
-
     .nav-group.expanded .nav-content {
         max-height: min(50vh, 600px);
     }
@@ -314,7 +312,6 @@ body {
         --font-size-xxl: clamp(2rem, 5vmin, 3rem);
         --space-xxl: clamp(3rem, 8vh, 6rem);
     }
-
     .nav-group.expanded .nav-content {
         max-height: min(40vh, 500px);
     }
@@ -326,11 +323,9 @@ body {
         --space-xl: clamp(1.5rem, 4vh, 2.5rem);
         --space-lg: clamp(1rem, 3vh, 1.5rem);
     }
-
     .landing-page {
         padding-top: clamp(5vh, 10vh, 15vh);
     }
-
     .nav-group.expanded .nav-content {
         max-height: min(45vh, 400px);
     }
