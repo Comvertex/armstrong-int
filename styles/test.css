@@ -64,7 +64,7 @@ body {
 }
 
 .main-menu h1 {
-    font-size: clamp(14px, 6vw, 80px); /* Set min and max font size */
+    font-size: clamp(35px, 6vw, 80px); /* Set min and max font size */
     font-weight: bold;
     margin: 0.1em 0; /* Further reduce spacing between items */
 }
@@ -74,7 +74,7 @@ body {
 }
 
 .minor-menu p {
-    font-size: clamp(14px, 1.5vw, 80px); /* Set min and max font size */
+    font-size: clamp(14px, 1.5vw, 35px); /* Set min and max font size */
     font-weight: bold;
     margin: 0.1em 0;
 }
