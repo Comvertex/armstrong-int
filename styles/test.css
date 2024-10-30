@@ -1,120 +1,52 @@
-:root {
-    --primary-color: #000028; /* Blue color */
-    --header-height: 65px;
-    --transition-speed: 0.5s; /* Transition speed for smoother transitions */
-    --background-color: #ffffff; /* White background */
-    --accent-color: #e53745; /* Accent color */
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const mainNav = document.querySelector('.main-nav');
+    const logo = document.querySelector('.logo img');
+    const homepage = document.querySelector('.homepage');
+    const menuItems = document.querySelectorAll('.menu-item');
+    const subMenus = document.querySelectorAll('.sub-menu');
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: var(--background-color);
-    overflow: hidden; /* Prevent scrolling during transitions */
-    height: 100vh; /* Ensure body takes full viewport height */
-    width: 100vw; /* Ensure body takes full viewport width */
-}
+    // Initial styles for transitions
+    mainNav.style.transform = 'translateY(-100%)';
+    logo.style.opacity = '0';
+    homepage.style.transform = 'translateY(100vh)';
+    homepage.style.opacity = '0';
 
-.main-nav {
-    position: fixed;
-    width: calc(100% - 4vh); /* Account for left and right margins */
-    top: 3.5vh; /* Updated top margin */
-    left: 2vh; /* Left margin */
-    height: var(--header-height);
-    display: flex;
-    align-items: flex-start; /* Align items to the top */
-    background-color: transparent;
-    z-index: 1000;
-    transform: translateY(-100%); /* Start off-screen */
-    margin: 0; /* Reset default margin */
-}
+    // Apply transitions after a short delay to ensure styles are set
+    setTimeout(() => {
+        mainNav.style.transition = 'transform 1s ease-out, background-color 0.5s ease-out';
+        mainNav.style.transform = 'translateY(0)';
 
-.main-nav.scrolled {
-    background-color: var(--primary-color);
-}
+        logo.style.transition = 'opacity 1.5s ease-out';
+        logo.style.opacity = '1';
+    }, 50);
 
-.nav-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
+    // Slide-up and fade-in effect for homepage content
+    setTimeout(() => {
+        homepage.style.transition = 'transform 1.5s ease-out, opacity 1.5s ease-out';
+        homepage.style.transform = 'translateY(0)';
+        homepage.style.opacity = '1';
+    }, 1050);
 
-.logo img {
-    width: min(70vw, 280px); /* Maximum width of 280px or 70% of viewport width */
-    height: auto; /* Maintain aspect ratio */
-}
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-.homepage {
-    background-color: var(--primary-color);
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* Align content to the left */
-    overflow: hidden;
-    position: absolute; /* Position it absolutely to overlay the body */
-    top: 0; /* Start at the top */
-    transform: translateY(100vh); /* Start below the viewport */
-    opacity: 0; /* Start fully transparent */
-}
+        if (scrollTop > 10) {
+            mainNav.classList.add('scrolled');
+        } else {
+            mainNav.classList.remove('scrolled');
+        }
+    });
 
-.homepage-content {
-    color: #fff;
-    text-align: left; /* Align text to the left */
-    margin-left: 20vw; /* Position container at 20% of viewport width */
-    margin-right: 4vw; /* Add right margin */
-    position: relative;
-}
-
-.main-menu h1 {
-    font-size: clamp(35px, 6vw, 80px); /* Set min and max font size */
-    font-weight: bold;
-    margin: 0.1em 0; /* Further reduce spacing between items */
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
-    cursor: pointer;
-}
-
-.main-menu h1:hover {
-    color: var(--accent-color); /* Change text color on hover */
-}
-
-.minor-menu {
-    margin-top: 6em; /* Double the gap between main and minor menu */
-}
-
-.minor-menu p {
-    font-size: clamp(14px, 1vw, 25px); /* Set min and max font size */
-    font-weight: bold;
-    margin: 0.5em 0; /* Increase spacing between minor menu items */
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.minor-menu p:hover {
-    color: var(--accent-color); /* Change text color on hover */
-}
-
-.sub-menu {
-    display: none;
-    position: absolute;
-    left: calc(20vw + 4vw); /* Anchor next to homepage content */
-    color: #fff;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Slide-up and fade-in */
-}
-
-.sub-menu p {
-    font-size: clamp(12px, 0.8vw, 20px); /* Decrease font size */
-    font-weight: bold;
-    margin: 0.4em 0; /* Increase spacing between submenu items */
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.sub-menu p:hover {
-    color: var(--accent-color); /* Change text color on hover */
-}
-
-.sub-menu.show {
-    opacity: 1;
-    transform: translateY(0);
-}
+    // Toggle submenus on click
+    menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const relatedMenu = document.getElementById(item.dataset.menu);
+            const isVisible = relatedMenu.classList.contains('show');
+            subMenus.forEach(menu => menu.classList.remove('show'));
+            if (!isVisible) {
+                relatedMenu.classList.add('show');
+                relatedMenu.style.top = `${item.offsetTop}px`;
+            }
+        });
+    });
+});
