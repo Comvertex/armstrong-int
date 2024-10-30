@@ -46,6 +46,7 @@ body {
     position: absolute; /* Position it absolutely to overlay the body */
     top: 0; /* Start at the top */
     transform: translateY(100vh); /* Start below the viewport */
+    opacity: 0; /* Start fully transparent */
 }
 
 .homepage-content {
