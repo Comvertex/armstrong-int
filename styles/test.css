@@ -21,7 +21,7 @@ body {
     left: 2vh; /* Left margin */
     height: var(--header-height);
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Align items to the top */
     background-color: transparent;
     z-index: 1000;
     transform: translateY(-100%); /* Start off-screen */
@@ -36,10 +36,6 @@ body {
     display: flex;
     align-items: center;
     width: 100%;
-}
-
-.logo {
-    margin: 0; /* Remove logo padding */
 }
 
 .logo img {
