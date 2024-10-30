@@ -33,17 +33,18 @@
             const mainNav = document.querySelector('.main-nav');
             const logo = document.querySelector('.logo img');
 
-            // Slide down effect on page load
+            // Initial styles for transitions
             mainNav.style.transform = 'translateY(-100%)';
-            mainNav.style.transition = 'transform 1s ease-out, background-color 0.5s ease-out';
-            mainNav.style.transform = 'translateY(0)';
-
-            // Fade-in effect for the logo
             logo.style.opacity = '0';
-            logo.style.transition = 'opacity 1.5s ease-out';
+
+            // Apply transitions after a short delay to ensure styles are set
             setTimeout(() => {
+                mainNav.style.transition = 'transform 1s ease-out, background-color 0.5s ease-out';
+                mainNav.style.transform = 'translateY(0)';
+
+                logo.style.transition = 'opacity 1.5s ease-out';
                 logo.style.opacity = '1';
-            }, 0);
+            }, 50);
 
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
