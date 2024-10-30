@@ -32,12 +32,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mainNav = document.querySelector('.main-nav');
             const logo = document.querySelector('.logo img');
-            const homepageContent = document.querySelector('.homepage');
+            const homepage = document.querySelector('.homepage');
 
             // Initial styles for transitions
             mainNav.style.transform = 'translateY(-100%)';
             logo.style.opacity = '0';
-            homepageContent.style.transform = 'translateY(100vh)';
+            homepage.style.transform = 'translateY(100vh)';
+            homepage.style.opacity = '0';
 
             // Apply transitions after a short delay to ensure styles are set
             setTimeout(() => {
@@ -48,10 +49,11 @@
                 logo.style.opacity = '1';
             }, 50);
 
-            // Slide-up effect for homepage content
+            // Slide-up and fade-in effect for homepage content
             setTimeout(() => {
-                homepageContent.style.transition = 'transform 1.5s ease-out';
-                homepageContent.style.transform = 'translateY(0)';
+                homepage.style.transition = 'transform 1.5s ease-out, opacity 1.5s ease-out';
+                homepage.style.transform = 'translateY(0)';
+                homepage.style.opacity = '1';
             }, 1050);
 
             window.addEventListener('scroll', function() {
