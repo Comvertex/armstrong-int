@@ -309,6 +309,12 @@ body {
         --font-size-xl: clamp(1.6rem, 6vmin, 2.5rem);
         --font-size-lg: clamp(0.9rem, 3vmin, 1.1rem);
     }
+    .landing-menu {
+        position: absolute;
+        top: 40vh; /* 40% of the vertical viewport */
+        left: 33vw; /* 33% of the horizontal viewport */
+        transform: translate(-33%, -40%); /* Adjusts the position to start from the specified point */
+    }
     .landing-page {
         padding-top: clamp(8vh, 15vh, 20vh);
     }
