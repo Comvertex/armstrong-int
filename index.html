@@ -90,8 +90,10 @@
                 
                 if (scrollTop > 10) {
                     mainNav.classList.add('scrolled');
+                    console.log('Added scrolled class'); // Debugging line
                 } else {
                     mainNav.classList.remove('scrolled');
+                    console.log('Removed scrolled class'); // Debugging line
                 }
                 
                 isScrolling = setTimeout(function() {
