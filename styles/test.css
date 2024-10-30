@@ -16,14 +16,16 @@ body {
 
 .main-nav {
     position: fixed;
-    width: 100%;
-    top: 0;
+    width: calc(100% - 4vh); /* Account for left and right margins */
+    top: 2vh; /* Top margin */
+    left: 2vh; /* Left margin */
     height: var(--header-height);
     display: flex;
     align-items: center;
     background-color: transparent;
     z-index: 1000;
     transform: translateY(-100%); /* Start off-screen */
+    margin: 0; /* Reset default margin */
 }
 
 .main-nav.scrolled {
@@ -37,8 +39,7 @@ body {
 }
 
 .logo {
-    padding-left: 2vw; /* 2% of horizontal viewport for left padding */
-    padding-top: 3vw; /* 3% of horizontal viewport for top padding */
+    margin: 0; /* Remove logo padding */
 }
 
 .logo img {
