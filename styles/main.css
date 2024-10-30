@@ -160,7 +160,7 @@ body {
 }
 
 .slide-in-bottom {
-    animation: slideInBottom var(--transition-speed-slower) var(--ease-out-cubic) both;
+    animation: slideInBottom var(--transition-speed-slower) var(--ease-out-cubic) 0.5s both; /* Added delay */
 }
 
 @keyframes slideInBottom {
