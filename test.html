@@ -18,14 +18,39 @@
     <main class="homepage">
         <div class="homepage-content">
             <div class="main-menu">
-                <h1>Talent</h1>
-                <h1>Capital</h1>
-                <h1>Advice</h1>
+                <h1 class="menu-item" data-menu="talent">Talent</h1>
+                <h1 class="menu-item" data-menu="capital">Capital</h1>
+                <h1 class="menu-item" data-menu="advice">Advice</h1>
             </div>
             <div class="minor-menu">
                 <p>About</p>
                 <p>Contact</p>
                 <p>Careers</p>
+            </div>
+            <div class="sub-menu" id="talent">
+                <p>Banks</p>
+                <p>Hedge Funds</p>
+                <p>Private Equity</p>
+                <p>Credit</p>
+                <p>Family Offices</p>
+                <p>Real Estate</p>
+                <p>Venture Capital</p>
+                <p>Digital & Data</p>
+                <p>Infrastructure & Energy Transition</p>
+                <p>Portfolio Companies</p>
+                <p>Wealth Management</p>
+            </div>
+            <div class="sub-menu" id="capital">
+                <p>Funds</p>
+                <p>Companies</p>
+                <p>Managers</p>
+            </div>
+            <div class="sub-menu" id="advice">
+                <p>Digitisation</p>
+                <p>Decarbonisation</p>
+                <p>AI</p>
+                <p>Talent</p>
+                <p>Geo Politics</p>
             </div>
         </div>
     </main>
@@ -35,6 +60,8 @@
             const mainNav = document.querySelector('.main-nav');
             const logo = document.querySelector('.logo img');
             const homepage = document.querySelector('.homepage');
+            const menuItems = document.querySelectorAll('.menu-item');
+            const subMenus = document.querySelectorAll('.sub-menu');
 
             // Initial styles for transitions
             mainNav.style.transform = 'translateY(-100%)';
@@ -66,6 +93,22 @@
                 } else {
                     mainNav.classList.remove('scrolled');
                 }
+            });
+
+            // Show submenus on hover
+            menuItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    subMenus.forEach(menu => menu.style.display = 'none');
+                    const relatedMenu = document.getElementById(item.dataset.menu);
+                    if (relatedMenu) {
+                        relatedMenu.style.display = 'block';
+                    }
+                });
+            });
+
+            // Hide submenus when not hovering
+            homepage.addEventListener('mouseleave', () => {
+                subMenus.forEach(menu => menu.style.display = 'none');
             });
         });
     </script>
