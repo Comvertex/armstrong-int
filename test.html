@@ -35,17 +35,13 @@
 
             // Slide down effect on page load
             mainNav.style.transform = 'translateY(-100%)';
-            setTimeout(() => {
-                mainNav.style.transition = 'transform 0.5s ease-out, background-color 0.5s ease-out';
-                mainNav.style.transform = 'translateY(0)';
-            }, 100);
+            mainNav.style.transition = 'transform 1s ease-out, background-color 0.5s ease-out';
+            mainNav.style.transform = 'translateY(0)';
 
             // Fade-in effect for the logo
             logo.style.opacity = '0';
-            setTimeout(() => {
-                logo.style.transition = 'opacity 1s ease-out';
-                logo.style.opacity = '1';
-            }, 500);
+            logo.style.transition = 'opacity 1.5s ease-out';
+            logo.style.opacity = '1';
 
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
