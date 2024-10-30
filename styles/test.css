@@ -44,13 +44,13 @@ body {
     justify-content: center;
     overflow: hidden;
     position: absolute; /* Position it absolutely to overlay the body */
-    top: 100vh; /* Start below the viewport */
+    top: 0; /* Start at the top */
+    transform: translateY(100vh); /* Start below the viewport */
 }
 
 .homepage-content {
     color: #fff;
     text-align: center;
-    transform: translateY(0); /* No initial transform needed */
 }
 
 .menu-toggle {
