@@ -62,6 +62,7 @@ body {
     color: #fff;
     text-align: left; /* Align text to the left */
     margin-left: 20vw; /* Position container at 20% of viewport width */
+    position: relative;
 }
 
 .main-menu h1 {
@@ -69,6 +70,7 @@ body {
     font-weight: bold;
     margin: 0.1em 0; /* Further reduce spacing between items */
     transition: color 0.3s ease; /* Smooth transition for hover effect */
+    cursor: pointer;
 }
 
 .main-menu h1:hover {
@@ -88,4 +90,18 @@ body {
 
 .minor-menu p:hover {
     color: var(--accent-color); /* Change text color on hover */
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    left: 15vw; /* Position submenus to the right of main menu */
+    top: 0;
+    color: #fff;
+}
+
+.sub-menu p {
+    font-size: clamp(14px, 1vw, 25px);
+    font-weight: bold;
+    margin: 0.2em 0;
 }
