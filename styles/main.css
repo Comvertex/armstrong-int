@@ -233,6 +233,10 @@ body {
     opacity: 0;
     transform: translateY(-1vh);
     transition: all var(--transition-speed) var(--transition-function);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    height: 100vh; /* Full height to center content */
 }
 
 .nav-group.expanded .nav-content {
@@ -291,6 +295,12 @@ body {
 
 .nav-group.expanded ~ .secondary-nav {
     margin-top: var(--space-xxl);
+}
+
+@media (min-width: 1024px) {
+    .nav-content {
+        margin-left: 33vw; /* Move items one-third from the left */
+    }
 }
 
 @media (max-aspect-ratio: 1/1) {
