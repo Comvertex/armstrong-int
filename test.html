@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Header Scroll</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Basic styles for demonstration */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 200vh; /* Ensure there's enough content to scroll */
+        }
+
+        .main-nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .main-nav.scrolled {
+            background-color: #0000FF; /* Blue color */
+        }
+
+        .content {
+            padding-top: 80px; /* Ensure content is not hidden behind the fixed header */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div>Header</div>
+    </nav>
+
+    <div class="content">
+        <h1>Scroll Down</h1>
+        <p>Keep scrolling to see the header change color.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainNav = document.querySelector('.main-nav');
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > 10) {
+                    mainNav.classList.add('scrolled');
+                } else {
+                    mainNav.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
