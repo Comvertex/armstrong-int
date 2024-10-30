@@ -80,6 +80,10 @@
             cursor: pointer;
         }
 
+        .main-menu h1.selected {
+            color: var(--accent-color);
+        }
+
         .main-menu h1:hover {
             color: var(--accent-color);
         }
@@ -222,9 +226,11 @@
                     const relatedMenu = document.getElementById(item.dataset.menu);
                     const isVisible = relatedMenu.classList.contains('show');
                     subMenus.forEach(menu => menu.classList.remove('show'));
+                    menuItems.forEach(menuItem => menuItem.classList.remove('selected'));
                     if (!isVisible) {
                         relatedMenu.classList.add('show');
                         relatedMenu.style.top = `${item.offsetTop}px`;
+                        item.classList.add('selected');
                     }
                 });
             });
