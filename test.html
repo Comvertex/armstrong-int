@@ -6,7 +6,7 @@
     <title>Armstrong International</title>
     <link rel="stylesheet" href="styles/test.css">
 </head>
-<body class="landing-body">
+<body>
     <nav class="main-nav">
         <div class="nav-container">
             <a href="/" class="logo">
@@ -24,6 +24,7 @@
         <div class="homepage-content">
             <h1>Welcome to Armstrong International</h1>
             <p>Explore our services and offerings.</p>
+            <!-- Add more content here -->
         </div>
     </main>
 
@@ -36,8 +37,7 @@
             // Initial styles for transitions
             mainNav.style.transform = 'translateY(-100%)';
             logo.style.opacity = '0';
-            homepageContent.style.transform = 'translateY(100%)';
-            homepageContent.style.opacity = '0';
+            homepageContent.style.transform = 'translateY(100vh)';
 
             // Apply transitions after a short delay to ensure styles are set
             setTimeout(() => {
@@ -46,11 +46,13 @@
 
                 logo.style.transition = 'opacity 1.5s ease-out';
                 logo.style.opacity = '1';
+            }, 50);
 
-                homepageContent.style.transition = 'transform 1.5s ease-out, opacity 1.5s ease-out';
+            // Slide-up effect for homepage content
+            setTimeout(() => {
+                homepageContent.style.transition = 'transform 1.5s ease-out';
                 homepageContent.style.transform = 'translateY(0)';
-                homepageContent.style.opacity = '1';
-            }, 1000);
+            }, 1050);
 
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
