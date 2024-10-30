@@ -4,9 +4,9 @@
     --accent-color: #e53745;
     --background-color: #e5e7eb;
     --white: #ffffff;
-    --transition-speed: 0.5s; /* Increased speed for smoother transitions */
-    --transition-speed-slow: 1.2s; /* Increased speed for slower transitions */
-    --transition-speed-slower: 1.5s; /* Increased speed for even slower transitions */
+    --transition-speed: 0.5s;
+    --transition-speed-slow: 1.2s;
+    --transition-speed-slower: 1.5s;
     --transition-function: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
     --header-height: clamp(65px, 8vh, 85px);
@@ -68,12 +68,12 @@ body {
     align-items: center;
     z-index: 1000;
     background-color: transparent;
-    transform: translateY(-100%); /* Start off-screen */
+    transform: translateY(-100%);
     will-change: transform, background-color;
     transition:
         transform var(--transition-speed-slow) var(--ease-out-cubic),
         background-color var(--transition-speed) var(--ease-out-cubic);
-    animation: slideIn var(--transition-speed-slower) var(--ease-out-cubic) forwards; /* Removed delay */
+    animation: slideIn var(--transition-speed-slower) var(--ease-out-cubic) forwards;
 }
 
 @keyframes slideIn {
@@ -101,7 +101,7 @@ body {
     display: flex;
     align-items: center;
     z-index: 1000;
-    animation: fadeIn var(--transition-speed-slower) var(--ease-out-cubic) forwards; /* Removed delay */
+    animation: fadeIn var(--transition-speed-slower) var(--ease-out-cubic) forwards;
 }
 
 @keyframes fadeIn {
@@ -160,7 +160,7 @@ body {
 }
 
 .slide-in-bottom {
-    animation: slideInBottom var(--transition-speed-slower) var(--ease-out-cubic) 0.5s both; /* Added delay */
+    animation: slideInBottom var(--transition-speed-slower) var(--ease-out-cubic) 0.5s both;
 }
 
 @keyframes slideInBottom {
@@ -197,6 +197,10 @@ body {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--content-padding);
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height to center content */
 }
 
 .primary-nav {
@@ -233,10 +237,6 @@ body {
     opacity: 0;
     transform: translateY(-1vh);
     transition: all var(--transition-speed) var(--transition-function);
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center vertically */
-    height: 100vh; /* Full height to center content */
 }
 
 .nav-group.expanded .nav-content {
@@ -298,8 +298,9 @@ body {
 }
 
 @media (min-width: 1024px) {
-    .nav-content {
-        margin-left: 33vw; /* Move items one-third from the left */
+    .landing-menu {
+        justify-content: flex-start; /* Align to the left */
+        padding-left: 33vw; /* Move one-third from the left */
     }
 }
 
