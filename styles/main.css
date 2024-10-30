@@ -234,18 +234,18 @@ body {
 
 .nav-content {
     position: absolute; /* Change to absolute positioning */
-    left: 0;
-    top: 100%; /* Position below the trigger */
-    width: 100%;
+    left: 100%; /* Position to the right of the trigger */
+    top: 0; /* Align with the top of the trigger */
+    width: auto;
     opacity: 0;
-    transform: translateY(-1vh);
+    transform: translateX(-1vh);
     transition: all var(--transition-speed) var(--transition-function);
     pointer-events: none; /* Disable interaction when hidden */
 }
 
 .nav-group.expanded .nav-content {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
     pointer-events: auto; /* Enable interaction when visible */
 }
 
@@ -295,7 +295,7 @@ body {
 
 @media (min-width: 1024px) {
     .landing-menu {
-        padding-left: 40vw; /* Move entire menu section towards center */
+        padding-left: 33vw; /* Move entire menu section one-third from the left */
     }
     
     .nav-content {
