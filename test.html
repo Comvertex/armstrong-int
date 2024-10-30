@@ -39,17 +39,18 @@
             logo.style.opacity = '0';
             landingPage.style.transform = 'translateY(100%)';
 
-            // Apply transitions after a short delay to ensure styles are set
+            // Apply transitions immediately for header and logo
+            mainNav.style.transition = 'transform 1s ease-out, background-color 0.5s ease-out';
+            mainNav.style.transform = 'translateY(0)';
+
+            logo.style.transition = 'opacity 1.5s ease-out';
+            logo.style.opacity = '1';
+
+            // Apply transition for the landing page with a 1-second delay
             setTimeout(() => {
-                mainNav.style.transition = 'transform 1s ease-out, background-color 0.5s ease-out';
-                mainNav.style.transform = 'translateY(0)';
-
-                logo.style.transition = 'opacity 1.5s ease-out';
-                logo.style.opacity = '1';
-
                 landingPage.style.transition = 'transform 1s ease-out';
                 landingPage.style.transform = 'translateY(0)';
-            }, 500);
+            }, 1000);
 
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
