@@ -68,4 +68,19 @@ body {
     font-size: clamp(35px, 6vw, 80px); /* Set min and max font size */
     font-weight: bold;
     margin: 0.1em 0; /* Further reduce spacing between items */
-    transition: color
+}
+
+.minor-menu {
+    margin-top: 6em; /* Double the gap between main and minor menu */
+}
+
+.minor-menu p {
+    font-size: clamp(14px, 1vw, 25px); /* Set min and max font size */
+    font-weight: bold;
+    margin: 0.5em 0; /* Increase spacing between minor menu items */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.minor-menu p:hover {
+    color: var(--accent-color); /* Change text color on hover */
+}
