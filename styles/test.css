@@ -70,11 +70,11 @@ body {
 }
 
 .minor-menu {
-    margin-top: 3em; /* Triple the gap between main and minor menu */
+    margin-top: 6em; /* Double the gap between main and minor menu */
 }
 
 .minor-menu p {
-    font-size: clamp(14px, 1.5vw, 35px); /* Set min and max font size */
+    font-size: clamp(14px, 1.5vw, 25px); /* Set min and max font size */
     font-weight: bold;
     margin: 0.5em 0; /* Increase spacing between minor menu items */
 }
