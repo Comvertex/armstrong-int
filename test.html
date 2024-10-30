@@ -20,11 +20,10 @@
         </div>
     </nav>
 
-    <main class="landing-page">
-        <div class="landing-content">
+    <main class="homepage">
+        <div class="homepage-content">
             <h1>Welcome to Armstrong International</h1>
-            <p>Scroll down to see the header change color.</p>
-            <!-- Add more content here to enable scrolling -->
+            <p>Explore our services and offerings.</p>
         </div>
     </main>
 
@@ -32,12 +31,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mainNav = document.querySelector('.main-nav');
             const logo = document.querySelector('.logo img');
-            const landingPage = document.querySelector('.landing-page');
+            const homepageContent = document.querySelector('.homepage-content');
 
             // Initial styles for transitions
             mainNav.style.transform = 'translateY(-100%)';
             logo.style.opacity = '0';
-            landingPage.style.transform = 'translateY(100%)';
+            homepageContent.style.transform = 'translateY(100%)';
+            homepageContent.style.opacity = '0';
 
             // Apply transitions after a short delay to ensure styles are set
             setTimeout(() => {
@@ -47,8 +47,9 @@
                 logo.style.transition = 'opacity 1.5s ease-out';
                 logo.style.opacity = '1';
 
-                landingPage.style.transition = 'transform 2s ease-out';
-                landingPage.style.transform = 'translateY(0)';
+                homepageContent.style.transition = 'transform 1.5s ease-out, opacity 1.5s ease-out';
+                homepageContent.style.transform = 'translateY(0)';
+                homepageContent.style.opacity = '1';
             }, 1000);
 
             window.addEventListener('scroll', function() {
