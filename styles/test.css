@@ -1,0 +1,32 @@
+:root {
+    --primary-color: #0000FF; /* Blue color */
+    --header-height: 60px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 200vh; /* Ensure there's enough content to scroll */
+}
+
+.main-nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.main-nav.scrolled {
+    background-color: var(--primary-color);
+}
+
+.landing-content {
+    padding-top: calc(var(--header-height) + 20px); /* Ensure content is not hidden behind the fixed header */
+    text-align: center;
+}
