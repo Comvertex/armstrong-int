@@ -17,7 +17,7 @@ body {
 .main-nav {
     position: fixed;
     width: calc(100% - 4vh); /* Account for left and right margins */
-    top: 3vh; /* Top margin */
+    top: 4vh; /* Top margin */
     left: 2vh; /* Left margin */
     height: var(--header-height);
     display: flex;
