@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Armstrong International</title>
     <link rel="stylesheet" href="styles/main.css">
-    <style>
-        /* Ensure this CSS is included in your main.css or directly here for testing */
-        .main-nav.scrolled {
-            background-color: var(--primary-color); /* Ensure this matches your site's blue */
-        }
-    </style>
 </head>
 <body class="landing-body">
     <nav class="main-nav">
@@ -83,19 +77,14 @@
             let isScrolling;
 
             window.addEventListener('scroll', function() {
-                console.log('Scrolling...'); // Debugging line to ensure the event is firing
-                window.clearTimeout(isScrolling);
-                
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
+
                 if (scrollTop > 10) {
                     mainNav.classList.add('scrolled');
-                    console.log('Added scrolled class'); // Debugging line
                 } else {
                     mainNav.classList.remove('scrolled');
-                    console.log('Removed scrolled class'); // Debugging line
                 }
-                
+
                 isScrolling = setTimeout(function() {
                     if (scrollTop > lastScrollTop && scrollTop > 100) {
                         mainNav.classList.add('nav-hidden');
@@ -110,7 +99,7 @@
                 trigger.addEventListener('click', function() {
                     const navGroup = this.parentElement;
                     const wasExpanded = navGroup.classList.contains('expanded');
-                    
+
                     document.querySelectorAll('.nav-group').forEach(group => {
                         group.classList.remove('expanded');
                         group.querySelector('.nav-trigger').classList.remove('active');
