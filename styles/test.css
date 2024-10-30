@@ -2,14 +2,14 @@
     --primary-color: #000028; /* Blue color */
     --header-height: 65px;
     --transition-speed: 0.5s; /* Transition speed for smoother transitions */
-    --background-color: #ffffff; /* Default background color */
+    --background-color: #ffffff; /* Default white background */
 }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: var(--background-color);
-    overflow: hidden; /* Prevent scrolling during transitions */
+    overflow: hidden; /* Prevent scrolling */
 }
 
 .main-nav {
@@ -29,23 +29,15 @@ body {
     background-color: var(--primary-color);
 }
 
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
 .logo img {
     height: 40px;
-}
-
-.landing-page {
-    background-color: var(--primary-color);
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: translateY(100%); /* Start off-screen */
-}
-
-.landing-content {
-    text-align: center;
-    color: #fff; /* Ensure text is visible on blue background */
 }
 
 .menu-toggle {
@@ -61,4 +53,21 @@ body {
     height: 3px;
     background-color: #fff;
     margin: 5px 0;
+}
+
+.homepage {
+    background-color: var(--primary-color);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.homepage-content {
+    text-align: center;
+    color: #fff;
+    transform: translateY(100%);
+    opacity: 0;
 }
