@@ -1,60 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Armstrong International</title>
-    <link rel="stylesheet" href="styles/main.css">
-</head>
-<body class="landing-body">
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="/" class="logo">
-                <img src="assets/images/logo.png" alt="Armstrong International">
-            </a>
-            <button class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+:root {
+    --primary-color: #000028; /* Blue color */
+    --header-height: 65px;
+    --transition-speed: 0.5s; /* Transition speed for smoother transitions */
+}
 
-    <main class="landing-page">
-        <div class="landing-content">
-            <h1>Welcome to Armstrong International</h1>
-            <p>Scroll down to see the header change color.</p>
-            <!-- Add more content here to enable scrolling -->
-        </div>
-    </main>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 200vh; /* Ensure there's enough content to scroll */
+}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mainNav = document.querySelector('.main-nav');
-            const logo = document.querySelector('.logo img');
+.main-nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    z-index: 1000;
+    transform: translateY(-100%); /* Start off-screen */
+}
 
-            // Slide down effect on page load
-            mainNav.style.transform = 'translateY(-100%)';
-            mainNav.style.transition = 'transform 1s ease-out, background-color 0.5s ease-out';
-            mainNav.style.transform = 'translateY(0)';
+.main-nav.scrolled {
+    background-color: var(--primary-color);
+}
 
-            // Fade-in effect for the logo
-            logo.style.opacity = '0';
-            logo.style.transition = 'opacity 1.5s ease-out';
-            setTimeout(() => {
-                logo.style.opacity = '1';
-            }, 0);
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
 
-            window.addEventListener('scroll', function() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+.logo img {
+    height: 40px;
+}
 
-                if (scrollTop > 10) {
-                    mainNav.classList.add('scrolled');
-                } else {
-                    mainNav.classList.remove('scrolled');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+}
+
+.landing-content {
+    padding-top: calc(var(--header-height) + 20px); /* Ensure content is not hidden behind the fixed header */
+    text-align: center;
+}
