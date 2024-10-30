@@ -172,9 +172,9 @@ body {
     height: 100vh;
     width: 100%;
     display: flex;
-    align-items: flex-start;
+    align-items: center; /* Center vertically */
     background-color: var(--primary-color);
-    padding: clamp(10vh, 20vh, 25vh) 0 var(--space-xxl) 0;
+    padding: 0; /* Remove padding to help with centering */
     margin: 0;
     overflow: auto;
     position: fixed;
@@ -190,6 +190,10 @@ body {
 
 .landing-content {
     width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
 }
 
 .landing-menu {
@@ -197,6 +201,7 @@ body {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--content-padding);
+    position: relative; /* Add position relative */
 }
 
 .primary-nav {
@@ -206,6 +211,7 @@ body {
 .nav-group {
     margin-bottom: var(--space-md);
     transition: all var(--transition-speed) var(--transition-function);
+    position: relative; /* Add position relative */
 }
 
 .nav-trigger {
@@ -227,30 +233,20 @@ body {
 }
 
 .nav-content {
-    max-height: 0;
-    overflow: hidden;
-    margin-left: clamp(1rem, 3vw, 2rem);
+    position: absolute; /* Change to absolute positioning */
+    left: 0;
+    top: 100%; /* Position below the trigger */
+    width: 100%;
     opacity: 0;
     transform: translateY(-1vh);
     transition: all var(--transition-speed) var(--transition-function);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
+    pointer-events: none; /* Disable interaction when hidden */
 }
 
 .nav-group.expanded .nav-content {
-    max-height: min(60vh, 800px);
     opacity: 1;
     transform: translateY(0);
-    margin-bottom: var(--space-lg);
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.nav-group.expanded .nav-content::-webkit-scrollbar {
-    display: none;
+    pointer-events: auto; /* Enable interaction when visible */
 }
 
 .nav-content a {
@@ -298,8 +294,12 @@ body {
 }
 
 @media (min-width: 1024px) {
+    .landing-menu {
+        padding-left: 40vw; /* Move entire menu section towards center */
+    }
+    
     .nav-content {
-        margin-left: 40vw; /* Move items more towards the center */
+        padding-left: 2rem; /* Add some padding for sub-items */
     }
 }
 
