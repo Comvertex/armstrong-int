@@ -337,12 +337,3 @@ body {
         transform: none;
     }
 }
-
-@media (min-width: 1024px) { /* Desktop-specific styles */
-    .landing-menu {
-        position: absolute;
-        top: 40vh; /* 40% of the vertical viewport */
-        left: 33vw; /* 33% of the horizontal viewport */
-        transform: translate(-33%, -40%); /* Adjusts the position to start from the specified point */
-    }
-}
