@@ -6,55 +6,56 @@
     <title>Armstrong International</title>
     <link rel="stylesheet" href="styles/test.css">
 </head>
-<body>
-    <div class="landing-page">
-        <header class="main-header">
-            <div class="logo">
+<body class="landing-body">
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/" class="logo">
                 <img src="assets/images/logo.png" alt="Armstrong International">
-            </div>
-        </header>
-        <nav class="main-nav">
-            <ul>
-                <li>Talent
-                    <ul class="submenu">
-                        <li>Banks</li>
-                        <li>Hedge Funds</li>
-                        <li>Private Equity</li>
-                        <li>Credit</li>
-                        <li>Family Offices</li>
-                        <li>Real Estate</li>
-                        <li>Venture Capital</li>
-                        <li>Digital & Data</li>
-                        <li>Infrastructure & Energy Transition</li>
-                        <li>Portfolio Companies</li>
-                        <li>Wealth Management</li>
-                    </ul>
-                </li>
-                <li>Capital
-                    <ul class="submenu">
-                        <li>Funds</li>
-                        <li>Companies</li>
-                        <li>Managers</li>
-                    </ul>
-                </li>
-                <li>Advice
-                    <ul class="submenu">
-                        <li>Digitisation</li>
-                        <li>Decarbonisation</li>
-                        <li>AI</li>
-                        <li>Talent</li>
-                        <li>Geo Politics</li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <footer class="main-footer">
-            <ul>
-                <li>About</li>
-                <li>Contact</li>
-                <li>Careers</li>
-            </ul>
-        </footer>
-    </div>
+            </a>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="landing-page">
+        <div class="landing-content">
+            <h1>Welcome to Armstrong International</h1>
+            <p>Scroll down to see the header change color.</p>
+            <!-- Add more content here to enable scrolling -->
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainNav = document.querySelector('.main-nav');
+            const logo = document.querySelector('.logo img');
+
+            // Initial styles for transitions
+            mainNav.style.transform = 'translateY(-100%)';
+            logo.style.opacity = '0';
+
+            // Apply transitions after a short delay to ensure styles are set
+            setTimeout(() => {
+                mainNav.style.transition = 'transform 1s ease-out, background-color 0.5s ease-out';
+                mainNav.style.transform = 'translateY(0)';
+
+                logo.style.transition = 'opacity 1.5s ease-out';
+                logo.style.opacity = '1';
+            }, 50);
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > 10) {
+                    mainNav.classList.add('scrolled');
+                } else {
+                    mainNav.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
