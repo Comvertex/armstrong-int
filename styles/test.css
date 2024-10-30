@@ -19,7 +19,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    transition: background-color var(--transition-speed) ease;
     z-index: 1000;
 }
 
