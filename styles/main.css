@@ -68,11 +68,17 @@ body {
     align-items: center;
     z-index: 1000;
     background-color: transparent;
-    transform: translateY(0);
+    transform: translateY(-100%); /* Start off-screen */
     will-change: transform, background-color;
     transition: 
         transform var(--transition-speed-slow) var(--ease-out-cubic),
         background-color var(--transition-speed) var(--ease-out-cubic);
+    animation: slideIn var(--transition-speed-slower) var(--ease-out-cubic) 0.5s forwards; /* Add this line */
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(0); }
 }
 
 .nav-container {
