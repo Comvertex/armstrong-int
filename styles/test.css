@@ -96,7 +96,6 @@ body {
     display: none;
     position: absolute;
     left: 15vw; /* Position submenus to the right of main menu */
-    top: 0;
     color: #fff;
 }
 
