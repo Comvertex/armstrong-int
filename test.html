@@ -32,6 +32,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mainNav = document.querySelector('.main-nav');
 
+            // Slide down effect on page load
+            mainNav.style.transform = 'translateY(-100%)';
+            setTimeout(() => {
+                mainNav.style.transition = 'transform 0.5s ease-out';
+                mainNav.style.transform = 'translateY(0)';
+            }, 100);
+
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
