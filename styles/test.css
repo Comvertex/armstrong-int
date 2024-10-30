@@ -1,73 +1,72 @@
 :root {
     --primary-color: #000028;
     --accent-color: #e53745;
-    --font-color: #ffffff;
-    --font-size-large: 2rem;
-    --font-size-medium: 1.5rem;
-    --font-size-small: 1rem;
+    --font-family: 'Arial', sans-serif;
 }
 
-body {
+body, html {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: var(--primary-color);
-    color: var(--font-color);
+    padding: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
+    font-family: var(--font-family);
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     height: 100vh;
+    text-align: center;
 }
 
 .main-header {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+    margin-top: 20px;
 }
 
 .logo img {
     height: 50px;
 }
 
-.landing-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
-    padding-left: 20%;
-}
-
-.menu {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.menu-section h2 {
-    font-size: var(--font-size-large);
-    margin: 0;
-}
-
-.menu-section ul {
+.main-nav ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
-.menu-section li {
-    font-size: var(--font-size-medium);
+.main-nav > ul > li {
+    margin: 20px 0;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.submenu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.main-nav > ul > li:hover .submenu {
+    display: block;
+}
+
+.submenu li {
+    font-size: 1rem;
     margin: 5px 0;
 }
 
-.secondary-nav {
-    position: absolute;
-    bottom: 20px;
-    left: 20%;
+.main-footer ul {
+    list-style: none;
+    padding: 0;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
-.secondary-nav a {
-    color: var(--font-color);
-    text-decoration: none;
-    font-size: var(--font-size-small);
+.main-footer li {
+    font-size: 1rem;
+    cursor: pointer;
 }
