@@ -17,7 +17,7 @@ body {
 .main-nav {
     position: fixed;
     width: calc(100% - 4vh); /* Account for left and right margins */
-    top: 3.5vh; /* Top margin */
+    top: 3.5vh; /* Updated top margin */
     left: 2vh; /* Left margin */
     height: var(--header-height);
     display: flex;
@@ -60,4 +60,16 @@ body {
 .homepage-content {
     color: #fff;
     text-align: center;
+}
+
+.main-menu h1 {
+    font-size: 4vw;
+    font-weight: bold;
+    margin: 0.5em 0;
+}
+
+.minor-menu p {
+    font-size: 2vw;
+    font-weight: bold;
+    margin: 0.2em 0;
 }
