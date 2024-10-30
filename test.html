@@ -20,7 +20,7 @@
         </div>
     </nav>
 
-    <main class="landing-page">
+    <main class="landing-page slide-up">
         <div class="landing-content">
             <h1>Welcome to Armstrong International</h1>
             <p>Scroll down to see the header change color.</p>
@@ -32,10 +32,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mainNav = document.querySelector('.main-nav');
             const logo = document.querySelector('.logo img');
+            const landingPage = document.querySelector('.landing-page');
 
             // Initial styles for transitions
             mainNav.style.transform = 'translateY(-100%)';
             logo.style.opacity = '0';
+            landingPage.style.transform = 'translateY(100%)';
 
             // Apply transitions after a short delay to ensure styles are set
             setTimeout(() => {
@@ -44,7 +46,10 @@
 
                 logo.style.transition = 'opacity 1.5s ease-out';
                 logo.style.opacity = '1';
-            }, 50);
+
+                landingPage.style.transition = 'transform 1s ease-out';
+                landingPage.style.transform = 'translateY(0)';
+            }, 500);
 
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
