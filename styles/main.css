@@ -197,10 +197,6 @@ body {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--content-padding);
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full height to center content */
 }
 
 .primary-nav {
@@ -237,6 +233,10 @@ body {
     opacity: 0;
     transform: translateY(-1vh);
     transition: all var(--transition-speed) var(--transition-function);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
 }
 
 .nav-group.expanded .nav-content {
@@ -298,9 +298,8 @@ body {
 }
 
 @media (min-width: 1024px) {
-    .landing-menu {
-        justify-content: flex-start; /* Align to the left */
-        padding-left: 33vw; /* Move one-third from the left */
+    .nav-content {
+        margin-left: 40vw; /* Move items more towards the center */
     }
 }
 
