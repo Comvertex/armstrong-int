@@ -21,7 +21,6 @@ body {
     height: var(--header-height);
     display: flex;
     align-items: center;
-    justify-content: center;
     background-color: transparent;
     z-index: 1000;
     transform: translateY(-100%); /* Start off-screen */
@@ -29,6 +28,17 @@ body {
 
 .main-nav.scrolled {
     background-color: var(--primary-color);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    padding-left: 2vw; /* 2% of horizontal viewport for left padding */
+    padding-top: 3vw; /* 3% of horizontal viewport for top padding */
 }
 
 .logo img {
@@ -52,19 +62,4 @@ body {
 .homepage-content {
     color: #fff;
     text-align: center;
-}
-
-.menu-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 5px 0;
 }
