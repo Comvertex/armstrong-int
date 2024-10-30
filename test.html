@@ -4,7 +4,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Armstrong International</title>
-    <link rel="stylesheet" href="styles/test.css">
+    <style>
+        :root {
+            --primary-color: #000028;
+            --header-height: 65px;
+            --transition-speed: 0.5s;
+            --background-color: #ffffff;
+            --accent-color: #e53745;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .main-nav {
+            position: fixed;
+            width: calc(100% - 4vh);
+            top: 3.5vh;
+            left: 2vh;
+            height: var(--header-height);
+            display: flex;
+            align-items: flex-start;
+            background-color: transparent;
+            z-index: 1000;
+            transform: translateY(-100%);
+            margin: 0;
+        }
+
+        .main-nav.scrolled {
+            background-color: var(--primary-color);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo img {
+            width: min(70vw, 280px);
+            height: auto;
+        }
+
+        .homepage {
+            background-color: var(--primary-color);
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            transform: translateY(100vh);
+            opacity: 0;
+        }
+
+        .homepage-content {
+            color: #fff;
+            text-align: left;
+            margin-left: 20vw;
+            position: relative;
+        }
+
+        .main-menu h1 {
+            font-size: clamp(35px, 6vw, 80px);
+            font-weight: bold;
+            margin: 0.1em 0;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .main-menu h1:hover {
+            color: var(--accent-color);
+        }
+
+        .minor-menu {
+            margin-top: 6em;
+        }
+
+        .minor-menu p {
+            font-size: clamp(14px, 1vw, 25px);
+            font-weight: bold;
+            margin: 0.5em 0;
+            transition: color 0.3s ease;
+        }
+
+        .minor-menu p:hover {
+            color: var(--accent-color);
+        }
+
+        .sub-menu {
+            display: none;
+            position: absolute;
+            left: 15vw;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .sub-menu p {
+            font-size: clamp(14px, 1vw, 25px);
+            font-weight: bold;
+            margin: 0.2em 0;
+            transition: color 0.3s ease;
+        }
+
+        .sub-menu p:hover {
+            color: var(--accent-color);
+        }
+
+        .sub-menu.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
     <nav class="main-nav">
@@ -55,6 +176,59 @@
         </div>
     </main>
 
-    <script src="scripts/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainNav = document.querySelector('.main-nav');
+            const logo = document.querySelector('.logo img');
+            const homepage = document.querySelector('.homepage');
+            const menuItems = document.querySelectorAll('.menu-item');
+            const subMenus = document.querySelectorAll('.sub-menu');
+
+            // Initial styles for transitions
+            mainNav.style.transform = 'translateY(-100%)';
+            logo.style.opacity = '0';
+            homepage.style.transform = 'translateY(100vh)';
+            homepage.style.opacity = '0';
+
+            // Apply transitions after a short delay to ensure styles are set
+            setTimeout(() => {
+                mainNav.style.transition = 'transform 1s ease-out, background-color 0.5s ease-out';
+                mainNav.style.transform = 'translateY(0)';
+
+                logo.style.transition = 'opacity 1.5s ease-out';
+                logo.style.opacity = '1';
+            }, 50);
+
+            // Slide-up and fade-in effect for homepage content
+            setTimeout(() => {
+                homepage.style.transition = 'transform 1.5s ease-out, opacity 1.5s ease-out';
+                homepage.style.transform = 'translateY(0)';
+                homepage.style.opacity = '1';
+            }, 1050);
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > 10) {
+                    mainNav.classList.add('scrolled');
+                } else {
+                    mainNav.classList.remove('scrolled');
+                }
+            });
+
+            // Toggle submenus on click
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const relatedMenu = document.getElementById(item.dataset.menu);
+                    const isVisible = relatedMenu.classList.contains('show');
+                    subMenus.forEach(menu => menu.classList.remove('show'));
+                    if (!isVisible) {
+                        relatedMenu.classList.add('show');
+                        relatedMenu.style.top = `${item.offsetTop}px`;
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
