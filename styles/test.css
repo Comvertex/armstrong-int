@@ -21,6 +21,7 @@ body {
     background-color: transparent;
     transition: background-color var(--transition-speed) ease;
     z-index: 1000;
+    transform: translateY(-100%); /* Start off-screen */
 }
 
 .main-nav.scrolled {
