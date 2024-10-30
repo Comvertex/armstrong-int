@@ -97,10 +97,23 @@ body {
     position: absolute;
     left: 15vw; /* Position submenus to the right of main menu */
     color: #fff;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Slide-up and fade-in */
 }
 
 .sub-menu p {
     font-size: clamp(14px, 1vw, 25px);
     font-weight: bold;
     margin: 0.2em 0;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.sub-menu p:hover {
+    color: var(--accent-color); /* Change text color on hover */
+}
+
+.sub-menu.show {
+    opacity: 1;
+    transform: translateY(0);
 }
