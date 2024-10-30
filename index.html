@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Armstrong International</title>
     <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Ensure this CSS is included in your main.css or directly here for testing */
+        .main-nav.scrolled {
+            background-color: var(--primary-color); /* Ensure this matches your site's blue */
+        }
+    </style>
 </head>
 <body class="landing-body">
     <nav class="main-nav">
@@ -77,6 +83,7 @@
             let isScrolling;
 
             window.addEventListener('scroll', function() {
+                console.log('Scrolling...'); // Debugging line to ensure the event is firing
                 window.clearTimeout(isScrolling);
                 
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
