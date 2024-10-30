@@ -67,14 +67,6 @@ body::-webkit-scrollbar-thumb {
     overflow: auto;
 }
 
-.main-nav.scrolled {
-    background-color: var(--primary-color);
-}
-
-.main-nav.nav-hidden {
-    transform: translateY(-100%);
-}
-
 .main-nav {
     position: fixed;
     width: 100%;
@@ -90,6 +82,14 @@ body::-webkit-scrollbar-thumb {
         transform var(--transition-speed-slow) var(--ease-out-cubic),
         background-color var(--transition-speed) var(--ease-out-cubic);
     animation: slideIn var(--transition-speed-slower) var(--ease-out-cubic) forwards; /* Removed delay */
+}
+
+.main-nav.scrolled {
+    background-color: var(--primary-color);
+}
+
+.main-nav.nav-hidden {
+    transform: translateY(-100%);
 }
 
 @keyframes slideIn {
@@ -195,161 +195,4 @@ body::-webkit-scrollbar-thumb {
     overflow: auto;
     position: fixed;
     top: 0;
-    left: 0;
-}
-
-.landing-page:has(.nav-group.expanded) {
-    height: auto;
-    min-height: 100vh;
-    position: relative;
-}
-
-.landing-content {
-    width: 100%;
-}
-
-.landing-menu {
-    width: 100%;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 var(--content-padding);
-}
-
-.primary-nav {
-    margin-bottom: var(--space-xl);
-}
-
-.nav-group {
-    margin-bottom: var(--space-md);
-    transition: all var(--transition-speed) var(--transition-function);
-}
-
-.nav-trigger {
-    background: none;
-    border: none;
-    padding: 0;
-    font-size: var(--font-size-xxl);
-    font-weight: 700;
-    color: var(--white);
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
-    transition: color var(--transition-speed) var(--transition-function);
-}
-
-.nav-trigger:hover,
-.nav-trigger.active {
-    color: var(--accent-color);
-}
-
-.nav-content {
-    max-height: 0;
-    overflow: hidden;
-    margin-left: clamp(1rem, 3vw, 2rem);
-    opacity: 0;
-    transform: translateY(-1vh);
-    transition: all var(--transition-speed) var(--transition-function);
-}
-
-.nav-group.expanded .nav-content {
-    max-height: min(60vh, 800px);
-    opacity: 1;
-    transform: translateY(0);
-    margin-bottom: var(--space-lg);
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.nav-group.expanded .nav-content::-webkit-scrollbar {
-    display: none;
-}
-
-.nav-content a {
-    display: block;
-    color: var(--white);
-    text-decoration: none;
-    font-size: var(--font-size-lg);
-    padding: var(--space-sm) 0;
-    transition:
-        color var(--transition-speed) var(--transition-function),
-        transform var(--transition-speed) var(--transition-function);
-}
-
-.nav-content a:hover {
-    color: var(--accent-color);
-    transform: translateX(0.5vw);
-}
-
-.secondary-nav {
-    margin-top: var(--space-xl);
-    transition:
-        transform var(--transition-speed) var(--transition-function),
-        margin var(--transition-speed) var(--transition-function);
-}
-
-.secondary-nav a {
-    display: block;
-    color: var(--white);
-    text-decoration: none;
-    font-size: var(--font-size-sm);
-    font-weight: 700;
-    padding: var(--space-sm) 0;
-    transition:
-        color var(--transition-speed) var(--transition-function),
-        transform var(--transition-speed) var(--transition-function);
-}
-
-.secondary-nav a:hover {
-    color: var(--accent-color);
-    transform: translateX(0.5vw);
-}
-
-.nav-group.expanded ~ .secondary-nav {
-    margin-top: var(--space-xxl);
-}
-
-@media (max-aspect-ratio: 1/1) {
-    :root {
-        --font-size-xxl: clamp(1.8rem, 8vmin, 3rem);
-        --font-size-xl: clamp(1.6rem, 6vmin, 2.5rem);
-        --font-size-lg: clamp(0.9rem, 3vmin, 1.1rem);
-    }
-    .landing-page {
-        padding-top: clamp(8vh, 15vh, 20vh);
-    }
-    .nav-group.expanded .nav-content {
-        max-height: min(50vh, 600px);
-    }
-}
-
-@media (min-aspect-ratio: 2/1) {
-    :root {
-        --font-size-xxl: clamp(2rem, 5vmin, 3rem);
-        --space-xxl: clamp(3rem, 8vh, 6rem);
-    }
-    .nav-group.expanded .nav-content {
-        max-height: min(40vh, 500px);
-    }
-}
-
-@media (max-height: 600px) {
-    :root {
-        --space-xxl: clamp(2rem, 6vh, 4rem);
-        --space-xl: clamp(1.5rem, 4vh, 2.5rem);
-        --space-lg: clamp(1rem, 3vh, 1.5rem);
-    }
-    .landing-page {
-        padding-top: clamp(5vh, 10vh, 15vh);
-    }
-    .nav-group.expanded .nav-content {
-        max-height: min(45vh, 400px);
-    }
-}
-
-@media (hover: none) {
-    .nav-content a:hover,
-    .secondary-nav a:hover {
-        transform: none;
-    }
-}
+    left: 
