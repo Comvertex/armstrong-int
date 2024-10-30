@@ -1,5 +1,6 @@
 :root {
     --primary-color: #000028; /* Blue color */
+    --accent-color: #ff5733; /* Accent color */
     --header-height: 65px;
     --transition-speed: 0.5s; /* Transition speed for smoother transitions */
     --background-color: #ffffff; /* White background */
@@ -67,6 +68,7 @@ body {
     font-size: clamp(35px, 6vw, 80px); /* Set min and max font size */
     font-weight: bold;
     margin: 0.1em 0; /* Further reduce spacing between items */
+    transition: color 0.3s ease; /* Smooth color transition */
 }
 
 .minor-menu {
@@ -77,4 +79,10 @@ body {
     font-size: clamp(14px, 1.5vw, 25px); /* Set min and max font size */
     font-weight: bold;
     margin: 0.5em 0; /* Increase spacing between minor menu items */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.main-menu h1:hover,
+.minor-menu p:hover {
+    color: var(--accent-color); /* Change text color on hover */
 }
