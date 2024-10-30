@@ -1,13 +1,12 @@
 :root {
     --primary-color: #000028; /* Blue color */
     --header-height: 65px;
-    --transition-speed: 1s; /* Transition speed for smoother transitions */
+    --transition-speed: 0.5s; /* Transition speed for smoother transitions */
 }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #ffffff; /* Default white background */
     height: 200vh; /* Ensure there's enough content to scroll */
 }
 
@@ -26,11 +25,6 @@ body {
 
 .main-nav.scrolled {
     background-color: var(--primary-color);
-}
-
-.landing-page {
-    background-color: var(--primary-color); /* Blue background for homepage */
-    transform: translateY(100%); /* Start off-screen */
 }
 
 .nav-container {
@@ -62,5 +56,4 @@ body {
 .landing-content {
     padding-top: calc(var(--header-height) + 20px); /* Ensure content is not hidden behind the fixed header */
     text-align: center;
-    color: #ffffff; /* White text for contrast against blue background */
 }
