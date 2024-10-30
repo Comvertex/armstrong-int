@@ -4,9 +4,9 @@
     --accent-color: #e53745;
     --background-color: #e5e7eb;
     --white: #ffffff;
-    --transition-speed: 0.3s;
-    --transition-speed-slow: 0.8s;
-    --transition-speed-slower: 1.2s;
+    --transition-speed: 0.5s; /* Increased speed for smoother transitions */
+    --transition-speed-slow: 1.2s; /* Increased speed for slower transitions */
+    --transition-speed-slower: 1.5s; /* Increased speed for even slower transitions */
     --transition-function: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
     --header-height: clamp(65px, 8vh, 85px);
@@ -73,7 +73,7 @@ body {
     transition:
         transform var(--transition-speed-slow) var(--ease-out-cubic),
         background-color var(--transition-speed) var(--ease-out-cubic);
-    animation: slideIn var(--transition-speed-slower) var(--ease-out-cubic) 0.5s forwards; /* Slide-in animation */
+    animation: slideIn var(--transition-speed-slower) var(--ease-out-cubic) forwards; /* Removed delay */
 }
 
 @keyframes slideIn {
@@ -101,7 +101,7 @@ body {
     display: flex;
     align-items: center;
     z-index: 1000;
-    animation: fadeIn var(--transition-speed-slower) var(--ease-out-cubic) 0.5s forwards; /* Fade-in animation */
+    animation: fadeIn var(--transition-speed-slower) var(--ease-out-cubic) forwards; /* Removed delay */
 }
 
 @keyframes fadeIn {
@@ -160,7 +160,7 @@ body {
 }
 
 .slide-in-bottom {
-    animation: slideInBottom var(--transition-speed-slower) var(--ease-out-cubic) 0.5s both;
+    animation: slideInBottom var(--transition-speed-slower) var(--ease-out-cubic) both;
 }
 
 @keyframes slideInBottom {
