@@ -32,10 +32,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mainNav = document.querySelector('.main-nav');
             const logo = document.querySelector('.logo img');
+            const landingPage = document.querySelector('.landing-page');
 
             // Initial styles for transitions
             mainNav.style.transform = 'translateY(-100%)';
             logo.style.opacity = '0';
+            landingPage.style.transform = 'translateY(100%)';
 
             // Apply transitions after a short delay to ensure styles are set
             setTimeout(() => {
@@ -44,7 +46,10 @@
 
                 logo.style.transition = 'opacity 1.5s ease-out';
                 logo.style.opacity = '1';
-            }, 50);
+
+                landingPage.style.transition = 'transform 2s ease-out';
+                landingPage.style.transform = 'translateY(0)';
+            }, 1000);
 
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
