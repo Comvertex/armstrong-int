@@ -1,116 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Armstrong International</title>
-    <link rel="stylesheet" href="styles/test.css">
-</head>
-<body>
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="/" class="logo">
-                <img src="assets/images/logo.png" alt="Armstrong International">
-            </a>
-        </div>
-    </nav>
+document.addEventListener('DOMContentLoaded', function() {
+    const mainNav = document.querySelector('.main-nav');
+    const logo = document.querySelector('.logo img');
+    const homepage = document.querySelector('.homepage');
+    const menuItems = document.querySelectorAll('.menu-item');
+    const subMenus = document.querySelectorAll('.sub-menu');
 
-    <main class="homepage">
-        <div class="homepage-content">
-            <div class="main-menu">
-                <h1 class="menu-item" data-menu="talent">Talent</h1>
-                <h1 class="menu-item" data-menu="capital">Capital</h1>
-                <h1 class="menu-item" data-menu="advice">Advice</h1>
-            </div>
-            <div class="minor-menu">
-                <p>About</p>
-                <p>Contact</p>
-                <p>Careers</p>
-            </div>
-            <div class="sub-menu" id="talent">
-                <p>Banks</p>
-                <p>Hedge Funds</p>
-                <p>Private Equity</p>
-                <p>Credit</p>
-                <p>Family Offices</p>
-                <p>Real Estate</p>
-                <p>Venture Capital</p>
-                <p>Digital & Data</p>
-                <p>Infrastructure & Energy Transition</p>
-                <p>Portfolio Companies</p>
-                <p>Wealth Management</p>
-            </div>
-            <div class="sub-menu" id="capital">
-                <p>Funds</p>
-                <p>Companies</p>
-                <p>Managers</p>
-            </div>
-            <div class="sub-menu" id="advice">
-                <p>Digitisation</p>
-                <p>Decarbonisation</p>
-                <p>AI</p>
-                <p>Talent</p>
-                <p>Geo Politics</p>
-            </div>
-        </div>
-    </main>
+    // Initial styles for transitions
+    mainNav.style.transform = 'translateY(-100%)';
+    logo.style.opacity = '0';
+    homepage.style.transform = 'translateY(100vh)';
+    homepage.style.opacity = '0';
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mainNav = document.querySelector('.main-nav');
-            const logo = document.querySelector('.logo img');
-            const homepage = document.querySelector('.homepage');
-            const menuItems = document.querySelectorAll('.menu-item');
-            const subMenus = document.querySelectorAll('.sub-menu');
+    // Apply transitions after a short delay to ensure styles are set
+    setTimeout(() => {
+        mainNav.style.transition = 'transform 1s ease-out, background-color 0.5s ease-out';
+        mainNav.style.transform = 'translateY(0)';
 
-            // Initial styles for transitions
-            mainNav.style.transform = 'translateY(-100%)';
-            logo.style.opacity = '0';
-            homepage.style.transform = 'translateY(100vh)';
-            homepage.style.opacity = '0';
+        logo.style.transition = 'opacity 1.5s ease-out';
+        logo.style.opacity = '1';
+    }, 50);
 
-            // Apply transitions after a short delay to ensure styles are set
-            setTimeout(() => {
-                mainNav.style.transition = 'transform 1s ease-out, background-color 0.5s ease-out';
-                mainNav.style.transform = 'translateY(0)';
+    // Slide-up and fade-in effect for homepage content
+    setTimeout(() => {
+        homepage.style.transition = 'transform 1.5s ease-out, opacity 1.5s ease-out';
+        homepage.style.transform = 'translateY(0)';
+        homepage.style.opacity = '1';
+    }, 1050);
 
-                logo.style.transition = 'opacity 1.5s ease-out';
-                logo.style.opacity = '1';
-            }, 50);
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-            // Slide-up and fade-in effect for homepage content
-            setTimeout(() => {
-                homepage.style.transition = 'transform 1.5s ease-out, opacity 1.5s ease-out';
-                homepage.style.transform = 'translateY(0)';
-                homepage.style.opacity = '1';
-            }, 1050);
+        if (scrollTop > 10) {
+            mainNav.classList.add('scrolled');
+        } else {
+            mainNav.classList.remove('scrolled');
+        }
+    });
 
-            window.addEventListener('scroll', function() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-                if (scrollTop > 10) {
-                    mainNav.classList.add('scrolled');
-                } else {
-                    mainNav.classList.remove('scrolled');
-                }
-            });
-
-            // Show submenus on hover
-            menuItems.forEach(item => {
-                item.addEventListener('mouseenter', () => {
-                    subMenus.forEach(menu => menu.style.display = 'none');
-                    const relatedMenu = document.getElementById(item.dataset.menu);
-                    if (relatedMenu) {
-                        relatedMenu.style.display = 'block';
-                    }
-                });
-            });
-
-            // Hide submenus when not hovering
-            homepage.addEventListener('mouseleave', () => {
-                subMenus.forEach(menu => menu.style.display = 'none');
-            });
+    // Show submenus on hover
+    menuItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            subMenus.forEach(menu => menu.style.display = 'none');
+            const relatedMenu = document.getElementById(item.dataset.menu);
+            if (relatedMenu) {
+                const rect = item.getBoundingClientRect();
+                relatedMenu.style.top = `${rect.top}px`;
+                relatedMenu.style.display = 'block';
+            }
         });
-    </script>
-</body>
-</html>
+    });
+
+    // Hide submenus when not hovering
+    homepage.addEventListener('mouseleave', () => {
+        subMenus.forEach(menu => menu.style.display = 'none');
+    });
+});
